@@ -16,13 +16,11 @@ class JobTracker:
         """Initialize storage directory and files if they don't exist"""
         os.makedirs(self.storage_dir, exist_ok=True)
         
-        # Initialize seen jobs file
-        if not os.path.exists(self.seen_jobs_file):
-            self._save_json(self.seen_jobs_file, {})
-            
-        # Initialize processed jobs file
-        if not os.path.exists(self.processed_jobs_file):
-            self._save_json(self.processed_jobs_file, {})
+        # Initialize files with empty objects
+        for filepath in [self.seen_jobs_file, self.processed_jobs_file]:
+            if not os.path.exists(filepath):
+                with open(filepath, 'w') as f:
+                    json.dump({}, f)
 
     def _load_json(self, filepath):
         """Load JSON data from file"""
@@ -49,10 +47,7 @@ class JobTracker:
     def mark_job_seen(self, job_id, job_data):
         """Mark a job as seen with timestamp"""
         seen_jobs = self._load_json(self.seen_jobs_file)
-        seen_jobs[job_id] = {
-            "first_seen": datetime.now().isoformat(),
-            "job_data": job_data
-        }
+        seen_jobs[job_id] = job_data
         self._save_json(self.seen_jobs_file, seen_jobs)
 
     def mark_job_processed(self, job_id, processing_result):
@@ -83,11 +78,8 @@ class JobTracker:
         seen_jobs = self._load_json(self.seen_jobs_file)
         processed_jobs = self._load_json(self.processed_jobs_file)
         
-        # Clean seen jobs
-        seen_jobs = {
-            k: v for k, v in seen_jobs.items()
-            if datetime.fromisoformat(v["first_seen"]).timestamp() > cutoff
-        }
+        # Clean seen jobs - we don't track timestamps for seen jobs anymore
+        # Just keep all seen jobs for now
         
         # Clean processed jobs
         processed_jobs = {

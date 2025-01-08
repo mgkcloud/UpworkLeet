@@ -15,6 +15,12 @@ from .structured_outputs import (
 )
 from .prompts import *
 
+# Initialize Gemini API
+api_key = os.getenv('GOOGLE_API_KEY')
+if not api_key:
+    raise ValueError("GOOGLE_API_KEY environment variable is required")
+genai.configure(api_key=api_key)
+
 def truncate_content(content, max_length=200):
     """Truncate content for logging purposes"""
     if isinstance(content, str) and len(content) > max_length:
@@ -459,22 +465,51 @@ def convert_jobs_matched_to_string_list(jobs_matched):
 
 def generate_cover_letter(job_desc, profile):
     logger.info("Generating cover letter")
-    cover_letter_prompt = GENERATE_COVER_LETTER_PROMPT_TEMPLATE.format(
-        profile=profile, job_description=job_desc
-    )
-    completion, _ = call_gemini_api(cover_letter_prompt, CoverLetter)
-    logger.info("Cover letter generated")
-    return {"letter": completion["letter"]}
+    try:
+        logger.debug(f"Job description length: {len(job_desc)}")
+        logger.debug(f"Profile length: {len(profile)}")
+        
+        cover_letter_prompt = GENERATE_COVER_LETTER_PROMPT_TEMPLATE.format(
+            profile=profile, job_description=job_desc
+        )
+        logger.debug("Generated cover letter prompt")
+        
+        completion, _ = call_gemini_api(cover_letter_prompt, CoverLetter)
+        logger.debug(f"Gemini API response: {truncate_content(str(completion))}")
+        
+        if not isinstance(completion, dict) or "letter" not in completion:
+            logger.error(f"Invalid cover letter response format: {completion}")
+            return {"letter": "Error generating cover letter"}
+            
+        logger.info("Cover letter generated successfully")
+        return {"letter": completion["letter"]}
+    except Exception as e:
+        logger.error(f"Error generating cover letter: {truncate_content(str(e))}")
+        return {"letter": f"Error generating cover letter: {str(e)}"}
 
 
 def generate_interview_script_content(job_desc):
     logger.info("Generating interview script content")
-    call_script_writer_prompt = GENERATE_CALL_SCRIPT_PROMPT_TEMPLATE.format(
-        job_description=job_desc
-    )
-    completion, _ = call_gemini_api(call_script_writer_prompt, CallScript)
-    logger.info("Interview script content generated")
-    return {"script": completion["script"]}
+    try:
+        logger.debug(f"Job description length: {len(job_desc)}")
+        
+        call_script_writer_prompt = GENERATE_CALL_SCRIPT_PROMPT_TEMPLATE.format(
+            job_description=job_desc
+        )
+        logger.debug("Generated interview script prompt")
+        
+        completion, _ = call_gemini_api(call_script_writer_prompt, CallScript)
+        logger.debug(f"Gemini API response: {truncate_content(str(completion))}")
+        
+        if not isinstance(completion, dict) or "script" not in completion:
+            logger.error(f"Invalid interview script response format: {completion}")
+            return {"script": "Error generating interview script"}
+            
+        logger.info("Interview script generated successfully")
+        return {"script": completion["script"]}
+    except Exception as e:
+        logger.error(f"Error generating interview script: {truncate_content(str(e))}")
+        return {"script": f"Error generating interview script: {str(e)}"}
 
 
 def save_scraped_jobs_to_csv(scraped_jobs_df):

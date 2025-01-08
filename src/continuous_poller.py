@@ -5,6 +5,7 @@ import sys
 import json
 import requests
 import psutil
+import google.generativeai as genai
 from datetime import datetime
 from src.job_tracker import JobTracker
 from src.metrics import (
@@ -54,11 +55,17 @@ class CustomJsonFormatter(logging.Formatter):
                 '}}')
 
 # Setup structured logging
-logger = setup_logger('upwork_poller')
+logger = setup_logger('upwork_poller', level=logging.DEBUG)
 file_handler = logging.FileHandler('upwork_poller.log')
 formatter = CustomJsonFormatter(datefmt='%Y-%m-%d %H:%M:%S')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
+
+# Initialize Gemini API
+api_key = os.getenv('GOOGLE_API_KEY')
+if not api_key:
+    raise ValueError("GOOGLE_API_KEY environment variable is required")
+genai.configure(api_key=api_key)
 
 # Start metrics server
 start_metrics_server()
@@ -104,9 +111,15 @@ class UpworkPoller:
         if self.running:
             logger.info("Stopping poller...")
             self.running = False
-            if hasattr(self, 'health_server'):
-                self.health_server.shutdown()
-            sys.exit(0)
+            try:
+                if hasattr(self, 'health_server'):
+                    self.health_server.shutdown()
+            except:
+                pass
+            finally:
+                # Force exit after 2 seconds if graceful shutdown fails
+                time.sleep(2)
+                os._exit(0)
 
     @with_circuit_breaker("webhook")
     def _send_webhook_notification(self, job_data: dict, processed_data: dict):
@@ -165,17 +178,27 @@ class UpworkPoller:
     def _process_job(self, job_id: str, job_data: dict) -> Optional[dict]:
         """Process a single job and return the result"""
         try:
+            logger.debug(f"Starting to process job {job_id}")
+            logger.debug(f"Job data structure: {truncate_content(str(job_data))}")
+            
             JOBS_PROCESSED.inc()
+            
+            # Check job data structure
+            if "description" not in job_data:
+                logger.error(f"Missing description in job data for job {job_id}")
+                return None
+            
             # Generate cover letter
+            logger.debug(f"Generating cover letter for job {job_id}")
             cover_letter_response = generate_cover_letter(
-                job_data["job_data"]["description"],
+                job_data["description"],
                 self.profile
             )
             cover_letter = cover_letter_response.get("letter", "") if isinstance(cover_letter_response, dict) else str(cover_letter_response)
             
             # Generate interview script
             script_response = generate_interview_script_content(
-                job_data["job_data"]["description"]
+                job_data["description"]
             )
             interview_script = script_response.get("script", "") if isinstance(script_response, dict) else str(script_response)
             
@@ -186,10 +209,10 @@ class UpworkPoller:
                 "processed_at": datetime.now().isoformat()
             }
             
-            # Send webhook notification for high-value jobs
-            if job_data["job_data"].get("score", 0) >= self.high_value_threshold:
+            # Track high-value jobs but skip webhook for now
+            if job_data.get("score", 0) >= self.high_value_threshold:
                 HIGH_VALUE_JOBS.inc()
-                self._send_webhook_notification(job_data["job_data"], result)
+                logger.info(f"High-value job found: {job_id} (score: {job_data.get('score')})")
             
             # Mark job as processed
             self.job_tracker.mark_job_processed(job_id, result)
@@ -235,26 +258,43 @@ class UpworkPoller:
                 
                 # Score jobs
                 scored_jobs = score_scaped_jobs(jobs_df, self.profile)
+                logger.debug(f"Scored jobs DataFrame: {scored_jobs.columns.tolist()}")
                 
-                # Process new jobs
-                for _, job in scored_jobs.iterrows():
-                    job_id = job["job_id"] if "job_id" in job else job.name
+                try:
+                    # Process new jobs
+                    logger.debug("Starting to process new jobs...")
+                    for _, job in scored_jobs.iterrows():
+                        logger.debug(f"Processing job row: {job.to_dict()}")
+                        job_id = job["job_id"] if "job_id" in job else job.name
+                        logger.debug(f"Job ID: {job_id}")
+                        
+                        # Skip if already seen
+                        if self.job_tracker.is_job_seen(job_id):
+                            logger.debug(f"Job {job_id} already seen, skipping")
+                            continue
+                        
+                        # Mark as seen and store job data
+                        job_data = job.to_dict()
+                        logger.debug(f"Marking job {job_id} as seen with data: {truncate_content(str(job_data))}")
+                        self.job_tracker.mark_job_seen(job_id, job_data)
                     
-                    # Skip if already seen
-                    if self.job_tracker.is_job_seen(job_id):
-                        continue
+                    # Process unprocessed jobs
+                    logger.debug("Getting unprocessed jobs...")
+                    unprocessed = self.job_tracker.get_unprocessed_jobs()
+                    logger.debug(f"Found {len(unprocessed)} unprocessed jobs")
+                    JOBS_IN_QUEUE.set(len(unprocessed))
                     
-                    # Mark as seen and store job data
-                    job_data = job.to_dict()
-                    self.job_tracker.mark_job_seen(job_id, job_data)
-                    
-                # Process unprocessed jobs
-                unprocessed = self.job_tracker.get_unprocessed_jobs()
-                JOBS_IN_QUEUE.set(len(unprocessed))
-                for job_id, job_data in unprocessed.items():
-                    result = self._process_job(job_id, job_data)
-                    if result:
-                        self.job_tracker.mark_job_processed(job_id, result)
+                    for job_id, job_data in unprocessed.items():
+                        logger.debug(f"Processing unprocessed job {job_id}")
+                        result = self._process_job(job_id, job_data)
+                        if result:
+                            logger.debug(f"Successfully processed job {job_id}")
+                            self.job_tracker.mark_job_processed(job_id, result)
+                        else:
+                            logger.error(f"Failed to process job {job_id}")
+                except Exception as e:
+                    logger.error(f"Error in job processing: {truncate_content(str(e))}")
+                    raise
                 
                 # Cleanup old data if needed
                 self._cleanup_if_needed()
@@ -275,7 +315,7 @@ def main():
     poll_interval = int(os.getenv("POLLING_INTERVAL", "480"))
     max_jobs = int(os.getenv("MAX_JOBS_PER_POLL", "10"))
     retention_days = int(os.getenv("JOB_RETENTION_DAYS", "30"))
-    webhook_url = os.getenv("WEBHOOK_URL", "https://n8n.fy.studio/webhook-test/a9a844f3-d651-4413-8bf3-820c6877b153")
+    webhook_url = os.getenv("WEBHOOK_URL", "https://webhook.site/token/new")
     high_value_threshold = float(os.getenv("HIGH_VALUE_THRESHOLD", "7.0"))
     
     poller = UpworkPoller(
