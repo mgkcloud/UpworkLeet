@@ -4,11 +4,12 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies required for Playwright and monitoring
+# Install system dependencies required for Playwright, monitoring and health checks
 RUN apt-get update && apt-get install -y \
     wget \
     gnupg \
     curl \
+    procps \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements file
@@ -24,11 +25,16 @@ RUN playwright install-deps
 # Copy application code
 COPY . .
 
-# Create directories for data persistence
-RUN mkdir -p /app/files/job_tracking /app/files/cache /app/logs
+# Create directories for data persistence and ensure proper permissions
+RUN mkdir -p /app/files/job_tracking /app/files/cache /app/logs && \
+    chmod -R 755 /app/files && \
+    chmod -R 755 /app/logs
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PROMETHEUS_MULTIPROC_DIR=/tmp
+ENV PYTHONPATH=/app
 ENV UPWORK_SEARCH_QUERY="AI agent Developer"
 ENV FREELANCER_PROFILE_PATH="/app/files/profile.md"
 ENV POLLING_INTERVAL=480
@@ -45,7 +51,18 @@ EXPOSE 8000
 
 # Add healthcheck
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
-    CMD curl -f http://localhost:8000/health || exit 1
+    CMD /bin/sh -c '\
+        curl -f http://localhost:8000/health && \
+        curl -f http://localhost:8001/metrics && \
+        ps aux | grep "[p]ython.*continuous_poller" \
+        || exit 1'
 
-# Run the continuous poller
+# Create non-root user
+RUN useradd -m -r -s /bin/bash poller && \
+    chown -R poller:poller /app
+
+# Switch to non-root user
+USER poller
+
+# Run the continuous poller with proper error handling
 CMD ["python", "-u", "src/continuous_poller.py"]

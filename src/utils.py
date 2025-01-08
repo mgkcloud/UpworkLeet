@@ -15,13 +15,17 @@ from .structured_outputs import (
 )
 from .prompts import *
 
-def truncate_content(content, max_length=500):
+def truncate_content(content, max_length=200):
     """Truncate content for logging purposes"""
     if isinstance(content, str) and len(content) > max_length:
-        return content[:max_length] + "... [truncated]"
+        return content[:max_length] + "..."
+    elif isinstance(content, dict):
+        return {k: truncate_content(v) for k, v in content.items()}
+    elif isinstance(content, list):
+        return [truncate_content(item) for item in content]
     return content
 
-def setup_logger(name, level=logging.DEBUG):
+def setup_logger(name, level=logging.INFO):
     """Centralized logger setup with concise formatting"""
     # Prevent duplicate handlers
     logger = logging.getLogger(name)
@@ -34,8 +38,8 @@ def setup_logger(name, level=logging.DEBUG):
     handler = logging.StreamHandler()
     handler.setLevel(level)
     
-    # Create concise formatter
-    formatter = logging.Formatter('%(asctime)s.%(msecs)03d [%(name)s] %(levelname).1s: %(message)s', 
+    # Create minimal formatter
+    formatter = logging.Formatter('%(asctime)s [%(name)s] %(levelname).1s: %(message)s', 
                                 datefmt='%H:%M:%S')
     handler.setFormatter(formatter)
     
@@ -163,10 +167,10 @@ def call_gemini_api(
                 # Handle array responses by taking first item
                 if isinstance(output, list) and len(output) > 0:
                     output = output[0]
-                logger.debug(f"Gemini API response (JSON): {output}")
+                logger.debug(f"API response: {truncate_content(output)}")
             except json.JSONDecodeError:
                 output = completion.text
-                logger.debug(f"Gemini API response (text): {output}")
+                logger.debug(f"API response: {truncate_content(output)}")
                 
             logger.info("Gemini API call completed.")
             return output, token_counts
@@ -212,7 +216,7 @@ def scrape_website_to_markdown(url: str) -> str:
     # Check if the file exists
     if os.path.exists(filename):
         with open(filename, "r", encoding="utf-8") as file:
-            logger.debug(f"Markdown content loaded from cache: {filename}")
+            logger.debug(f"Using cached content: {filename}")
             return file.read()
     
     # If not, scrape the page
@@ -223,7 +227,7 @@ def scrape_website_to_markdown(url: str) -> str:
         page = context.new_page()
         page.goto(url)
         html_content = page.content()
-        logger.debug(f"HTML content retrieved from {url}")
+        logger.debug(f"Retrieved content from {url}")
 
         browser.close()
 
@@ -233,7 +237,6 @@ def scrape_website_to_markdown(url: str) -> str:
     h.ignore_images = True
     h.ignore_tables = False
     markdown_content = h.handle(html_content)
-    logger.debug(f"HTML converted to markdown")
 
     # Clean up excess newlines
     markdown_content = re.sub(r"\n{3,}", "\n\n", markdown_content)
@@ -257,7 +260,7 @@ def scrape_upwork_data(search_query, num_jobs=20, rate_limit_delay=5):
         prompt = SCRAPER_PROMPT_TEMPLATE.format(markdown_content=markdown_content)
         completion, _ = call_gemini_api(prompt, UpworkJobs)
         jobs_links_list = [job["link"] for job in completion["jobs"]]
-        logger.debug(f"Job links found: {jobs_links_list}")
+        logger.debug(f"Found {len(jobs_links_list)} job links")
 
         jobs_data = []
         for link in tqdm(jobs_links_list, desc="Scraping job pages"):
@@ -275,7 +278,7 @@ def scrape_upwork_data(search_query, num_jobs=20, rate_limit_delay=5):
                 
                 if isinstance(completion, dict):
                     jobs_data.append(completion)
-                    logger.debug(f"Job data scraped for link: {full_link}")
+                    logger.debug(f"Scraped job: {truncate_content(completion.get('title', 'Unknown'))}")
                 else:
                     logger.error(f"Error: Invalid response from Gemini API for job info: {completion}")
                 
@@ -396,12 +399,10 @@ def score_scaped_jobs(jobs_df, profile):
             profile=profile,
             jobs=json.dumps(formatted_jobs, indent=2)
         )
-        logger.debug(f"Jobs data being passed to the template: {json.dumps(formatted_jobs, indent=2)}")
+        logger.debug(f"Processing batch of {len(formatted_jobs)} jobs")
         
         try:
             completion, _ = call_gemini_api(score_jobs_prompt, JobScores)
-            logger.debug(f"Response from Gemini API: {completion}")
-            
             if isinstance(completion, dict) and "matches" in completion:
                 matches = completion.get("matches", [])
                 if isinstance(matches, list):
@@ -415,10 +416,10 @@ def score_scaped_jobs(jobs_df, profile):
                             and 1 <= match["score"] <= 10):
                             valid_matches.append({
                                 "job_id": str(match["job_id"]),
-                                "score": float(match["score"])  # Convert score to float
+                                "score": float(match["score"])
                             })
                     jobs_final_score.extend(valid_matches)
-                    logger.debug(f"Valid scores from Gemini API: {valid_matches}")
+                    logger.debug(f"Scored {len(valid_matches)} jobs")
                 else:
                     logger.error(f"Error: 'matches' is not a list: {matches}")
             else:

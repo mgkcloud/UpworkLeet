@@ -4,8 +4,22 @@ import signal
 import sys
 import json
 import requests
+import psutil
 from datetime import datetime
 from src.job_tracker import JobTracker
+from src.metrics import (
+    start_metrics_server,
+    JOBS_SCRAPED,
+    JOBS_PROCESSED,
+    API_REQUESTS,
+    API_ERRORS,
+    API_LATENCY,
+    MEMORY_USAGE,
+    JOBS_IN_QUEUE,
+    HIGH_VALUE_JOBS,
+    MetricsTimer
+)
+from src.circuit_breaker import with_circuit_breaker
 from src.utils import (
     scrape_upwork_data,
     score_scaped_jobs,
@@ -18,12 +32,36 @@ from src.health_check import start_health_check_server
 from typing import Optional
 import logging
 
-# Setup logger with both file and console output
+class CustomJsonFormatter(logging.Formatter):
+    def format(self, record):
+        # Get the original format
+        record.message = record.getMessage()
+        if hasattr(record, 'extra'):
+            extra_str = f', "extra": {json.dumps(record.extra)}'
+        else:
+            extra_str = ''
+            
+        # Format the timestamp
+        if self.datefmt:
+            record.asctime = self.formatTime(record, self.datefmt)
+            
+        # Create the JSON structure
+        return ('{{'
+                f'"timestamp": "{record.asctime}.{int(record.msecs):03d}", '
+                f'"level": "{record.levelname}", '
+                f'"logger": "{record.name}", '
+                f'"message": "{record.message}"{extra_str}'
+                '}}')
+
+# Setup structured logging
 logger = setup_logger('upwork_poller')
 file_handler = logging.FileHandler('upwork_poller.log')
-file_handler.setFormatter(logging.Formatter('%(asctime)s.%(msecs)03d [%(name)s] %(levelname).1s: %(message)s', 
-                                          datefmt='%H:%M:%S'))
+formatter = CustomJsonFormatter(datefmt='%Y-%m-%d %H:%M:%S')
+file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
+
+# Start metrics server
+start_metrics_server()
 
 class UpworkPoller:
     def __init__(
@@ -63,15 +101,20 @@ class UpworkPoller:
 
     def _handle_shutdown(self, signum, frame):
         """Handle shutdown signals gracefully"""
-        logger.info("Shutdown signal received, stopping poller...")
-        self.running = False
-        if hasattr(self, 'health_server'):
-            self.health_server.shutdown()
+        if self.running:
+            logger.info("Stopping poller...")
+            self.running = False
+            if hasattr(self, 'health_server'):
+                self.health_server.shutdown()
+            sys.exit(0)
 
+    @with_circuit_breaker("webhook")
     def _send_webhook_notification(self, job_data: dict, processed_data: dict):
         """Send webhook notification for high-value jobs"""
         try:
-            payload = {
+            with MetricsTimer(API_LATENCY, {"api_type": "webhook"}):
+                API_REQUESTS.labels(api_type="webhook").inc()
+                payload = {
                 "timestamp": datetime.now().isoformat(),
                 "job_details": {
                     "id": job_data.get("job_id"),
@@ -96,21 +139,33 @@ class UpworkPoller:
                 }
             }
             
-            response = requests.post(
-                self.webhook_url,
-                json=payload,
-                headers={"Content-Type": "application/json"},
-                timeout=10
-            )
-            response.raise_for_status()
-            logger.info(f"Successfully sent webhook notification for job {job_data.get('job_id')}")
+                response = requests.post(
+                    self.webhook_url,
+                    json=payload,
+                    headers={"Content-Type": "application/json"},
+                    timeout=10
+                )
+                response.raise_for_status()
+                logger.debug(f"Webhook sent for job {job_data.get('job_id')}")
             
+        except requests.exceptions.RequestException as e:
+            API_ERRORS.labels(api_type="webhook", error_type=type(e).__name__).inc()
+            logger.error(f"Webhook failed: {truncate_content(str(e))}", 
+                        extra={"error_type": type(e).__name__, "job_id": job_data.get("job_id")})
+            raise
+
+    def _update_metrics(self):
+        """Update system metrics"""
+        try:
+            process = psutil.Process()
+            MEMORY_USAGE.set(process.memory_info().rss)
         except Exception as e:
-            logger.error(f"Failed to send webhook notification: {truncate_content(str(e))}")
+            logger.warning(f"Failed to update metrics: {e}")
 
     def _process_job(self, job_id: str, job_data: dict) -> Optional[dict]:
         """Process a single job and return the result"""
         try:
+            JOBS_PROCESSED.inc()
             # Generate cover letter
             cover_letter_response = generate_cover_letter(
                 job_data["job_data"]["description"],
@@ -133,16 +188,16 @@ class UpworkPoller:
             
             # Send webhook notification for high-value jobs
             if job_data["job_data"].get("score", 0) >= self.high_value_threshold:
+                HIGH_VALUE_JOBS.inc()
                 self._send_webhook_notification(job_data["job_data"], result)
             
             # Mark job as processed
             self.job_tracker.mark_job_processed(job_id, result)
-            
-            logger.info(f"Successfully processed job {job_id}")
+            logger.debug(f"Processed job {job_id}")
             return result
             
         except Exception as e:
-            logger.error(f"Error processing job {job_id}: {truncate_content(str(e))}")
+            logger.error(f"Failed to process job {job_id}: {truncate_content(str(e))}")
             return None
 
     def _cleanup_if_needed(self):
@@ -151,7 +206,7 @@ class UpworkPoller:
         hours_since_cleanup = (now - self.last_cleanup).total_seconds() / 3600
         
         if hours_since_cleanup >= 24:  # Daily cleanup
-            logger.info("Performing daily cleanup of old job data...")
+            logger.debug("Running daily cleanup...")
             self.job_tracker.cleanup_old_jobs(self.job_retention_days)
             self.last_cleanup = now
 
@@ -162,15 +217,20 @@ class UpworkPoller:
         
         while self.running:
             try:
+                # Update system metrics
+                self._update_metrics()
                 # Scrape latest jobs
-                logger.info("Polling for new jobs...")
-                jobs_df = scrape_upwork_data(
-                    self.search_query,
-                    self.max_jobs_per_poll
-                )
+                logger.debug("Polling for new jobs...")
+                with MetricsTimer(API_LATENCY, {"api_type": "scraper"}):
+                    jobs_df = scrape_upwork_data(
+                        self.search_query,
+                        self.max_jobs_per_poll
+                    )
+                    if not jobs_df.empty:
+                        JOBS_SCRAPED.inc(len(jobs_df))
                 
                 if jobs_df.empty:
-                    logger.warning("No jobs found in this poll")
+                    logger.debug("No new jobs found")
                     continue
                 
                 # Score jobs
@@ -190,6 +250,7 @@ class UpworkPoller:
                     
                 # Process unprocessed jobs
                 unprocessed = self.job_tracker.get_unprocessed_jobs()
+                JOBS_IN_QUEUE.set(len(unprocessed))
                 for job_id, job_data in unprocessed.items():
                     result = self._process_job(job_id, job_data)
                     if result:
@@ -199,11 +260,11 @@ class UpworkPoller:
                 self._cleanup_if_needed()
                 
                 # Wait for next poll
-                logger.info(f"Sleeping for {self.poll_interval} seconds...")
+                logger.debug(f"Sleeping for {self.poll_interval}s...")
                 time.sleep(self.poll_interval)
                 
             except Exception as e:
-                logger.error(f"Error in polling loop: {truncate_content(str(e))}")
+                logger.error(f"Poll failed: {truncate_content(str(e))}")
                 # Add exponential backoff on errors
                 time.sleep(min(300, self.poll_interval * 2))
 
