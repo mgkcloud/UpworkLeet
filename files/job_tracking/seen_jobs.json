@@ -1,0 +1,142 @@
+{
+  "0": {
+    "first_seen": "2025-01-08T22:40:02.824805",
+    "job_data": {
+      "description": "We are an early-stage startup revolutionizing how SMBs handle phone calls\nthrough AI . Our mission is to help businesses reduce missed calls, scale\nafter-hours coverage, and deliver 24/7 service all while cutting costs. We\u2019re\nseeking a Growth Marketing Strategist who can own our marketing funnel end-to-\nend, drive lead acquisition, and position our offering for rapid market\nadoption.  \n  \nRole Overview  \n  \nAs the Growth Marketing Strategist, you\u2019ll be the architect and executor of\nour marketing roadmap. You\u2019ll blend hands-on execution with high-level\nstrategy,designing and running campaigns, generating qualified leads, and\ntracking performance metrics that inform our overall growth strategy. If\nyou\u2019re excited about shaping the future of AI-driven solutions for SMBs\u2014and\nyou thrive in a startup environment\u2014this role is for you.  \n  \nKey Responsibilities:  \n1. Marketing Strategy & Roadmap  \n\u2022 Develop and refine the go-to-market strategy for AI agents, focusing on SMB\nverticals .  \n\u2022 Set clear goals (e.g., MQL, SQL, CAC targets) and manage the marketing\nbudget to meet acquisition objectives.  \n2. Demand Generation & Lead Acquisition  \n\u2022 Plan and execute inbound & outbound campaigns (Google Ads, LinkedIn Ads,\nemail marketing, content syndication, etc.).  \n\u2022 Test and optimize landing pages, funnels, and messaging to improve\nconversion rates and reduce cost per acquisition (CPA).  \n3. Content & Messaging  \n\u2022 Create or oversee creation of compelling copy for website, landing pages,\nemail sequences, and sales enablement materials.  \n  \n4. Marketing Automation & Analytics  \n\u2022 Implement and manage marketing automation tools (e.g., HubSpot or Marketo)\nfor lead nurturing, scoring, and reporting.  \n\u2022 Track and analyze funnel performance (CAC, LTV, MRR), recommending data-\ndriven enhancements to campaigns and strategies.  \n5. Partnership & Channel Development (Optional)  \n\u2022 Explore and build relationships with complementary SaaS platforms,\ninfluencers, or resellers in the SMB space.  \n\u2022 Negotiate co-marketing opportunities and referral programs to expand reach.  \n6. Collaboration & Leadership  \n\u2022 Work closely with sales, product, and any external freelancers (e.g.,\ndesigners, copywriters) to maintain cohesive branding and messaging.  \n\u2022 Provide regular updates to leadership on marketing performance, insights,\nand growth opportunities.  \n  \n  \nQualifications & Experience:  \n  \n\u2022 3\u20135+ years in growth marketing, demand generation, or a similar role\u2014ideally\nin a B2B SaaS or tech startup environment.  \n\u2022 Proven track record of driving customer acquisition through multi-channel\ncampaigns and data-driven optimization.  \n\u2022 Familiarity with key marketing metrics (CAC, MRR, LTV) and experience using\nmarketing automation tools (HubSpot, Marketo, etc.).  \n\u2022 Strong copywriting or content marketing skills; ability to translate\ntechnical or AI-driven products into customer-centric messaging.  \n\u2022 Hands-on experience with PPC platforms (Google Ads, LinkedIn) and an\nunderstanding of SEO best practices.  \n\u2022 Excellent analytical and project management skills\u2014comfortable juggling\nmultiple campaigns and reporting on their outcomes.  \n\u2022 Startup mindset\u2014self-starter, agile, comfortable with ambiguity, and excited\nabout building processes from the ground up.",
+      "duration": "6+ months",
+      "experience_level": "Expert",
+      "job_type": "Hourly",
+      "title": "Growth Marketing Strategist (Saas/AI Startup )",
+      "client_infomation": "United States | $169K total spent | 50 hires, 21 active | Tech & IT | Large company (100-1,000 people)",
+      "rate": "nan",
+      "job_id": "0",
+      "score": 4.0
+    }
+  },
+  "1": {
+    "first_seen": "2025-01-08T22:40:02.825471",
+    "job_data": {
+      "description": "We are looking for a talented AI developer to design an intelligent agent capable of transforming diverse datasets into compelling presentations. This agent will leverage large language models (LLMs) to create impactful visualizations paired with clear, concise narratives, simplifying complex data for better understanding. The ideal candidate will have expertise in AI and data visualization tools, with a proven ability to derive meaningful insights from data. Be a part of our mission to turn raw data into engaging visual stories that captivate and inform audiences.",
+      "duration": "1-3 months",
+      "experience_level": "Expert",
+      "job_type": "Hourly",
+      "title": "AI Agent for Data Set Visualization",
+      "client_infomation": "India Surat 5:07 PM $16K total spent 2 hires, 0 active Tech & IT Mid-sized company (10-99 people)",
+      "rate": "$25.00 - $30.00",
+      "job_id": "1",
+      "score": 8.0
+    }
+  },
+  "2": {
+    "first_seen": "2025-01-08T22:40:02.825806",
+    "job_data": {
+      "description": "We are looking for a highly skilled AI Agentic Systems Expert to help the development of an innovative agentic team utilizing cutting-edge technologies like Langchain, AutoCrew, and n8n. The ideal candidate will have a deep understanding of AI systems and a passion for creating dynamic, collaborative environments where multiple large language models (LLMs) can work together effectively. Key Responsibilities - Develop Agentic Teams: Design and implement a structured team of LLMs, each assigned unique roles and instructions, capable of iterating through complex tasks until a reviewer LLM achieves a perfect score of 10/10 against the initial instructions. - Facilitate Interactive Communication: Establish a robust interactive process that allows team members to communicate and collaborate effectively, potentially involving up to 50 iterations. Implement feedback mechanisms where agents can receive insights from their peers to enhance performance. - Implement Recursive Training Loops: Create systems that support recursive loops for continuous training and improvement of each LLM, ensuring adaptability and growth in response to challenges. - Human Interaction: Ensure that the system allows human operators to engage with any team member, providing customized inputs to assist agents in overcoming difficulties. - LLM Agnostic Design: Develop solutions that are agnostic to specific LLMs, ensuring flexibility and adaptability in integrating various models. - Architectural Planning: Collaborate with the team to devise a comprehensive architectural plan utilizing tools such as CrewAI, AutoGen, n8n, and MemGPT, ensuring alignment with project goals. - Graph Database Modeling: Model responses and interactions using graph databases like Neo4j or similar technologies, incorporating persistent memory to enhance system capabilities. Qualifications - Proven experience in AI systems, particularly with agentic architectures and collaborative models. - Strong knowledge of LLMs and their applications in various contexts. - Familiarity with orchestration tools such as Langchain, AutoCrew, n8n, and MemGPT. - Experience in designing and implementing feedback mechanisms within AI systems. - Proficiency in graph databases and data modeling, particularly Neo4j. - Excellent problem-solving skills and the ability to work in a team-oriented environment.",
+      "duration": "3-6 months",
+      "experience_level": "Expert",
+      "job_type": "Hourly",
+      "title": "AI Agentic System Specialist ( CrewAI, autogen, n8n )",
+      "client_infomation": "nan",
+      "rate": "$30.00-$60.00 Hourly",
+      "job_id": "2",
+      "score": 9.0
+    }
+  },
+  "3": {
+    "first_seen": "2025-01-08T22:40:02.826113",
+    "job_data": {
+      "description": "I'll make this simple. I'm building a startup and need someone with strong NextJS skills and has integrated LLMs into a NextJS app. Preference would go to those that have experience with Vercel AI SDK and building agents. The app is built and almost ready for initial release. It is currently leveraging Vercel AI SDK with a simple LLM streaming. I will need the developer to be able to implement Generative UI and improve the code as well.",
+      "duration": "< 1 month",
+      "experience_level": "Intermediate",
+      "job_type": "Hourly",
+      "title": "NextJS Developers Needed for Startup",
+      "client_infomation": "Member since Jan 8, 2025 United States 6:37 AM",
+      "rate": "nan",
+      "job_id": "3",
+      "score": 7.0
+    }
+  },
+  "4": {
+    "first_seen": "2025-01-08T22:40:02.826524",
+    "job_data": {
+      "description": "At OpenFi, we're transforming how businesses connect with their customers through AI-powered Sales Agents that boost engagement, automate sales, and drive revenue. We\u2019re positioned as the \"Intercom meets ChatGPT meets Salesforce,\" offering an AI Live Chat tool that goes beyond support\u2014it converts web traffic into high-quality leads, delivering a remarkable 10x improvement in conversion rates for industries like financial services. With plans to scale into full sales automation, OpenFi is redefining CRM and customer interactions, and we\u2019re looking for a Growth Marketing Manager who will elevate our brand awareness and drive inbound interest.  Our biggest challenge? Awareness. OpenFi has an incredible offering, but not enough people know about it. That\u2019s where you come in. We're seeking a Sales Executive with a growth mindset, who will get clients excited about implementing AI in their businesses.  What You\u2019ll Do  - Generate leads by leveraging phone calls, emails, and LinkedIn to schedule qualified meetings with decision makers.  - Manage a pipeline of warm leads and keep them engaged through regular follow up.  - Lead the entire sales process, from initial contact to contract negotiation and closure.  - Identify best practices and enhance your prospecting strategy as you develop in the role.  - Identify the prospect's need  - Build long-term trusting relationships with prospects to qualify leads as sales opportunities  - Proactively seek new sales opportunities  - Report on sales activities, performance metrics and market trends to management  - Maintain and update CRM records to track all interactions and opportunities  - Collaborate with the sales and marketing teams to optimise outreach efforts  Requirements  - Proven experience in sales or business development, preferably in a B2B environment. Experience with full-cycle sales is a plus.  - Strong communication skills via phone and email  - Ability to work independently and thrive in a fast-paced, startup environment.  - Excellent follow-through, attention to detail, and minimal need for supervision  - Has a track record of creatively solving problems  - Positive attitude  - Highly self-motivated, results-driven, and target-focused.  - Strong desire to move up within a sales organisation  - Achieve and exceed monthly, quarterly and yearly quota targets.  - A passion for learning and growing within the sales profession (Tell us about the blogs, podcasts, or books you follow for personal development!)  - Remote Flexibility: Fluent in English, with a flexible schedule to attend meetings in UK time.  Key Performance Indicators (KPIs)  - Calls made.  - Meetings Booked.  - Meetings Attended.  - Proposals Sent.  - MRR Signed.  - MRR Retained.  What We\u2019d Love to Know  - Defining Success: What does success look like to you in this role?  - Time with Leadership: How much time would you need with the CEO and senior team to excel?  - Weekly Structure: How would you structure your week to maximise impact?  In order for this application to be considered please use the word \"parrot\" anywhere in the application.  If you\u2019re passionate about driving meaningful growth and eager to join a fast-paced, AI-powered company on the cusp of disruption, we\u2019d love to hear from you. Apply now to join OpenFi in our mission to transform customer engagement and sales automation.",
+      "duration": "6+ months",
+      "experience_level": "Intermediate",
+      "job_type": "Hourly",
+      "title": "Sales Executive",
+      "client_infomation": "United Kingdom | $95K total spent | 54 hires, 1 active",
+      "rate": "$15.00 - $21.00",
+      "job_id": "4",
+      "score": 2.0
+    }
+  },
+  "5": {
+    "first_seen": "2025-01-08T22:40:02.827040",
+    "job_data": {
+      "description": "We need a Growth Hacker / Growth Marketing Manager with Apollo Experience  Location: Remote (UK Time Zone Availability Required)  Salary: \u00a330,000 - \u00a345,000 per year  About OpenFi  At OpenFi, we're transforming how businesses connect with their customers through AI-powered Sales Agents that boost engagement, automate sales, and drive revenue. We\u2019re positioned as the \"Intercom meets ChatGPT meets Salesforce,\" offering an AI Live Chat tool that goes beyond support\u2014it converts web traffic into high-quality leads, delivering a remarkable 10x improvement in conversion rates for industries like financial services. With plans to scale into full sales automation, OpenFi is redefining CRM and customer interactions, and we\u2019re looking for a Growth Marketing Manager who will elevate our brand awareness and drive inbound interest.  The Challenge  Our biggest challenge? Awareness. OpenFi has an incredible offering, but not enough people know about it. That\u2019s where you come in. We're seeking a Growth Marketing Manager with a hacker mindset, who will boost our visibility and educate leads about our product, even without a large advertising budget. Instead, you\u2019ll rely on inbound tactics, content, and community engagement.  What You\u2019ll Do  - Mastering Apollo: Build precise prospect lists (e.g., US mortgage brokers), clean and enrich the data, and craft personalised messaging tailored to each audience.  - A/B Testing & Optimisation: Test subject lines, messaging, and email sequences to identify what resonates and drives results.  - Domain & Deliverability Management: Set up and manage email domains, ensuring proper warming, high deliverability, and compliance with best practices.  - Sequence Design: Create effective email sequences, recommending optimal email frequency, cadence, and tone for maximum engagement.  - Performance Analysis: Track key metrics (open rates, reply rates, conversion rates) and present actionable insights to refine campaigns.  - Content Development: Collaborate with the team to create case studies, video testimonials, and other trust-building collateral to support outbound efforts.  Requirements  - Experience: You know the ins and outs of Apollo and have proven experience in growth marketing, with a focus on outbound email strategies.  - Content and Copy Skills: Strong ability to create clear, engaging, and conversion-focused content.  - Data-driven approach: Performance-focused, with the ability to measure, analyse, and optimise campaigns.  - Continuous Learner: An insatiable curiosity for growth marketing trends and best practices. (Tell us about the blogs, podcasts, or books you follow for personal development!)  - Remote Flexibility: Fluent in English, with a flexible schedule to attend meetings in UK time.  Key Performance Indicators (KPIs)  - Website Traffic: Increasing organic and referral traffic to our help pages and website.  - Inbound Leads: Driving a steady flow of qualified leads.  - Meetings Booked: Converting leads into scheduled conversations with our sales team.  - Contracts Won: Helping OpenFi achieve short sales cycles and build a pipeline for growth toward our revenue goal of \u00a350k MRR.  What We\u2019d Love to Know  - Your 30-Day Plan: How would you make an impact in your first month?  - Defining Success: What does success look like to you in this role?  - Time with Leadership: How much time would you need with the CEO and senior team to excel?  - Weekly Structure: How would you structure your week to maximise impact?  To prevent bots spam applying, only applications that have the word \"parrot\" in them will be counted.  If you\u2019re passionate about driving meaningful growth and eager to join a fast- paced, AI-powered company on the cusp of disruption, we\u2019d love to hear from you. Apply now to join OpenFi in our mission to transform customer engagement and sales automation.",
+      "duration": "6+ months",
+      "experience_level": "Intermediate",
+      "job_type": "Hourly",
+      "title": "Growth Marketing Manager with Apollo Experience",
+      "client_infomation": "United Kingdom Edinburgh 11:38 AM $95K total spent 54 hires, 1 active 4,483 hours",
+      "rate": "$18.00 - $29.00",
+      "job_id": "5",
+      "score": 3.0
+    }
+  },
+  "6": {
+    "first_seen": "2025-01-08T22:40:02.827389",
+    "job_data": {
+      "description": "We are seeking a skilled developer with experience in Streamlit and integrations with Xero and QuickBooks to help troubleshoot issues in our financial analysis application. The application is built using Python and utilizes various APIs for data retrieval.  Responsibilities:  Identify and resolve issues with Xero and QuickBooks API connections in our Streamlit app.  Debug issues related to data retrieval and processing from Excel files.  Assist in improving error handling and logging to enhance application reliability.  Ensure smooth user experience by addressing any UI/UX issues.  Requirements:  Proven experience with Streamlit and building interactive web applications.  Strong knowledge of Python, especially in data manipulation and API integrations.  Familiarity with Xero and QuickBooks APIs, and OAuth authentication.  Understanding of data validation and Excel file processing in Python.  Excellent problem-solving skills and attention to detail.  Preferred Qualifications:  Previous experience working with financial applications or data analysis tools.  Strong communication skills for providing updates and explaining solutions.  To Apply:  Please provide your relevant experience and examples of similar work you have done. We are looking to fill this position quickly, so prompt responses will be appreciated.",
+      "duration": "1-3 months",
+      "experience_level": "Expert",
+      "job_type": "Hourly",
+      "title": "Troubleshooting and Debugging Streamlit Application",
+      "client_infomation": "France | $15K total spent | 12 hires, 2 active | Small company (2-9 people)",
+      "rate": "$20.00 - $30.00",
+      "job_id": "6",
+      "score": 7.0
+    }
+  },
+  "7": {
+    "first_seen": "2025-01-08T22:40:02.827711",
+    "job_data": {
+      "description": "A previous developer helped me build an AI voice agent in VAPI and n8n.  \n  \nThe agent currently takes inbound calls like a receptionist. The agent\nresponds to callers giving business information, pricing and FAQs. It also\nsets appointments by looking at a calendar (already setup) and suggests\navailable times.  \n  \nCurrent tech stack  \nGCP - google calendar  \nN8n - workflows  \nVAPI - voice AI  \nOpenAI - chat summarisation  \nTwilio - phone number  \n  \nWe are stuck on a Stripe implementation where the agent sends a payment link\n(eg via email or SMS) to the caller to make a payment to confirm the\nappointment. Need support specifically in completing this part of the flow.  \n  \nSo the flow should be  \n1. Caller rings number  \n2.  AI agent answers and provides business information, and offers to  set up an appointment   \n3. Callers asks availability on certain days  \n4. agent checks calendar and confirms or proposes alternative times  \n5. Caller agree on time, agent books the appointment and sends calendar\ninvite and confirms booking over phone, then politely ends call.  \n  \n  \nAdditional step to be added  \n- before step 5 above, Agent asks caller for email address to send a payment\nlink (stripe)  \n- after caller completes payment - agent checks for payment confirmation. If\nconfirmed, agent tells caller that the payment is successful and then we move\nto step 5 above.  \n- If payment unsuccessful, it tells caller that it was unsuccessful and asks\nto try again. If still unsuccessful, it tells caller that the appointment is\nnot confirmed and that we will pass on to someone who will call back to take\npayment over the phone.  \n  \nThis should be a quick integration as it is testing the flow and stripe\nintegration. We have done most of the work and requires an experienced AI\nagent to complete.  \n  \nThis must be completed by Friday this week.",
+      "duration": "One-time project",
+      "experience_level": "Expert",
+      "job_type": "Fixed",
+      "title": "N8n VAPI Stripe - integration support",
+      "client_infomation": "nan",
+      "rate": "$50.00",
+      "job_id": "7",
+      "score": 9.0
+    }
+  },
+  "8": {
+    "first_seen": "2025-01-08T22:40:02.828072",
+    "job_data": {
+      "description": "Dear Contractor\u2019s\n  \nI hope you\u2019re doing well. I am the owner of an AI agency that specializes in\nproviding AI-driven solutions to our clients. As part of our expanding service\nofferings, we are looking to partner with experienced contractors to help us\ndevelop AI-powered chatbots for a variety of use cases, including but not\nlimited to:  \n1. Internal IT Support Chatbots  \n\u2022 Assist employees with troubleshooting IT issues, managing service requests,\nand automating basic IT tasks.  \n\u2022 Features may include ticket creation, knowledge base integration, diagnostic\ntools, and escalation to human support when needed.  \n2. Customer Service Chatbots  \n\u2022 Improve customer engagement by automating common inquiries, supporting sales\nand order tracking, and providing personalized recommendations.  \n\u2022 This bot should handle frequently asked questions, provide self-service\noptions, and seamlessly transfer more complex queries to human agents.  \n  \nGiven the nature of these projects, we are looking for contractors who have\nexperience with the following:  \n\u2022 Developing both internal and customer-facing chatbots.  \n\u2022 Integrating with third-party tools (e.g., CRMs, ticketing systems, knowledge\nbases).  \n\u2022 Creating conversational AI systems that offer a high-quality, user-friendly\nexperience.  \n\u2022 Scalable solutions that can be customized for different clients and\nindustries.",
+      "duration": "Contract-to-hire opportunity",
+      "experience_level": "Intermediate",
+      "job_type": "Fixed",
+      "title": "Ai chat bot developers",
+      "client_infomation": "nan",
+      "rate": "$80.00",
+      "job_id": "8",
+      "score": 8.0
+    }
+  },
+  "9": {
+    "first_seen": "2025-01-08T22:40:02.828990",
+    "job_data": {
+      "description": "We are seeking a talented MERN stack developer with a strong background in AI\nto join our team. The ideal candidate will have experience developing scalable\nweb applications using MongoDB, Express.js, React.js, and Node.js, while also\nintegrating AI features. You will work closely with our product team to\nimplement innovative AI solutions that enhance user experience. If you are\npassionate about technology and have a knack for problem-solving, we want to\nhear from you!",
+      "duration": "1-3 months",
+      "experience_level": "Expert",
+      "job_type": "Hourly",
+      "title": "MERN Developer with AI Expertise Needed",
+      "client_infomation": "nan",
+      "rate": "$15.00 - $22.00 Hourly",
+      "job_id": "9",
+      "score": 6.0
+    }
+  }
+}

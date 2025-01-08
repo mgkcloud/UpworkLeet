@@ -15,20 +15,32 @@ from .structured_outputs import (
 )
 from .prompts import *
 
+def truncate_content(content, max_length=500):
+    """Truncate content for logging purposes"""
+    if isinstance(content, str) and len(content) > max_length:
+        return content[:max_length] + "... [truncated]"
+    return content
+
 def setup_logger(name, level=logging.DEBUG):
+    """Centralized logger setup with concise formatting"""
+    # Prevent duplicate handlers
     logger = logging.getLogger(name)
+    if logger.handlers:
+        return logger
+        
     logger.setLevel(level)
-
-    # Create handlers
-    c_handler = logging.StreamHandler()
-    c_handler.setLevel(level)
-
-    # Create formatters and add it to handlers
-    c_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    c_handler.setFormatter(c_format)
-
-    # Add handlers to the logger
-    logger.addHandler(c_handler)
+    
+    # Create handler
+    handler = logging.StreamHandler()
+    handler.setLevel(level)
+    
+    # Create concise formatter
+    formatter = logging.Formatter('%(asctime)s.%(msecs)03d [%(name)s] %(levelname).1s: %(message)s', 
+                                datefmt='%H:%M:%S')
+    handler.setFormatter(formatter)
+    
+    # Add handler
+    logger.addHandler(handler)
     return logger
 
 logger = setup_logger('utils')
@@ -327,6 +339,9 @@ def process_job_info_data(jobs_data):
     # Explicitly create the 'duration' column if it doesn't exist
     if "duration" not in jobs_df.columns:
         jobs_df["duration"] = ""
+    # Explicitly create the 'job_id' column if it doesn't exist
+    if "job_id" not in jobs_df.columns:
+        jobs_df["job_id"] = jobs_df.index.astype(str)
     jobs_df["client_infomation"] = jobs_df["client_infomation"].astype(str).apply(clean_client_info)
     logger.info("Job info data processed")
 
@@ -339,9 +354,10 @@ def score_scaped_jobs(jobs_df, profile):
     # Convert jobs DataFrame to list of dictionaries
     jobs_dict_list = []
     for index, row in jobs_df.iterrows():
-        # Format each job as a dictionary with job_id and all details
+        # Use existing job_id if present, otherwise use index
+        job_id = str(row.get("job_id", index))
         job_dict = {
-            "job_id": str(index),
+            "job_id": job_id,
             "title": row.get("title", ""),
             "experience_level": row.get("experience_level", ""),
             "job_type": row.get("job_type", ""),
@@ -395,11 +411,11 @@ def score_scaped_jobs(jobs_df, profile):
                         if (isinstance(match, dict) 
                             and "job_id" in match 
                             and "score" in match
-                            and isinstance(match["score"], int)
+                            and isinstance(match["score"], (int, float))
                             and 1 <= match["score"] <= 10):
                             valid_matches.append({
                                 "job_id": str(match["job_id"]),
-                                "score": match["score"]
+                                "score": float(match["score"])  # Convert score to float
                             })
                     jobs_final_score.extend(valid_matches)
                     logger.debug(f"Valid scores from Gemini API: {valid_matches}")
@@ -412,18 +428,20 @@ def score_scaped_jobs(jobs_df, profile):
             continue
 
     # Create scores DataFrame and merge with jobs_df
-    jobs_df["score"] = 0  # Default score
     if jobs_final_score:
         scores_df = pd.DataFrame(jobs_final_score)
         scores_df["job_id"] = scores_df["job_id"].astype(str)  # Ensure job_id is string
-        jobs_df = jobs_df.reset_index()  # Reset index to merge
-        jobs_df["job_id"] = jobs_df.index.astype(str)  # Create job_id column
-        # Merge scores into jobs_df
-        jobs_df = jobs_df.merge(scores_df[["job_id", "score"]], on="job_id", how="left")
-        jobs_df["score"] = jobs_df["score_y"].fillna(0)  # Fill missing scores with 0
-        jobs_df = jobs_df.drop(["job_id", "score_y"], axis=1)  # Clean up temporary columns
+        scores_df["score"] = scores_df["score"].astype(float)  # Ensure score is float64
+        
+        # Create score column if it doesn't exist
+        if "score" not in jobs_df.columns:
+            jobs_df["score"] = 0.0  # Initialize as float
+        
+        # Update scores using job_id mapping
+        score_dict = dict(zip(scores_df["job_id"], scores_df["score"]))
+        jobs_df["score"] = jobs_df["job_id"].map(score_dict).fillna(0.0).astype(float)
+    
     logger.info("Scoring of scraped jobs completed")
-
     return jobs_df
 
 
@@ -445,7 +463,7 @@ def generate_cover_letter(job_desc, profile):
     )
     completion, _ = call_gemini_api(cover_letter_prompt, CoverLetter)
     logger.info("Cover letter generated")
-    return completion["letter"]
+    return {"letter": completion["letter"]}
 
 
 def generate_interview_script_content(job_desc):
@@ -455,7 +473,7 @@ def generate_interview_script_content(job_desc):
     )
     completion, _ = call_gemini_api(call_script_writer_prompt, CallScript)
     logger.info("Interview script content generated")
-    return completion["script"]
+    return {"script": completion["script"]}
 
 
 def save_scraped_jobs_to_csv(scraped_jobs_df):

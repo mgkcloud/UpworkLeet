@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  upwork-poller:
+    build: .
+    container_name: upwork-job-poller
+    environment:
+      - UPWORK_SEARCH_QUERY=AI agent Developer
+      - FREELANCER_PROFILE_PATH=/app/files/profile.md
+      - POLLING_INTERVAL=480
+      - MAX_JOBS_PER_POLL=10
+      - JOB_RETENTION_DAYS=30
+      - HIGH_VALUE_THRESHOLD=7.0
+      - WEBHOOK_URL=https://n8n.fy.studio/webhook-test/a9a844f3-d651-4413-8bf3-820c6877b153
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    ports:
+      - "8000:8000"  # Health check endpoint
+    volumes:
+      # Mount profile file
+      - ./files/profile.md:/app/files/profile.md:ro
+      # Mount directories for persistent data
+      - job-tracking:/app/files/job_tracking
+      - cache:/app/files/cache
+      - logs:/app/logs
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - upwork-network
+
+networks:
+  upwork-network:
+    name: upwork-network
+    driver: bridge
+
+volumes:
+  job-tracking:
+    name: upwork-job-tracking
+  cache:
+    name: upwork-cache
+  logs:
+    name: upwork-logs

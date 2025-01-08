@@ -1,7 +1,36 @@
-langgraph
-playwright
-html2text
-pandas
-google-generativeai
-colorama
-python-dotenv
+# Core dependencies
+playwright==1.40.0
+pandas==2.1.3
+tqdm==4.66.1
+html2text==2020.1.16
+google-generativeai==0.3.1
+
+# Web scraping and processing
+beautifulsoup4==4.12.2
+requests==2.31.0
+aiohttp==3.9.1
+
+# Data handling
+numpy==1.26.2
+python-dateutil==2.8.2
+
+# Async support
+asyncio==3.4.3
+aiofiles==23.2.1
+
+# Graph processing
+langgraph==0.0.15
+
+# Logging and monitoring
+python-json-logger==2.0.7
+psutil==5.9.7
+
+# Type checking
+typing-extensions==4.8.0
+mypy-extensions==1.0.0
+
+# Development tools
+black==23.11.0
+pylint==3.0.2
+pytest==7.4.3
+pytest-asyncio==0.21.1

@@ -1,25 +1,8 @@
 import os
 from dotenv import load_dotenv
-from src.utils import read_text_file
+from src.utils import read_text_file, setup_logger, truncate_content
 from src.graph import UpworkAutomation
 import google.generativeai as genai
-import logging
-
-def setup_logger(name, level=logging.DEBUG):
-    logger = logging.getLogger(name)
-    logger.setLevel(level)
-
-    # Create handlers
-    c_handler = logging.StreamHandler()
-    c_handler.setLevel(level)
-
-    # Create formatters and add it to handlers
-    c_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    c_handler.setFormatter(c_format)
-
-    # Add handlers to the logger
-    logger.addHandler(c_handler)
-    return logger
 
 logger = setup_logger('main')
 
@@ -35,7 +18,7 @@ if __name__ == "__main__":
 
     # load the freelancer profile
     profile = read_text_file("./files/profile.md")
-    logger.debug(f"Freelancer profile loaded: {profile}")
+    logger.debug(f"Freelancer profile loaded: {truncate_content(profile)}")
 
     # run automation
     automation = UpworkAutomation(profile)
