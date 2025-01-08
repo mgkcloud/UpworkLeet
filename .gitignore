@@ -1,1 +1,4 @@
 .env
+files/cache
+files/upwork_job_listings
+src/__pycache__

@@ -5,7 +5,41 @@ Extract the relevant data from this page content:
 {markdown_content}
 </content>
 
-**Important** FORMAT ALL EXTRACTED FIELD IN AN EASILY READABLE
+**Important Instructions**
+1. For job listings pages:
+   - Extract all job listing URLs
+   - Return them in a JSON array under the "jobs" key
+   - Each URL should be relative (starting with /jobs/)
+
+2. For individual job pages:
+   - Extract the following fields:
+     * title: The job title (required)
+     * description: The full job description (required)
+     * job_type: Either "Fixed" or "Hourly" (required)
+     * experience_level: The required experience level (required)
+     * duration: The project duration (required)
+     * rate: The payment rate/budget (optional)
+     * client_infomation: Client details like location, history, etc. (optional)
+   - Return a single JSON object with these fields
+   - Do not return arrays of multiple jobs
+   - Ensure all required fields are present
+
+Example response for job listings page:
+{{"jobs": [
+  {{"link": "/jobs/example-job-1"}},
+  {{"link": "/jobs/example-job-2"}}
+]}}
+
+Example response for individual job page:
+{{
+  "title": "AI Developer Needed",
+  "description": "Full job description here...",
+  "job_type": "Hourly",
+  "experience_level": "Expert",
+  "duration": "3-6 months",
+  "rate": "$50-$70/hr",
+  "client_infomation": "United States | $10k spent | 5 hires"
+}}
 """
 
 SCORE_JOBS_PROMPT_TEMPLATE = """
@@ -26,72 +60,69 @@ Freelancer Profile:
 
 Jobs to evaluate:
 {jobs}
+
+**IMPORTANT** Return a JSON object with the following structure:
+```json
+{{"matches": [
+  {{"job_id": "id from job", "score": integer between 1-10}}
+]}}
+```
+
+Example response for 2 jobs:
+```json
+{{"matches": [
+  {{"job_id": "0", "score": 8}},
+  {{"job_id": "1", "score": 5}}
+]}}
+```
+
+Note: Each job in the input has an "id" field - use this exact value for the job_id in your response.
 """
 
 GENERATE_COVER_LETTER_PROMPT_TEMPLATE = """
-# ROLE
-
 You are an Upwork cover letter specialist, crafting targeted and personalized proposals. 
-Create persuasive cover letters that align with job requirements while highlighting the freelancer’s skills and experience.
+Create a persuasive cover letter that aligns with job requirements while highlighting the freelancer's skills and experience.
 
 Freelancer Profile:
 <profile>
 {profile}
 </profile>
 
-# SOP
+Job Description:
+<job_description>
+{job_description}
+</job_description>
 
+Guidelines:
 1. Address the client's needs from the job description; do not over-emphasize the freelancer's profile.
 2. Illustrate how the freelancer can meet these needs based on their past experience.
 3. Show enthusiasm for the job and its concept.
-4. Keep the letter under 150 words, maintaining a firendly and concise tone.
+4. Keep the letter under 150 words, maintaining a friendly and concise tone.
 5. Integrate job-related keywords naturally.
 6. Briefly mention relevant past projects from the freelancer's profile if applicable.
+7. End with "Best, Aymen"
 
-# Example Letter:
-letter>
-Hey there!
-
-I’m excited about the opportunity to design and implement AI-driven solutions for OpenAI! 
-I have strong background in AI development and automation engineering, I believe I can deliver impactful results for your business.
-
-My Past Projects:
-- Developed an AI Voice Assistant for managing customer interactions, which efficiently handled inbound queries and streamlined communication processes—perfect for your needs in developing voice systems.
-- Designed an AI-driven email automation system that enhanced workflow efficiency by automating responses and administrative tasks.
-- Implemented an AI automated outreach solution for lead generation, personalized email outreach, and outbound prospecting.
-
-I would love to discuss how my experience can help optimize your operations, enhance sales and marketing automation, and ultimately drive success for OpenAI!
-
-Best,  
-Aymen
-</letter>
-
-Job Desciption:
-<job_description>
-{job_description}
-</job_description>
-
-# **IMPORTANT**
-* My name is: Aymen; include it at the end of the letters.
-* Follow the example letter format and structure.
-* Do not invent any information that is not present in my profile.
+IMPORTANT: Return a JSON object with a single "letter" field containing the cover letter text.
+Example response format:
+{{"letter": "Hey there!\\n\\nI'm excited about...[cover letter content]...\\n\\nBest,\\nAymen"}}
 """
 
 GENERATE_CALL_SCRIPT_PROMPT_TEMPLATE = """
-You are a **freelance interview preparation coach**. Your task is to create a tailored call script for a freelancer preparing for an interview with a client. The script should help the freelancer confidently discuss their qualifications and experiences relevant to the job description provided.
+You are a freelance interview preparation coach. Create a tailored call script for a freelancer preparing for an interview with a client.
 
-### Job Description:
+Job Description:
 <job_description>
 {job_description}
 </job_description>
 
-### Instructions:
-1. Start with a brief introduction the freelancer can use to introduce themselves.
-2. Include key points the freelancer should mention regarding their relevant experience and skills related to the job.
-3. List 10 potential questions that the client might ask during the interview.
-4. Suggest 10 questions the freelancer might ask the client to demonstrate interest and clarify project details.
-5. Maintain a friendly and professional tone throughout the script.
+The script should include:
+1. A brief introduction for the freelancer to use
+2. Key points about relevant experience and skills
+3. 10 potential client questions with suggested answers
+4. 10 questions for the freelancer to ask
+5. Maintain a friendly and professional tone
 
-### Output:
-Return your final output in markdown format.
+IMPORTANT: Return a JSON object with a single "script" field containing the formatted script.
+Example response format:
+{{"script": "# Introduction\\n[introduction content]\\n\\n# Key Points\\n[points content]\\n\\n# Client Questions\\n[questions content]\\n\\n# Questions to Ask\\n[questions content]"}}
 """
