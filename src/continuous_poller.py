@@ -87,15 +87,17 @@ start_metrics_server()
 class UpworkPoller:
     def __init__(
         self,
-        search_query: str,
         profile_path: str,
         webhook_url: str,
+        search_config_path: str = "./files/search_config.json",
         poll_interval: int = 480,  # 8 minutes
         max_jobs_per_poll: int = 10,
         job_retention_days: int = 30,
         high_value_threshold: float = 7.0
     ):
-        self.search_query = search_query
+        self.search_config_path = search_config_path
+        self.current_search_index = 0
+        self.search_configs = self._load_search_configs()
         self.poll_interval = poll_interval
         self.max_jobs_per_poll = max_jobs_per_poll
         self.job_retention_days = job_retention_days
@@ -112,6 +114,10 @@ class UpworkPoller:
         except Exception as e:
             logger.error(f"Failed to load profile from {profile_path}: {truncate_content(str(e))}")
             raise
+
+        # Load search configurations
+        if not self.search_configs:
+            raise ValueError("No search configurations found in config file")
             
         # Start health check server
         self.health_server = start_health_check_server()
@@ -119,6 +125,24 @@ class UpworkPoller:
         # Setup signal handlers
         signal.signal(signal.SIGINT, self._handle_shutdown)
         signal.signal(signal.SIGTERM, self._handle_shutdown)
+
+    def _load_search_configs(self):
+        """Load search configurations from file"""
+        try:
+            with open(self.search_config_path, 'r') as f:
+                config = json.load(f)
+                return config.get('searches', [])
+        except Exception as e:
+            logger.error(f"Failed to load search configs: {truncate_content(str(e))}")
+            return []
+
+    def _get_next_search_config(self):
+        """Get the next search configuration in rotation"""
+        if not self.search_configs:
+            return None
+        config = self.search_configs[self.current_search_index]
+        self.current_search_index = (self.current_search_index + 1) % len(self.search_configs)
+        return config
 
     def _handle_shutdown(self, signum, frame):
         """Handle shutdown signals gracefully"""
@@ -136,7 +160,7 @@ class UpworkPoller:
                 os._exit(0)
 
     @with_circuit_breaker("webhook")
-    def _send_webhook_notification(self, job_data: dict, processed_data: dict):
+    def _send_webhook_notification(self, job_data: dict, processed_data: dict, search_config: dict):
         """Send webhook notification for high-value jobs"""
         try:
             with MetricsTimer(API_LATENCY, {"api_type": "webhook"}):
@@ -183,7 +207,7 @@ class UpworkPoller:
                     },
                     "metadata": {
                         "processed_at": processed_data.get("processed_at"),
-                        "search_query": self.search_query
+                        "search_config": search_config
                     }
                 }
             
@@ -211,7 +235,7 @@ class UpworkPoller:
         except Exception as e:
             logger.warning(f"Failed to update metrics: {e}")
 
-    def _process_job(self, job_id: str, job_data: dict) -> Optional[dict]:
+    def _process_job(self, job_id: str, job_data: dict, search_config: dict) -> Optional[dict]:
         """Process a single job and return the result"""
         try:
             logger.debug(f"Starting to process job {job_id}")
@@ -250,8 +274,8 @@ class UpworkPoller:
                 interview_script = script_response.get("script", "") if isinstance(script_response, dict) else str(script_response)
                 result["interview_script"] = interview_script
                 
-                # Send webhook notification
-                self._send_webhook_notification(job_data, result)
+                # Send webhook notification with current search config
+                self._send_webhook_notification(job_data, result, search_config)
             
             # Mark job as processed
             self.job_tracker.mark_job_processed(job_id, result)
@@ -274,25 +298,32 @@ class UpworkPoller:
 
     def run(self):
         """Run the continuous polling loop"""
-        logger.info(f"Starting Upwork poller for query: {self.search_query}")
+        logger.info("Starting Upwork poller with search configurations")
         self.running = True
         
         while self.running:
             try:
                 # Update system metrics
                 self._update_metrics()
+                # Get next search configuration
+                search_config = self._get_next_search_config()
+                if not search_config:
+                    logger.error("No valid search configurations available")
+                    time.sleep(self.poll_interval)
+                    continue
+
                 # Scrape latest jobs
-                logger.debug("Polling for new jobs...")
+                logger.debug(f"Polling for new jobs with config: {search_config}")
                 with MetricsTimer(API_LATENCY, {"api_type": "scraper"}):
                     jobs_df = scrape_upwork_data(
-                        self.search_query,
+                        search_config,
                         self.max_jobs_per_poll
                     )
                     if not jobs_df.empty:
                         JOBS_SCRAPED.inc(len(jobs_df))
                 
                 if jobs_df.empty:
-                    logger.debug("No new jobs found")
+                    logger.debug(f"No new jobs found for current search, rotating to next...")
                     continue
                 
                 # Score jobs
@@ -324,7 +355,7 @@ class UpworkPoller:
                     
                     for job_id, job_data in unprocessed.items():
                         logger.debug(f"Processing unprocessed job {job_id}")
-                        result = self._process_job(job_id, job_data)
+                        result = self._process_job(job_id, job_data, search_config)
                         if result:
                             logger.debug(f"Successfully processed job {job_id}")
                             self.job_tracker.mark_job_processed(job_id, result)
@@ -348,8 +379,8 @@ class UpworkPoller:
 
 def main():
     # Load environment variables or use defaults
-    search_query = os.getenv("UPWORK_SEARCH_QUERY", "AI agent Developer")
     profile_path = os.getenv("FREELANCER_PROFILE_PATH", "./files/profile.md")
+    search_config_path = os.getenv("SEARCH_CONFIG_PATH", "./files/search_config.json")
     poll_interval = int(os.getenv("POLLING_INTERVAL", "480"))
     max_jobs = int(os.getenv("MAX_JOBS_PER_POLL", "10"))
     retention_days = int(os.getenv("JOB_RETENTION_DAYS", "30"))
@@ -362,9 +393,9 @@ def main():
     high_value_threshold = float(os.getenv("HIGH_VALUE_THRESHOLD", "7.0"))
     
     poller = UpworkPoller(
-        search_query=search_query,
         profile_path=profile_path,
         webhook_url=webhook_url,
+        search_config_path=search_config_path,
         poll_interval=poll_interval,
         max_jobs_per_poll=max_jobs,
         job_retention_days=retention_days,

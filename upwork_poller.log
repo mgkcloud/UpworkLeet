@@ -3327,3 +3327,62 @@
 {{"timestamp": "2025-01-09 17:53:21.655", "level": "DEBUG", "logger": "upwork_poller", "message": "Getting unprocessed jobs..."}}
 {{"timestamp": "2025-01-09 17:53:21.655", "level": "DEBUG", "logger": "upwork_poller", "message": "Found 0 unprocessed jobs"}}
 {{"timestamp": "2025-01-09 17:53:21.655", "level": "DEBUG", "logger": "upwork_poller", "message": "Sleeping for 360s..."}}
+{{"timestamp": "2025-01-09 18:01:11.857", "level": "DEBUG", "logger": "upwork_poller", "message": "Polling for new jobs..."}}
+{{"timestamp": "2025-01-09 18:02:48.523", "level": "DEBUG", "logger": "upwork_poller", "message": "Scored jobs DataFrame: ['description', 'duration', 'experience_level', 'job_type', 'title', 'rate', 'url', 'apply_url', 'upwork_id', 'client_infomation', 'job_id', 'score']"}}
+{{"timestamp": "2025-01-09 18:02:48.524", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process new jobs..."}}
+{{"timestamp": "2025-01-09 18:02:48.524", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Agent Development with LLMs"}}
+{{"timestamp": "2025-01-09 18:02:48.524", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Founding Engineer for Gamified EdTech Platform"}}
+{{"timestamp": "2025-01-09 18:02:48.525", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Convert PDF printouts to searchable text and add to OneNote"}}
+{{"timestamp": "2025-01-09 18:02:48.525", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Instantly.ai sales campaign set-up and management"}}
+{{"timestamp": "2025-01-09 18:02:48.525", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Real Estate Cash in Cash determination AI"}}
+{{"timestamp": "2025-01-09 18:02:48.525", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Chat Bot Development in Python"}}
+{{"timestamp": "2025-01-09 18:02:48.525", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Need help to identify WooComerce subscription users on my Replit MERN web app"}}
+{{"timestamp": "2025-01-09 18:02:48.526", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: VAPI + N8N (or make)"}}
+{{"timestamp": "2025-01-09 18:02:48.526", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Expert AI Agent Developer for Receipt Automation in Fintech Startup"}}
+{{"timestamp": "2025-01-09 18:02:48.526", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Chatbot Development for Facebook Marketplace in English and Fr…"}}
+{{"timestamp": "2025-01-09 18:02:48.526", "level": "DEBUG", "logger": "upwork_poller", "message": "Getting unprocessed jobs..."}}
+{{"timestamp": "2025-01-09 18:02:48.527", "level": "DEBUG", "logger": "upwork_poller", "message": "Found 0 unprocessed jobs"}}
+{{"timestamp": "2025-01-09 18:02:48.527", "level": "DEBUG", "logger": "upwork_poller", "message": "Sleeping for 360s..."}}
+{{"timestamp": "2025-01-09 18:08:48.541", "level": "DEBUG", "logger": "upwork_poller", "message": "Polling for new jobs..."}}
+{{"timestamp": "2025-01-09 18:10:27.598", "level": "DEBUG", "logger": "upwork_poller", "message": "Scored jobs DataFrame: ['description', 'duration', 'experience_level', 'job_type', 'title', 'client_infomation', 'rate', 'url', 'apply_url', 'upwork_id', 'job_id', 'score']"}}
+{{"timestamp": "2025-01-09 18:10:27.598", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process new jobs..."}}
+{{"timestamp": "2025-01-09 18:10:27.599", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Agent Development with LLMs"}}
+{{"timestamp": "2025-01-09 18:10:27.599", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Founding Engineer for Gamified EdTech Platform"}}
+{{"timestamp": "2025-01-09 18:10:27.599", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Convert PDF printouts to searchable text and add to OneNote"}}
+{{"timestamp": "2025-01-09 18:10:27.599", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Instantly.ai sales campaign set-up and management"}}
+{{"timestamp": "2025-01-09 18:10:27.600", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Real Estate Cash in Cash determination AI"}}
+{{"timestamp": "2025-01-09 18:10:27.600", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Chat Bot Development in Python"}}
+{{"timestamp": "2025-01-09 18:10:27.601", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Need help to identify WooComerce subscription users on my Replit MERN web app"}}
+{{"timestamp": "2025-01-09 18:10:27.601", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: VAPI + N8N (or make)"}}
+{{"timestamp": "2025-01-09 18:10:27.601", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Expert AI Agent Developer for Receipt Automation in Fintech Startup"}}
+{{"timestamp": "2025-01-09 18:10:27.601", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Chatbot Development for Facebook Marketplace in English and Fr…"}}
+{{"timestamp": "2025-01-09 18:10:27.601", "level": "DEBUG", "logger": "upwork_poller", "message": "Getting unprocessed jobs..."}}
+{{"timestamp": "2025-01-09 18:10:27.602", "level": "DEBUG", "logger": "upwork_poller", "message": "Found 0 unprocessed jobs"}}
+{{"timestamp": "2025-01-09 18:10:27.602", "level": "DEBUG", "logger": "upwork_poller", "message": "Sleeping for 360s..."}}
+{{"timestamp": "2025-01-09 18:16:27.629", "level": "DEBUG", "logger": "upwork_poller", "message": "Polling for new jobs..."}}
+{{"timestamp": "2025-01-09 18:18:09.382", "level": "DEBUG", "logger": "upwork_poller", "message": "Scored jobs DataFrame: ['description', 'duration', 'experience_level', 'job_type', 'title', 'client_infomation', 'rate', 'url', 'apply_url', 'upwork_id', 'job_id', 'score']"}}
+{{"timestamp": "2025-01-09 18:18:09.382", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process new jobs..."}}
+{{"timestamp": "2025-01-09 18:18:09.384", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Agent Development with LLMs"}}
+{{"timestamp": "2025-01-09 18:18:09.385", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Founding Engineer for Gamified EdTech Platform"}}
+{{"timestamp": "2025-01-09 18:18:09.385", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Convert PDF printouts to searchable text and add to OneNote"}}
+{{"timestamp": "2025-01-09 18:18:09.386", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Instantly.ai sales campaign set-up and management"}}
+{{"timestamp": "2025-01-09 18:18:09.386", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Real Estate Cash in Cash determination AI"}}
+{{"timestamp": "2025-01-09 18:18:09.387", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Chat Bot Development in Python"}}
+{{"timestamp": "2025-01-09 18:18:09.387", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Need help to identify WooComerce subscription users on my Replit MERN web app"}}
+{{"timestamp": "2025-01-09 18:18:09.388", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: VAPI + N8N (or make)"}}
+{{"timestamp": "2025-01-09 18:18:09.388", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Expert AI Agent Developer for Receipt Automation in Fintech Startup"}}
+{{"timestamp": "2025-01-09 18:18:09.389", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Chatbot Development for Facebook Marketplace in English and Fr…"}}
+{{"timestamp": "2025-01-09 18:18:09.389", "level": "DEBUG", "logger": "upwork_poller", "message": "Getting unprocessed jobs..."}}
+{{"timestamp": "2025-01-09 18:18:09.390", "level": "DEBUG", "logger": "upwork_poller", "message": "Found 0 unprocessed jobs"}}
+{{"timestamp": "2025-01-09 18:18:09.390", "level": "DEBUG", "logger": "upwork_poller", "message": "Sleeping for 360s..."}}
+{{"timestamp": "2025-01-09 18:18:15.076", "level": "INFO", "logger": "upwork_poller", "message": "Stopping poller..."}}
+{{"timestamp": "2025-01-09 18:23:36.943", "level": "DEBUG", "logger": "upwork_poller", "message": "Loading environment from: /Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/.env"}}
+{{"timestamp": "2025-01-09 18:23:36.944", "level": "DEBUG", "logger": "upwork_poller", "message": "Environment variables:"}}
+{{"timestamp": "2025-01-09 18:23:36.944", "level": "DEBUG", "logger": "upwork_poller", "message": "WEBHOOK_URL=https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 18:23:36.944", "level": "DEBUG", "logger": "upwork_poller", "message": "POLLING_INTERVAL=360"}}
+{{"timestamp": "2025-01-09 18:23:36.944", "level": "DEBUG", "logger": "upwork_poller", "message": "HIGH_VALUE_THRESHOLD=7"}}
+{{"timestamp": "2025-01-09 18:23:36.983", "level": "DEBUG", "logger": "upwork_poller", "message": "Using webhook URL from environment: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 18:23:36.985", "level": "INFO", "logger": "upwork_poller", "message": "Starting Upwork poller with search configurations"}}
+{{"timestamp": "2025-01-09 18:23:36.985", "level": "DEBUG", "logger": "upwork_poller", "message": "Polling for new jobs with config: {'type': 'keyword', 'query': 'AI agent Developer'}"}}
+{{"timestamp": "2025-01-09 18:25:11.471", "level": "DEBUG", "logger": "upwork_poller", "message": "No new jobs found for current search, rotating to next..."}}
+{{"timestamp": "2025-01-09 18:25:11.473", "level": "DEBUG", "logger": "upwork_poller", "message": "Polling for new jobs with config: {'type': 'skill', 'ontology_skill_uid': '1225465944849223680'}"}}

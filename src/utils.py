@@ -467,9 +467,17 @@ def scrape_website_to_markdown(url: str) -> str:
     return markdown_content
 
 
-def scrape_upwork_data(search_query, num_jobs=20, rate_limit_delay=5):
-    logger.info(f"Scraping Upwork data with query: {search_query}, num_jobs: {num_jobs}")
-    url = f"https://www.upwork.com/nx/search/jobs?q={search_query}&sort=recency&page=1&per_page={num_jobs}"
+def scrape_upwork_data(search_config, num_jobs=20, rate_limit_delay=5):
+    logger.info(f"Scraping Upwork data with config: {search_config}, num_jobs: {num_jobs}")
+    
+    # Build URL based on search type
+    if search_config["type"] == "keyword":
+        url = f"https://www.upwork.com/nx/search/jobs?q={search_config['query']}&sort=recency&page=1&per_page={num_jobs}"
+    elif search_config["type"] == "skill":
+        url = f"https://www.upwork.com/nx/search/jobs?ontology_skill_uid={search_config['ontology_skill_uid']}&sort=recency&page=1&per_page={num_jobs}"
+    else:
+        logger.error(f"Invalid search type: {search_config['type']}")
+        return pd.DataFrame()
 
     try:
         markdown_content = scrape_website_to_markdown(url)

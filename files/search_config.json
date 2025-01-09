@@ -1,0 +1,12 @@
+{
+  "searches": [
+    {
+      "type": "keyword",
+      "query": "AI agent Developer"
+    },
+    {
+      "type": "skill",
+      "ontology_skill_uid": "1225465944849223680"
+    }
+  ]
+}
