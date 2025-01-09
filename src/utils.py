@@ -60,6 +60,30 @@ logger = setup_logger('utils')
 
 SCRAPED_JOBS_FOLDER = "./files/upwork_job_listings/"
 
+def load_cookies():
+    """Load authentication cookies from file"""
+    cookie_file = "./files/auth/cookies.json"
+    try:
+        if os.path.exists(cookie_file):
+            with open(cookie_file, 'r') as f:
+                return json.load(f)
+        else:
+            logger.warning(f"Cookie file not found at {cookie_file}")
+            return []
+    except Exception as e:
+        logger.error(f"Error loading cookies: {e}")
+        return []
+
+def save_cookies(cookies):
+    """Save authentication cookies to file"""
+    cookie_file = "./files/auth/cookies.json"
+    os.makedirs(os.path.dirname(cookie_file), exist_ok=True)
+    try:
+        with open(cookie_file, 'w') as f:
+            json.dump(cookies, f, indent=2)
+        logger.info(f"Cookies saved to {cookie_file}")
+    except Exception as e:
+        logger.error(f"Error saving cookies: {e}")
 
 def call_gemini_api(
     prompt: str, response_schema=None, model="gemini-2.0-flash-exp", max_retries=5, base_delay=10
@@ -233,14 +257,43 @@ def scrape_website_to_markdown(url: str) -> str:
     # If not, scrape the page
     with sync_playwright() as playwright:
         browser = playwright.firefox.launch(headless=True)
+        
+        # Set up context with authentication cookies for Upwork
         context = browser.new_context(user_agent=USER_AGENT)
+        
+        # Load and add authentication cookies
+        cookies = load_cookies()
+        if cookies:
+            context.add_cookies(cookies)
+        else:
+            logger.warning("No authentication cookies found")
 
         page = context.new_page()
-        page.goto(url)
-        html_content = page.content()
-        logger.debug(f"Retrieved content from {url}")
-
-        browser.close()
+        
+        try:
+            # Navigate to the URL and wait for the page to load
+            response = page.goto(url, wait_until="networkidle")
+            if response.status == 401 or response.status == 403:
+                logger.error(f"Authentication failed for URL: {url}")
+                return ""
+                
+            # Wait for any dynamic content to load
+            page.wait_for_load_state("networkidle")
+            
+            # Get the page content
+            html_content = page.content()
+            logger.debug(f"Retrieved content from {url}")
+            
+            # If this is the first successful request, save the cookies for future use
+            if not cookies:
+                new_cookies = context.cookies()
+                save_cookies(new_cookies)
+            
+        except Exception as e:
+            logger.error(f"Error scraping URL {url}: {str(e)}")
+            return ""
+        finally:
+            browser.close()
 
     # Convert HTML to markdown
     h = html2text.HTML2Text()
@@ -512,6 +565,13 @@ def scrape_job_questions(apply_url: str) -> dict:
             context = browser.new_context(
                 user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
             )
+
+            # Load and add authentication cookies
+            cookies = load_cookies()
+            if cookies:
+                context.add_cookies(cookies)
+            else:
+                logger.warning("No authentication cookies found")
 
             page = context.new_page()
             page.goto(apply_url, wait_until="networkidle")

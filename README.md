@@ -23,6 +23,24 @@ An automated system for continuously monitoring Upwork job listings, generating 
 - Python 3.11+ (if running locally)
 - A freelancer profile markdown file
 - Webhook endpoint for receiving notifications (optional)
+- Upwork account credentials
+
+### Authentication
+
+The system requires authentication to access Upwork job listings and apply pages. Authentication is handled through browser cookies that are saved from your logged-in Upwork session.
+
+1. Run the cookie saver script:
+```bash
+./scripts/save_upwork_cookies.py
+```
+
+2. A browser window will open. Log in to your Upwork account if not already logged in.
+
+3. Once logged in, press Enter in the terminal. The script will save your authentication cookies to `files/auth/cookies.json`.
+
+4. The system will automatically use these cookies for all Upwork requests. If you get authentication errors, simply run the script again to update the cookies with a fresh session.
+
+Note: Keep your cookies file secure as it contains sensitive authentication information.
 
 ### Configuration
 

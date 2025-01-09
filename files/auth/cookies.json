@@ -1,0 +1,842 @@
+[
+  {
+    "name": "master_refresh_token",
+    "value": "1d8eba6d.oauth2v2_a9f4f1d8887ae1ea5ad019419ab11227.0",
+    "domain": ".upwork.com",
+    "path": "/ab/account-security",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "f7034cedsb",
+    "value": "oauth2v2_49bf51c94cfa4a83ecfc45c9543def69",
+    "domain": ".upwork.com",
+    "path": "/nx/find-work/",
+    "expires": 1736480460.367977,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "visitor_id",
+    "value": "123.243.227.101.1736394038700000",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1767930060.382791,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "XSRF-TOKEN",
+    "value": "b4a8b5d53df5e1b04c38481360bfcb05",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "cookie_prefix",
+    "value": "",
+    "domain": "www.upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "cookie_domain",
+    "value": ".upwork.com",
+    "domain": "www.upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__cf_bm",
+    "value": "r1r63HLkYu80pDbIp_FfsTee.8yKvlmLU73OHtLo06o-1736394039-1.0.1.1-2fvkzoEmgZDdLwuCqfFpyNhSu5vByy4YRLy_YozemkLurgudZXEbFHA2rWPxypi5gDyVDm4wuBkWJ2Sw1mvaRA",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1736395838.93836,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "__cflb",
+    "value": "02DiuEXPXZVk436fJfSVuuwDqLqkhavJbCENmjL72avNw",
+    "domain": "www.upwork.com",
+    "path": "/",
+    "expires": 1736998838.939134,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_cfuvid",
+    "value": "ZBzKcBS9w0zU52xlDm2LHSwrjKRMGnNl.nxdDy_I5dY-1736394039016-0.0.1.1-604800000",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "umq",
+    "value": "1280",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1751946039.191653,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "asct_vt",
+    "value": "oauth2v2_3f54192013c14cdcecbd3db3ab390398",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1736480439.49686,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "cf_clearance",
+    "value": "nHSZ74GgWTwnWw.vkj.l6Ue5LzzZyy.KtLRjMSsMHfc-1736394039-1.2.1.1-qxRoOqx3O_WDeGPCAVocqtjuTyeVP5qRz4rVl4TlPjVjFoEqGviASRbmOPn4PT5HTaF4aWPWpEGQ4W6zWz.jw5lBv4ZOCXMKFvL3TZiHWpy379.pkLpuqYW0stHN9wGjqxvdw81zTpowh0mic1270SZl5KBrqXHgzHAxoERob4Yg6VbfYetWYgMca.kWXgJqgCOPXeDEduHME56U0bVyl6.Uza431YYm_0Sf.LeGKAkTGd4zqHSWgINGFqhLCgFQrZjuWNbNyywHo.j4prm3Aj4K_VkjZfMZ9psxr6Dwkxwk9whYmYyKS.wD_TrQIKXdDKbDiRxQq9dcUvNhHRDcVKMoClOYH4BLqlazIf_Kuju8RI1pOCW8bsALleluVDM9DaZ22B7MprLamuwtxwWDNA",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1767930039.51065,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_upw_ses.5831",
+    "value": "*",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1736395877,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "spt",
+    "value": "6becf24a-2533-4534-a2ea-7615c58968cb",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1767930078.215184,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_gcl_au",
+    "value": "1.1.724984530.1736394040",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1744170040,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "pt",
+    "value": "v2:f24c8e5fbcce0d86177ba4fbff9da32b7d9fd3cbad8d8255fc438b9b098ada46|1dfc80fc6a9b83219f14afc29dd0fe806f9393e101c99df4dd19f6a8b8d0efe9",
+    "domain": ".ispot.tv",
+    "path": "/",
+    "expires": 1770954062.64672,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "__cf_bm",
+    "value": "OEVl3WJaaWXInIsT2zJaaCXCIruk3YYCanKc6KD.wyU-1736394040-1.0.1.1-cU4lBweFgHT.zBRn0_g.AvhtmxHC.YzbSC5Qo_mY2qnWaKZnpKkz9mzHMBRO0KprQR_opF5BaTOnxF1_mWLB2A",
+    "domain": ".static-upwork.com",
+    "path": "/",
+    "expires": 1736395840.123756,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_cfuvid",
+    "value": "h8XICBW06hT.j7acdtAGXz6XSuWijGeq3JBE5NWjyOw-1736394040202-0.0.1.1-604800000",
+    "domain": ".static-upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "G_ENABLED_IDPS",
+    "value": "google",
+    "domain": ".www.upwork.com",
+    "path": "/",
+    "expires": 1770954040.232364,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "io_token_7c6a6574-f011-4c9a-abdd-9894a102ccef",
+    "value": "7X2r+FlwRc6CQzRiq7fak1TrwtAT6vtfw7URkVeGG3o=",
+    "domain": "mpsnare.iesnare.com",
+    "path": "/",
+    "expires": 1767930040.239269,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_ttp",
+    "value": "2rNKLzGPKpMDGMkhKUmA5AhuJqQ",
+    "domain": ".tiktok.com",
+    "path": "/",
+    "expires": 1770090062.888915,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_cq_duid",
+    "value": "1.1736394040.VSqOPoBaFZ6K6Wv4",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1744278062,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_cq_suid",
+    "value": "1.1736394040.kY3TAqpaAhnQvu1A",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_tt_enable_cookie",
+    "value": "1",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1770090062,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_ttp",
+    "value": "l8rJyHdOxwfCu6ppzUXMM51R-BP.tt.1",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1770090062,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "fp_token_7c6a6574-f011-4c9a-abdd-9894a102ccef",
+    "value": "QkBoP6gQqzkcIOznRjtLRA6p/2nAnkXkGluxgphMr6Y=",
+    "domain": "first.iovation.com",
+    "path": "/",
+    "expires": 1767930041.201681,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "cg_uuid",
+    "value": "0a96244a8ec5e1a9923421f435eee884",
+    "domain": "obs.cityrobotflower.com",
+    "path": "/",
+    "expires": 1765424441.655136,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "__pdst",
+    "value": "b8d691125bcd40b7ad641d0d27699c0e",
+    "domain": "www.upwork.com",
+    "path": "/",
+    "expires": 1767930042,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Strict"
+  },
+  {
+    "name": "barometric[cuid]",
+    "value": "cuid_677f453a-9fee-454b-881c-3ae0b8c50a82",
+    "domain": ".trkn.us",
+    "path": "/",
+    "expires": 1767930063.270546,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "IR_gbd",
+    "value": "upwork.com",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "brwsr",
+    "value": "8055e5bb-ce3b-11ef-8cdb-eda2192cd547",
+    "domain": ".pxf.io",
+    "path": "/",
+    "expires": 1770954042.255581,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "irld",
+    "value": "L3a4U-xUklSgHR39U5SW7X24pVegxc1XnQUlDWpV1Bj3rl2NW",
+    "domain": "upwork.pxf.io",
+    "path": "/",
+    "expires": 1751946042.255619,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "irtps",
+    "value": "1",
+    "domain": ".pxf.io",
+    "path": "/",
+    "expires": 1736480442.255649,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "IR_PI",
+    "value": "8055e5bb-ce3b-11ef-8cdb-eda2192cd547%7C1736394042077",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1770954042.259851,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "li_sugr",
+    "value": "114a07d1-16e6-486a-9608-e55aaa3df3f1",
+    "domain": ".linkedin.com",
+    "path": "/",
+    "expires": 1744170063.480145,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "bcookie",
+    "value": "\"v=2&41d5830e-ac29-4af3-8d38-966bb2fd133b\"",
+    "domain": ".linkedin.com",
+    "path": "/",
+    "expires": 1767930063.480184,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "lidc",
+    "value": "\"b=OGST09:s=O:r=O:a=O:p=O:g=3017:u=1:x=1:i=1736394042:t=1736480442:v=2:sig=AQHp-Ik-Ij93zdHGmHcTYH1zbVHs1Rml\"",
+    "domain": ".linkedin.com",
+    "path": "/",
+    "expires": 1736480442.336657,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "brwsr",
+    "value": "806416ce-ce3b-11ef-bfd4-851924a49cdd",
+    "domain": ".ojrq.net",
+    "path": "/",
+    "expires": 1770954042.35477,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "muc_ads",
+    "value": "57aa015b-d9b3-436d-accb-e750d7e384a6",
+    "domain": ".t.co",
+    "path": "/",
+    "expires": 1770954042.456788,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "__cf_bm",
+    "value": "hMlWvYFs8DS_ixMIrP2j40fIjeHnvJaZTPYKsP.hJzg-1736394042-1.0.1.1-Qhh8YcDAQpjYWrBxrAUBYRVpzf60RW4r1XuVZpSK34Qu.XIiOXjyd_O5TgRtNvtM5rdpcmB.zWgcfuCruy9L6w",
+    "domain": ".t.co",
+    "path": "/",
+    "expires": 1736395842.456828,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_ga",
+    "value": "GA1.1.1922817348.1736394042",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1770954063.680499,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ar_debug",
+    "value": "1",
+    "domain": ".doubleclick.net",
+    "path": "/",
+    "expires": 1738986063.396906,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_fbp",
+    "value": "fb.1.1736394042537.29533854860653463",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1744170063,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "UserMatchHistory",
+    "value": "AQJ3IESDBl7L2QAAAZRJJmy-URrw_8AupJGabzxqK2zaKqQnr7PJeEFuKXMbUnowXFsw4_BJFAR_BQ",
+    "domain": ".linkedin.com",
+    "path": "/",
+    "expires": 1738986042.56512,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "AnalyticsSyncHistory",
+    "value": "AQJBstQllJHxIgAAAZRJJmy-PvBAJfAy0bClTK7XRyCE1QdecT5ZWVRdoOwhlyWRpGx_B1ZZdmNtoWX7yzP73Q",
+    "domain": ".linkedin.com",
+    "path": "/",
+    "expires": 1738986042.565161,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "receive-cookie-deprecation",
+    "value": "1",
+    "domain": ".doubleclick.net",
+    "path": "/",
+    "expires": 1751946063.513074,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "MUID",
+    "value": "17EDC452B2CD6FE43B03D13DB3DD6E78",
+    "domain": ".bing.com",
+    "path": "/",
+    "expires": 1770090042.712694,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "MR",
+    "value": "0",
+    "domain": ".bat.bing.com",
+    "path": "/",
+    "expires": 1736998842.712727,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "bscookie",
+    "value": "\"v=1&20250109034042094aee75-9058-4962-80f6-ea1278e64a2aAQF6OZgTZKyMjqSVir83v-0hA3BFVZLW\"",
+    "domain": ".www.linkedin.com",
+    "path": "/",
+    "expires": 1767930042.795169,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "IDE",
+    "value": "AHWqTUnCGEBNBraFTf_TgP3HIUz2U6xqsI-7EDJcqk6R0i7ZjCsIcCPTCwy03CyV",
+    "domain": ".doubleclick.net",
+    "path": "/",
+    "expires": 1770954042.854966,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "guest_id_marketing",
+    "value": "v1%3A173639404288426075",
+    "domain": ".twitter.com",
+    "path": "/",
+    "expires": 1770954043.051311,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "guest_id_ads",
+    "value": "v1%3A173639404288426075",
+    "domain": ".twitter.com",
+    "path": "/",
+    "expires": 1770954043.051351,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "personalization_id",
+    "value": "\"v1_H3MUblKGovoZ7SSkBp7DJw==\"",
+    "domain": ".twitter.com",
+    "path": "/",
+    "expires": 1770954043.051361,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "guest_id",
+    "value": "v1%3A173639404288426075",
+    "domain": ".twitter.com",
+    "path": "/",
+    "expires": 1770954043.05137,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "recognized",
+    "value": "a32821ae",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1746394060.381129,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "console_user",
+    "value": "a32821ae",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "user_uid",
+    "value": "1693431622456389632",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "master_access_token",
+    "value": "1d8eba6d.oauth2v2_9ed48ba5378706544e56cfdcac13713f",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "oauth2_global_js_token",
+    "value": "oauth2v2_eaba1cc36ea4f526a19c976a5c00c531",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "current_organization_uid",
+    "value": "1693431622456389633",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1739072461.367827,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "company_last_accessed",
+    "value": "d1040123726",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1739072460.382454,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "SZ",
+    "value": "0698314e13381d65571c2903ea3f16361d1cb645d406ccd91617cc32365fc2e2",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "enabled_ff",
+    "value": "!i18nGA,!CI10857Air3Dot0,CI11132Air2Dot75,air2Dot76,!RMTAir3Home,OTBnrOn,!CI10270Air2Dot5QTAllocations,SSINavUserBpa,TONB2256Air3Migration,!RMTAir3Offers,JPAir3,!RMTAir3Talent,i18nOn,!CI12577UniversalSearch,!RMTAir3Hired,CI9570Air2Dot5,!RMTAir3Offer,!MP16400Air3Migration,!air2Dot76Qt,!SSINavUser,CI17409DarkModeUI",
+    "domain": "www.upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "country_code",
+    "value": "AU",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "uTheme",
+    "value": "air-3-0",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1739072461.367632,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "uThemeMode",
+    "value": "light",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1739072461.367783,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "18352b23sb",
+    "value": "oauth2v2_456f088656d4ef8effe51cf4322cbbdc",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1736480460.368067,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "MSPTC",
+    "value": "1gCBR4zR2RLYpoljI5aldkb84Rre9qtxCAh2Qm9DKpI",
+    "domain": ".bing.com",
+    "path": "/",
+    "expires": 1770090061.583529,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "OptanonConsent",
+    "value": "isGpcEnabled=0&datestamp=Thu+Jan+09+2025+14%3A41%3A01+GMT%2B1100+(Australian+Eastern+Daylight+Time)&version=202305.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=e0d61d32-b2d4-449c-bcbf-5696076f98bd&interactionCount=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1&AwaitingReconsent=false",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1767930061,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "AWSALBTG",
+    "value": "RdfN684ytqMZSTRvnnwcc1ps6Y/PcAo3k9rDrkneKV0SkpmtmH13U38+CJxiOTvEcamFDXMke+plTd/AH02FCNFPALlsOaxCCdoo8PmhR9tu7IKYOBqw2QuXXgmnGdiYzRXU4PTRcgPv4u+/vl9CglsKveSqmFaaMzdxuRVoXwE0",
+    "domain": "auth.upwork.com",
+    "path": "/",
+    "expires": 1736998862.057188,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "AWSALBTGCORS",
+    "value": "RdfN684ytqMZSTRvnnwcc1ps6Y/PcAo3k9rDrkneKV0SkpmtmH13U38+CJxiOTvEcamFDXMke+plTd/AH02FCNFPALlsOaxCCdoo8PmhR9tu7IKYOBqw2QuXXgmnGdiYzRXU4PTRcgPv4u+/vl9CglsKveSqmFaaMzdxuRVoXwE0",
+    "domain": "auth.upwork.com",
+    "path": "/",
+    "expires": 1736998862.057239,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "__cflb",
+    "value": "02DiuEXPXZVk436fJfSVuuwDqLqkhavJbVDDkKH2QoBeT",
+    "domain": "auth.upwork.com",
+    "path": "/",
+    "expires": 1736998862.057256,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "AWSALBTG",
+    "value": "6RVs0rtXTsosI4BEIHaFO2uFaJUk+xsrdXhrOW6SMCC/Jzp3nF9wZzc2//gGW2a3vdsEJO6cTMQF0XBziT31hQJK5iPLvIcG1RmsYE3PcePFzoJE/QoBUO/BkUC6hWIPWsEJlpWmjzflVi96IMaJYIDxmyDyHuKh7qldF0Q2qGeT",
+    "domain": "www.upwork.com",
+    "path": "/",
+    "expires": 1736998862.539621,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "AWSALBTGCORS",
+    "value": "6RVs0rtXTsosI4BEIHaFO2uFaJUk+xsrdXhrOW6SMCC/Jzp3nF9wZzc2//gGW2a3vdsEJO6cTMQF0XBziT31hQJK5iPLvIcG1RmsYE3PcePFzoJE/QoBUO/BkUC6hWIPWsEJlpWmjzflVi96IMaJYIDxmyDyHuKh7qldF0Q2qGeT",
+    "domain": "www.upwork.com",
+    "path": "/",
+    "expires": 1736998862.539645,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "forterToken",
+    "value": "7de02f89b0004c219c30921ac30937be_1736394061884__UDF43-m4_23ck_zC+KHkme+xc%3D-8594-v2",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1770954062,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "forterToken",
+    "value": "7de02f89b0004c219c30921ac30937be_1736394061884__UDF43-m4_23ck_zC+KHkme+xc%3D-8594-v2",
+    "domain": ".www.upwork.com",
+    "path": "/",
+    "expires": 1770954062,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_rdt_uuid",
+    "value": "1736394042068.96e2f5c4-969f-4ff8-841e-0a7fe3b9557e",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1744170063,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Strict"
+  },
+  {
+    "name": "_uetsid",
+    "value": "80723e90ce3b11efa5be61c10a394ba0",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1736480463,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_uetvid",
+    "value": "80724500ce3b11ef9927ef12bb7ce81f",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1770090063,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "IR_13634",
+    "value": "1736394063267%7C0%7C1736394063267%7C%7C",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_ga_KSM221PNDX",
+    "value": "GS1.1.1736394042.1.1.1736394063.0.0.0",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1770954063.680228,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_upw_id.5831",
+    "value": "d9007924-0a8a-4478-b74a-ff65f56b0192.1736394040.1.1736394078..f63d4348-ec4d-4b7a-beca-c5ad0f1445b3..a73f7d6a-87b6-4ae9-902f-0b23cf7db612.1736394039683.15",
+    "domain": ".upwork.com",
+    "path": "/",
+    "expires": 1770954077.981834,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "AWSALB",
+    "value": "cG7UmWisY0UDOCY5nl+6I17f6PldkK2dVHu5uvWhOOg0tcGFMQHchvdDmHLyc7Q2OW8gXllp2gEGsQduioifaiWZAYxH4Dadz7+Bw5cSR30taLwNb4SIvH401L4F",
+    "domain": "www.upwork.com",
+    "path": "/",
+    "expires": 1736998878.215057,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "AWSALBCORS",
+    "value": "cG7UmWisY0UDOCY5nl+6I17f6PldkK2dVHu5uvWhOOg0tcGFMQHchvdDmHLyc7Q2OW8gXllp2gEGsQduioifaiWZAYxH4Dadz7+Bw5cSR30taLwNb4SIvH401L4F",
+    "domain": "www.upwork.com",
+    "path": "/",
+    "expires": 1736998878.21516,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  }
+]

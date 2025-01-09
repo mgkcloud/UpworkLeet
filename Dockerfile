@@ -26,9 +26,10 @@ RUN playwright install-deps
 COPY . .
 
 # Create directories for data persistence and ensure proper permissions
-RUN mkdir -p /app/files/job_tracking /app/files/cache /app/logs && \
+RUN mkdir -p /app/files/job_tracking /app/files/cache /app/files/auth /app/logs && \
     chmod -R 755 /app/files && \
-    chmod -R 755 /app/logs
+    chmod -R 755 /app/logs && \
+    chmod -R 755 /app/scripts
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
@@ -44,7 +45,7 @@ ENV HIGH_VALUE_THRESHOLD=7.0
 ENV WEBHOOK_URL="https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"
 
 # Create volume mount points
-VOLUME ["/app/files/job_tracking", "/app/files/cache", "/app/logs"]
+VOLUME ["/app/files/job_tracking", "/app/files/cache", "/app/files/auth", "/app/logs"]
 
 # Expose health check port
 EXPOSE 8000

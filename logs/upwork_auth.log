@@ -1,0 +1,983 @@
+2025-01-09 13:29:06,924 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:29:10,580 - INFO - Navigating to Upwork login page...
+2025-01-09 13:29:14,642 - DEBUG - 
+Initial page state:
+2025-01-09 13:29:14,643 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:29:14,714 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:29:14,781 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:29:14,781 - DEBUG - Looking for key elements:
+2025-01-09 13:29:14,850 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:29:14,850 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:29:14,850 - DEBUG - - form elements: 1 found
+2025-01-09 13:29:14,851 - DEBUG - - error messages: 0 found
+2025-01-09 13:29:14,851 - DEBUG - - email input: 0 found
+2025-01-09 13:29:14,851 - DEBUG - - password input: 1 found
+2025-01-09 13:29:14,851 - INFO - Waiting for email input...
+2025-01-09 13:29:15,752 - ERROR - Error in login flow: Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input[type=\"email\"]") to be visible
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 209, in handle_login_flow
+    email_input = page.wait_for_selector('input[type="email"]', timeout=10000)
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 8169, in wait_for_selector
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.wait_for_selector(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            selector=selector, timeout=timeout, state=state, strict=strict
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_page.py", line 424, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 323, in wait_for_selector
+    await self._channel.send("waitForSelector", locals_to_params(locals()))
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input[type=\"email\"]") to be visible
+
+2025-01-09 13:29:15,754 - ERROR - Failed to handle login flow
+2025-01-09 13:30:02,205 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:30:05,708 - INFO - Navigating to Upwork login page...
+2025-01-09 13:30:09,548 - DEBUG - 
+Initial page state:
+2025-01-09 13:30:09,548 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:30:09,587 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:30:09,611 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:30:09,611 - DEBUG - Looking for key elements:
+2025-01-09 13:30:09,690 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:30:09,690 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:30:09,690 - DEBUG - - form elements: 1 found
+2025-01-09 13:30:09,690 - DEBUG - - error messages: 0 found
+2025-01-09 13:30:09,690 - DEBUG - - email input: 0 found
+2025-01-09 13:30:09,690 - DEBUG - - password input: 1 found
+2025-01-09 13:30:09,690 - INFO - Waiting for email input...
+2025-01-09 13:30:19,696 - ERROR - Error in login flow: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("input[type=\"email\"]") to be visible
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 209, in handle_login_flow
+    email_input = page.wait_for_selector('input[type="email"]', timeout=10000)
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 8169, in wait_for_selector
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.wait_for_selector(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            selector=selector, timeout=timeout, state=state, strict=strict
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_page.py", line 424, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 323, in wait_for_selector
+    await self._channel.send("waitForSelector", locals_to_params(locals()))
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("input[type=\"email\"]") to be visible
+
+2025-01-09 13:30:19,700 - ERROR - Failed to handle login flow
+2025-01-09 13:30:25,526 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:30:28,416 - INFO - Navigating to Upwork login page...
+2025-01-09 13:30:32,601 - DEBUG - 
+Initial page state:
+2025-01-09 13:30:32,602 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:30:32,644 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:30:32,692 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:30:32,693 - DEBUG - Looking for key elements:
+2025-01-09 13:30:32,765 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:30:32,765 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:30:32,765 - DEBUG - - form elements: 1 found
+2025-01-09 13:30:32,765 - DEBUG - - error messages: 0 found
+2025-01-09 13:30:32,765 - DEBUG - - email input: 0 found
+2025-01-09 13:30:32,765 - DEBUG - - password input: 1 found
+2025-01-09 13:30:32,765 - INFO - Waiting for email input...
+2025-01-09 13:30:39,179 - ERROR - Error in login flow: Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input[type=\"email\"]") to be visible
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 209, in handle_login_flow
+    email_input = page.wait_for_selector('input[type="email"]', timeout=10000)
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 8169, in wait_for_selector
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.wait_for_selector(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            selector=selector, timeout=timeout, state=state, strict=strict
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_page.py", line 424, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 323, in wait_for_selector
+    await self._channel.send("waitForSelector", locals_to_params(locals()))
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input[type=\"email\"]") to be visible
+
+2025-01-09 13:30:39,182 - ERROR - Failed to handle login flow
+2025-01-09 13:33:02,121 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:33:05,721 - INFO - Navigating to Upwork login page...
+2025-01-09 13:33:10,337 - DEBUG - 
+Initial page state:
+2025-01-09 13:33:10,338 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:33:10,377 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:33:10,431 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:33:10,432 - DEBUG - Looking for key elements:
+2025-01-09 13:33:10,574 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:33:10,574 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:33:10,574 - DEBUG - - form elements: 1 found
+2025-01-09 13:33:10,574 - DEBUG - - error messages: 0 found
+2025-01-09 13:33:10,574 - DEBUG - - username input: 1 found
+2025-01-09 13:33:10,574 - DEBUG - - password input: 1 found
+2025-01-09 13:33:10,575 - DEBUG - - login button: 1 found
+2025-01-09 13:33:10,575 - INFO - Injecting challenge interceptor...
+2025-01-09 13:33:10,605 - INFO - Challenge interceptor injected
+2025-01-09 13:33:10,605 - INFO - Looking for username field...
+2025-01-09 13:33:10,653 - INFO - Entering email...
+2025-01-09 13:33:11,221 - ERROR - Error in login flow: ElementHandle.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+    - fill("will@feistyagency.com")
+  -   - attempting fill action
+  -     - waiting for element to be visible, enabled and editable
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 220, in handle_login_flow
+    username_input.fill(email)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 2396, in fill
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.fill(
+        ^^^^^^^^^^^^^^^^^^^^
+            value=value, timeout=timeout, noWaitAfter=no_wait_after, force=force
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_element_handle.py", line 184, in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: ElementHandle.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element
+Call log:
+    - fill("will@feistyagency.com")
+  -   - attempting fill action
+  -     - waiting for element to be visible, enabled and editable
+
+2025-01-09 13:33:11,269 - ERROR - Failed to handle login flow
+2025-01-09 13:34:12,235 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:34:15,729 - INFO - Navigating to Upwork login page...
+2025-01-09 13:34:20,022 - DEBUG - 
+Initial page state:
+2025-01-09 13:34:20,025 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:34:20,113 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:34:20,132 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:34:20,132 - DEBUG - Looking for key elements:
+2025-01-09 13:34:20,209 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:34:20,209 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:34:20,209 - DEBUG - - form elements: 1 found
+2025-01-09 13:34:20,209 - DEBUG - - error messages: 0 found
+2025-01-09 13:34:20,209 - DEBUG - - username input: 0 found
+2025-01-09 13:34:20,209 - DEBUG - - password input: 1 found
+2025-01-09 13:34:20,209 - DEBUG - - login button: 1 found
+2025-01-09 13:34:20,209 - INFO - Injecting challenge interceptor...
+2025-01-09 13:34:20,211 - INFO - Challenge interceptor injected
+2025-01-09 13:34:20,211 - INFO - Looking for username field...
+2025-01-09 13:34:20,211 - INFO - Entering email...
+2025-01-09 13:34:50,228 - ERROR - Error in login flow: Locator.type: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name=\"username\"]").first
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 221, in handle_login_flow
+    username_input.type(email, delay=100)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 17637, in type
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.type(
+        ^^^^^^^^^^^^^^^^^^^^
+            text=text, delay=delay, timeout=timeout, noWaitAfter=no_wait_after
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_locator.py", line 630, in type
+    return await self._frame.type(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 718, in type
+    await self._channel.send("type", locals_to_params(locals()))
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.type: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name=\"username\"]").first
+
+2025-01-09 13:34:50,233 - ERROR - Failed to handle login flow
+2025-01-09 13:34:50,726 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 13:35:51,495 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:35:55,354 - INFO - Navigating to Upwork login page...
+2025-01-09 13:35:59,391 - DEBUG - 
+Initial page state:
+2025-01-09 13:35:59,391 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:35:59,457 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:35:59,481 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:35:59,481 - DEBUG - Looking for key elements:
+2025-01-09 13:35:59,586 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:35:59,586 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:35:59,586 - DEBUG - - form elements: 1 found
+2025-01-09 13:35:59,586 - DEBUG - - error messages: 0 found
+2025-01-09 13:35:59,586 - DEBUG - - username input: 1 found
+2025-01-09 13:35:59,586 - DEBUG - - password input: 1 found
+2025-01-09 13:35:59,586 - DEBUG - - login button: 1 found
+2025-01-09 13:35:59,595 - DEBUG - Form HTML: <form id="login" name="username" novalidate="novalidate" method="post" class="form auth-growable-flex text-center username px-md-8x auth-growable-flex" data-v-70950f61="" data-v-2a2b867a="" data-v-9654523a="" data-v-41148f78=""><button type="submit" tabindex="-1" aria-hidden="true" class="auth-submit-button" data-v-70950f61=""></button> <div class="loader-container auth-growable-flex" data-v-70950f61="" data-v-2a2b867a=""><div status-message="Verifying..." class="air3-loader-container auth-growable-flex" data-v-2a2b867a="" data-v-70950f61=""> <div class="mb-6x auth-growable-flex" data-v-2a2b867a=""><div data-v-2a2b867a=""><div class="m-xs-top d-none d-md-block" data-v-2a2b867a=""></div> <div class="m-sm-top d-block d-md-none" data-v-2a2b867a=""></div> <div class="mb-6x" data-v-2a2b867a=""><div class="d-none d-block-mobile-app login-mobile-logo mb-6x pb-2x" data-v-3a96315e="" data-v-9654523a=""><span class="visually-hidden" data-v-3a96315e="">Upwork</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 341.24 100" class="login-mobile-logo-2-75" data-v-3a96315e=""><path d="M93.534 68.271a22.091 22.091 0 0 1-17.497-10.336C78.3 39.898 84.887 34.29 93.6 34.29c8.715 0 15.336 6.756 15.336 16.89 0 10.133-6.756 16.889-15.336 16.889m0-45.06a26.246 26.246 0 0 0-26.684 20.537 87.824 87.824 0 0 1-6.52-18.984H38.881v26.685c0 9.694-4.392 16.89-13.005 16.89s-13.511-7.162-13.511-16.89V24.562H.002v26.685a29.083 29.083 0 0 0 7.127 20.2 24.557 24.557 0 0 0 18.713 7.937c14.896 0 25.334-11.45 25.334-27.833V33.513a87.384 87.384 0 0 0 12.363 27.192l-6.62 37.764h12.565l4.357-26.752a37.156 37.156 0 0 0 4.594 3.378 28.104 28.104 0 0 0 13.984 4.323h1.149a27.36 27.36 0 0 0 27.63-28.239 27.428 27.428 0 0 0-27.664-28.07m177.741 7.33v-5.674h-12.16V77.56h12.33V56.888c0-12.734 1.148-21.888 18.24-20.706V24.157c-7.972-.608-14.188 1.047-18.41 6.316m-85.425-5.742-8.918 36.954-9.525-36.954h-15.673l-9.526 36.954-8.917-36.954h-12.464l13.68 52.863h14.795l10.268-37.528 10.168 37.528h14.795l14.457-52.863zm40.23 43.574c-8.749 0-15.302-6.924-15.302-16.89 0-9.964 6.756-16.888 15.302-16.888s15.47 6.519 15.47 16.652c0 10.134-6.755 16.89-15.335 16.89m0-45.094a27.36 27.36 0 0 0-27.732 28.204 27.63 27.63 0 1 0 55.228 0 27.394 27.394 0 0 0-27.631-28.07m81.237 28.51h2.837l17.193 25.975h13.883l-19.76-28.813a25.874 25.874 0 0 0 16.01-24.016h-12.26c0 11.383-8.986 15.707-17.903 15.707V3.89h-12.33v73.704h12.296z" data-v-3a96315e=""></path></svg></div></div> <h1 class="text-center h3 mb-md-6x d-none d-md-block" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1> <h1 class="text-center h4 mb-0 d-block d-md-none" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1></div>   <div class="mb-3x pb-3x d-block d-md-none" data-v-9654523a=""></div> <!----> <div data-v-9654523a=""><div class="mb-6x mb-6x" data-v-bdb9c802="" data-v-9654523a=""><!----> <div data-v-bdb9c802=""><div data-v-bdb9c802=""><div class="air3-input-group is-prepended"><div class="air3-input-prepend"><div class="air3-icon sm"><svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" role="img"><path vector-effect="non-scaling-stroke" stroke="var(--icon-color, #001e00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11a4 4 0 100-8 4 4 0 000 8zM5 21v-.31a7 7 0 017-7v0a7 7 0 017 7V21"></path></svg></div></div> <input id="login_username" name="login[username]" placeholder="Username or Email" aria-label="Username or email" inputmode="username email" aria-describedby="username-message" aria-required="true" autocomplete="off" autocapitalize="none" autocorrect="off" type="text" class="air3-input"> <div class="air3-input-append"><!----> <!----> <!----></div> <!----></div></div> </div>     <!---->  <!----></div></div> <div class="d-none" data-v-9654523a=""><input aria-describedby="input-password" type="password" id="login_password" name="password" autocomplete="current-password" data-v-9654523a=""></div> <button id="login_password_continue" button-role="continue" type="button" class="air3-btn mr-0 air3-btn-block mb-0 air3-btn-primary" data-v-9654523a="" target-form="username">Continue</button> <p class="btn-separator my-8x" data-v-9654523a=""><span class="font-weight-body" data-v-9654523a="">or</span></p> <div class="width-auto" data-v-9654523a=""><div class="air3-btn-row"><button id="login_google_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block gsso-button mb-0 air3-btn-primary" target-form="username"><span class="gsso-label">Continue with Google</span></button></div> <!----> <!----> <!----></div> <div class="width-auto mt-6x" data-v-9654523a=""><div class="air3-btn-row"><button id="login_apple_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block apple-sso-button mb-0 air3-btn-primary" target-form="username"><svg width="10px" height="11.4px" version="1.1" viewBox="0 0 3.8469 4.7625" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-64.345 -143.35)"><path d="m65.3 148.04c-0.28391-0.17313-0.67141-0.76332-0.84045-1.2801-0.08795-0.26886-0.11025-0.42084-0.11353-0.77372-5e-3 -0.53416 0.07013-0.78453 0.32071-1.0692 0.32908-0.37386 0.80475-0.48983 1.2754-0.31094 0.28741 0.10923 0.40289 0.10558 0.79215-0.0251 0.25755-0.0864 0.3669-0.10301 0.53413-0.0809 0.27892 0.0369 0.51512 0.14539 0.6838 0.31406l0.138 0.138-0.15036 0.12394c-0.35848 0.29549-0.46412 0.84523-0.24639 1.2822 0.09783 0.19631 0.33073 0.42321 0.48834 0.47574 0.07682 0.0256-0.27148 0.68647-0.49609 0.94128-0.31615 0.35864-0.47304 0.40634-0.86417 0.26274-0.38534-0.14149-0.49243-0.14492-0.83466-0.0268-0.37222 0.12848-0.51369 0.13441-0.68687 0.0288zm0.95956-3.6652c-0.04406-0.11481 0.09887-0.49259 0.25567-0.67578 0.14967-0.17485 0.45436-0.3477 0.61294-0.3477 0.08074 0 0.08756 0.0177 0.06932 0.17944-0.0488 0.43295-0.36807 0.79774-0.77487 0.88535-0.10672 0.0229-0.14178 0.0141-0.16305-0.0413z"></path></g></svg> Continue with Apple</button></div> <!----> <!----></div> <div class="d-none-mobile-app" data-v-9654523a=""><div class="mb-4x pb-12x d-block d-md-none" data-v-9654523a=""></div> <div class="mb-10x pb-10x pt-3x d-none d-md-block" data-v-9654523a=""></div></div>  </div> <div class="d-none d-block-mobile-app px-3x pb-6x text-center text-light" data-v-9654523a=""><small data-v-9654523a="">Upwork uses cookies for analytics, personalized content and ads. By using Upwork's services, you agree to this use of cookies.</small></div> <footer class="d-none-mobile-app" data-v-2a2b867a=""><div data-v-9654523a=""><div class="line-heading pb-3x my-3x text-separator font-weight-body" data-v-9654523a="">
+      Don't have an Upwork account?
+    </div> <a href="/signup/create-account" id="sign-up-link" class="up-n-link air3-btn air3-btn-secondary width-sm btn-block-sm mt-3x mb-6x px-8x" data-v-9654523a="">
+  Sign Up
+</a></div></footer> <div role="status" aria-busy="false" aria-label="Section is loading" class="air3-loader-overlay"><p class="loader-text" data-v-2a2b867a="">
+        Verifying...
+      </p> <div class="air3-icon lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="25 25 50 50" class="spinner"><circle cx="50" cy="50" r="20" stroke-width="4" stroke-miterlimit="10"></circle></svg></div></div></div></div></form>
+2025-01-09 13:35:59,596 - INFO - Injecting challenge interceptor...
+2025-01-09 13:35:59,600 - INFO - Challenge interceptor injected
+2025-01-09 13:35:59,600 - INFO - Looking for username field...
+2025-01-09 13:35:59,621 - INFO - Entering email...
+2025-01-09 13:36:03,911 - INFO - Looking for continue button...
+2025-01-09 13:36:03,911 - INFO - Clicking continue button...
+2025-01-09 13:36:33,928 - ERROR - Error in login flow: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("button[type=\"submit\"]").first
+  -     - locator resolved to <button type="submit" tabindex="-1" aria-hidden="true" data-v-70950f61="" class="auth-submit-button"></button>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is not visible
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is not visible
+  -     - retrying click action
+  -       - waiting 100ms
+  -     56 × waiting for element to be visible, enabled and stable
+  -        - element is not visible
+  -      - retrying click action
+  -        - waiting 500ms
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 238, in handle_login_flow
+    continue_button.click()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 15450, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        )
+        ^
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_locator.py", line 156, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 488, in click
+    await self._channel.send("click", locals_to_params(locals()))
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("button[type=\"submit\"]").first
+  -     - locator resolved to <button type="submit" tabindex="-1" aria-hidden="true" data-v-70950f61="" class="auth-submit-button"></button>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is not visible
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is not visible
+  -     - retrying click action
+  -       - waiting 100ms
+  -     56 × waiting for element to be visible, enabled and stable
+  -        - element is not visible
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-01-09 13:36:33,936 - ERROR - Failed to handle login flow
+2025-01-09 13:36:34,560 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 13:38:40,669 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:38:44,142 - INFO - Navigating to Upwork login page...
+2025-01-09 13:38:48,372 - DEBUG - 
+Initial page state:
+2025-01-09 13:38:48,372 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:38:48,485 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:38:48,502 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:38:48,502 - DEBUG - Looking for key elements:
+2025-01-09 13:38:48,644 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:38:48,644 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:38:48,644 - DEBUG - - form elements: 1 found
+2025-01-09 13:38:48,644 - DEBUG - - error messages: 0 found
+2025-01-09 13:38:48,644 - DEBUG - - username input: 1 found
+2025-01-09 13:38:48,644 - DEBUG - - password input: 1 found
+2025-01-09 13:38:48,644 - DEBUG - - continue button: 1 found
+2025-01-09 13:38:48,644 - DEBUG - - login button: 0 found
+2025-01-09 13:38:48,649 - DEBUG - Form HTML: <form id="login" name="username" novalidate="novalidate" method="post" class="form auth-growable-flex text-center username px-md-8x auth-growable-flex" data-v-70950f61="" data-v-2a2b867a="" data-v-9654523a="" data-v-41148f78=""><button type="submit" tabindex="-1" aria-hidden="true" class="auth-submit-button" data-v-70950f61=""></button> <div class="loader-container auth-growable-flex" data-v-70950f61="" data-v-2a2b867a=""><div status-message="Verifying..." class="air3-loader-container auth-growable-flex" data-v-2a2b867a="" data-v-70950f61=""> <div class="mb-6x auth-growable-flex" data-v-2a2b867a=""><div data-v-2a2b867a=""><div class="m-xs-top d-none d-md-block" data-v-2a2b867a=""></div> <div class="m-sm-top d-block d-md-none" data-v-2a2b867a=""></div> <div class="mb-6x" data-v-2a2b867a=""><div class="d-none d-block-mobile-app login-mobile-logo mb-6x pb-2x" data-v-3a96315e="" data-v-9654523a=""><span class="visually-hidden" data-v-3a96315e="">Upwork</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 341.24 100" class="login-mobile-logo-2-75" data-v-3a96315e=""><path d="M93.534 68.271a22.091 22.091 0 0 1-17.497-10.336C78.3 39.898 84.887 34.29 93.6 34.29c8.715 0 15.336 6.756 15.336 16.89 0 10.133-6.756 16.889-15.336 16.889m0-45.06a26.246 26.246 0 0 0-26.684 20.537 87.824 87.824 0 0 1-6.52-18.984H38.881v26.685c0 9.694-4.392 16.89-13.005 16.89s-13.511-7.162-13.511-16.89V24.562H.002v26.685a29.083 29.083 0 0 0 7.127 20.2 24.557 24.557 0 0 0 18.713 7.937c14.896 0 25.334-11.45 25.334-27.833V33.513a87.384 87.384 0 0 0 12.363 27.192l-6.62 37.764h12.565l4.357-26.752a37.156 37.156 0 0 0 4.594 3.378 28.104 28.104 0 0 0 13.984 4.323h1.149a27.36 27.36 0 0 0 27.63-28.239 27.428 27.428 0 0 0-27.664-28.07m177.741 7.33v-5.674h-12.16V77.56h12.33V56.888c0-12.734 1.148-21.888 18.24-20.706V24.157c-7.972-.608-14.188 1.047-18.41 6.316m-85.425-5.742-8.918 36.954-9.525-36.954h-15.673l-9.526 36.954-8.917-36.954h-12.464l13.68 52.863h14.795l10.268-37.528 10.168 37.528h14.795l14.457-52.863zm40.23 43.574c-8.749 0-15.302-6.924-15.302-16.89 0-9.964 6.756-16.888 15.302-16.888s15.47 6.519 15.47 16.652c0 10.134-6.755 16.89-15.335 16.89m0-45.094a27.36 27.36 0 0 0-27.732 28.204 27.63 27.63 0 1 0 55.228 0 27.394 27.394 0 0 0-27.631-28.07m81.237 28.51h2.837l17.193 25.975h13.883l-19.76-28.813a25.874 25.874 0 0 0 16.01-24.016h-12.26c0 11.383-8.986 15.707-17.903 15.707V3.89h-12.33v73.704h12.296z" data-v-3a96315e=""></path></svg></div></div> <h1 class="text-center h3 mb-md-6x d-none d-md-block" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1> <h1 class="text-center h4 mb-0 d-block d-md-none" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1></div>   <div class="mb-3x pb-3x d-block d-md-none" data-v-9654523a=""></div> <!----> <div data-v-9654523a=""><div class="mb-6x mb-6x" data-v-bdb9c802="" data-v-9654523a=""><!----> <div data-v-bdb9c802=""><div data-v-bdb9c802=""><div class="air3-input-group is-prepended"><div class="air3-input-prepend"><div class="air3-icon sm"><svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" role="img"><path vector-effect="non-scaling-stroke" stroke="var(--icon-color, #001e00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11a4 4 0 100-8 4 4 0 000 8zM5 21v-.31a7 7 0 017-7v0a7 7 0 017 7V21"></path></svg></div></div> <input id="login_username" name="login[username]" placeholder="Username or Email" aria-label="Username or email" inputmode="username email" aria-describedby="username-message" aria-required="true" autocomplete="off" autocapitalize="none" autocorrect="off" type="text" class="air3-input"> <div class="air3-input-append"><!----> <!----> <!----></div> <!----></div></div> </div>     <!---->  <!----></div></div> <div class="d-none" data-v-9654523a=""><input aria-describedby="input-password" type="password" id="login_password" name="password" autocomplete="current-password" data-v-9654523a=""></div> <button id="login_password_continue" button-role="continue" type="button" class="air3-btn mr-0 air3-btn-block mb-0 air3-btn-primary" data-v-9654523a="" target-form="username">Continue</button> <p class="btn-separator my-8x" data-v-9654523a=""><span class="font-weight-body" data-v-9654523a="">or</span></p> <div class="width-auto" data-v-9654523a=""><div class="air3-btn-row"><button id="login_google_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block gsso-button mb-0 air3-btn-primary" target-form="username"><span class="gsso-label">Continue with Google</span></button></div> <!----> <!----> <!----></div> <div class="width-auto mt-6x" data-v-9654523a=""><div class="air3-btn-row"><button id="login_apple_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block apple-sso-button mb-0 air3-btn-primary" target-form="username"><svg width="10px" height="11.4px" version="1.1" viewBox="0 0 3.8469 4.7625" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-64.345 -143.35)"><path d="m65.3 148.04c-0.28391-0.17313-0.67141-0.76332-0.84045-1.2801-0.08795-0.26886-0.11025-0.42084-0.11353-0.77372-5e-3 -0.53416 0.07013-0.78453 0.32071-1.0692 0.32908-0.37386 0.80475-0.48983 1.2754-0.31094 0.28741 0.10923 0.40289 0.10558 0.79215-0.0251 0.25755-0.0864 0.3669-0.10301 0.53413-0.0809 0.27892 0.0369 0.51512 0.14539 0.6838 0.31406l0.138 0.138-0.15036 0.12394c-0.35848 0.29549-0.46412 0.84523-0.24639 1.2822 0.09783 0.19631 0.33073 0.42321 0.48834 0.47574 0.07682 0.0256-0.27148 0.68647-0.49609 0.94128-0.31615 0.35864-0.47304 0.40634-0.86417 0.26274-0.38534-0.14149-0.49243-0.14492-0.83466-0.0268-0.37222 0.12848-0.51369 0.13441-0.68687 0.0288zm0.95956-3.6652c-0.04406-0.11481 0.09887-0.49259 0.25567-0.67578 0.14967-0.17485 0.45436-0.3477 0.61294-0.3477 0.08074 0 0.08756 0.0177 0.06932 0.17944-0.0488 0.43295-0.36807 0.79774-0.77487 0.88535-0.10672 0.0229-0.14178 0.0141-0.16305-0.0413z"></path></g></svg> Continue with Apple</button></div> <!----> <!----></div> <div class="d-none-mobile-app" data-v-9654523a=""><div class="mb-4x pb-12x d-block d-md-none" data-v-9654523a=""></div> <div class="mb-10x pb-10x pt-3x d-none d-md-block" data-v-9654523a=""></div></div>  </div> <div class="d-none d-block-mobile-app px-3x pb-6x text-center text-light" data-v-9654523a=""><small data-v-9654523a="">Upwork uses cookies for analytics, personalized content and ads. By using Upwork's services, you agree to this use of cookies.</small></div> <footer class="d-none-mobile-app" data-v-2a2b867a=""><div data-v-9654523a=""><div class="line-heading pb-3x my-3x text-separator font-weight-body" data-v-9654523a="">
+      Don't have an Upwork account?
+    </div> <a href="/signup/create-account" id="sign-up-link" class="up-n-link air3-btn air3-btn-secondary width-sm btn-block-sm mt-3x mb-6x px-8x" data-v-9654523a="">
+  Sign Up
+</a></div></footer> <div role="status" aria-busy="false" aria-label="Section is loading" class="air3-loader-overlay"><p class="loader-text" data-v-2a2b867a="">
+        Verifying...
+      </p> <div class="air3-icon lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="25 25 50 50" class="spinner"><circle cx="50" cy="50" r="20" stroke-width="4" stroke-miterlimit="10"></circle></svg></div></div></div></div></form>
+2025-01-09 13:38:48,650 - INFO - Injecting challenge interceptor...
+2025-01-09 13:38:48,669 - INFO - Challenge interceptor injected
+2025-01-09 13:38:48,669 - INFO - Looking for username field...
+2025-01-09 13:38:48,827 - INFO - Entering email...
+2025-01-09 13:38:53,576 - INFO - Looking for continue button...
+2025-01-09 13:38:53,622 - INFO - Clicking continue button...
+2025-01-09 13:38:53,665 - INFO - Waiting for potential challenge after email entry...
+2025-01-09 13:38:53,668 - INFO - Looking for password field...
+2025-01-09 13:39:03,671 - ERROR - Error in login flow: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#login_password") to be visible
+  -     24 × locator resolved to hidden <input type="password" name="password" data-v-9654523a="" id="login_password" autocomplete="current-password" aria-describedby="input-password"/>
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 253, in handle_login_flow
+    password_input = page.wait_for_selector('#login_password', timeout=10000)
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 8169, in wait_for_selector
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.wait_for_selector(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            selector=selector, timeout=timeout, state=state, strict=strict
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_page.py", line 424, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 323, in wait_for_selector
+    await self._channel.send("waitForSelector", locals_to_params(locals()))
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#login_password") to be visible
+  -     24 × locator resolved to hidden <input type="password" name="password" data-v-9654523a="" id="login_password" autocomplete="current-password" aria-describedby="input-password"/>
+
+2025-01-09 13:39:03,674 - ERROR - Failed to handle login flow
+2025-01-09 13:39:04,212 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 13:40:39,741 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:40:43,748 - INFO - Navigating to Upwork login page...
+2025-01-09 13:40:48,167 - DEBUG - 
+Initial page state:
+2025-01-09 13:40:48,167 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:40:48,209 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:40:48,300 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:40:48,300 - DEBUG - Looking for key elements:
+2025-01-09 13:40:48,661 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:40:48,661 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:40:48,661 - DEBUG - - form elements: 1 found
+2025-01-09 13:40:48,661 - DEBUG - - error messages: 0 found
+2025-01-09 13:40:48,661 - DEBUG - - username input: 1 found
+2025-01-09 13:40:48,661 - DEBUG - - password input: 1 found
+2025-01-09 13:40:48,661 - DEBUG - - continue button: 1 found
+2025-01-09 13:40:48,661 - DEBUG - - login button: 0 found
+2025-01-09 13:40:49,383 - DEBUG - Form HTML: <form id="login" name="username" novalidate="novalidate" method="post" class="form auth-growable-flex text-center username px-md-8x auth-growable-flex" data-v-70950f61="" data-v-2a2b867a="" data-v-9654523a="" data-v-41148f78=""><button type="submit" tabindex="-1" aria-hidden="true" class="auth-submit-button" data-v-70950f61=""></button> <div class="loader-container auth-growable-flex" data-v-70950f61="" data-v-2a2b867a=""><div status-message="Verifying..." class="air3-loader-container auth-growable-flex" data-v-2a2b867a="" data-v-70950f61=""> <div class="mb-6x auth-growable-flex" data-v-2a2b867a=""><div data-v-2a2b867a=""><div class="m-xs-top d-none d-md-block" data-v-2a2b867a=""></div> <div class="m-sm-top d-block d-md-none" data-v-2a2b867a=""></div> <div class="mb-6x" data-v-2a2b867a=""><div class="d-none d-block-mobile-app login-mobile-logo mb-6x pb-2x" data-v-3a96315e="" data-v-9654523a=""><span class="visually-hidden" data-v-3a96315e="">Upwork</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 341.24 100" class="login-mobile-logo-2-75" data-v-3a96315e=""><path d="M93.534 68.271a22.091 22.091 0 0 1-17.497-10.336C78.3 39.898 84.887 34.29 93.6 34.29c8.715 0 15.336 6.756 15.336 16.89 0 10.133-6.756 16.889-15.336 16.889m0-45.06a26.246 26.246 0 0 0-26.684 20.537 87.824 87.824 0 0 1-6.52-18.984H38.881v26.685c0 9.694-4.392 16.89-13.005 16.89s-13.511-7.162-13.511-16.89V24.562H.002v26.685a29.083 29.083 0 0 0 7.127 20.2 24.557 24.557 0 0 0 18.713 7.937c14.896 0 25.334-11.45 25.334-27.833V33.513a87.384 87.384 0 0 0 12.363 27.192l-6.62 37.764h12.565l4.357-26.752a37.156 37.156 0 0 0 4.594 3.378 28.104 28.104 0 0 0 13.984 4.323h1.149a27.36 27.36 0 0 0 27.63-28.239 27.428 27.428 0 0 0-27.664-28.07m177.741 7.33v-5.674h-12.16V77.56h12.33V56.888c0-12.734 1.148-21.888 18.24-20.706V24.157c-7.972-.608-14.188 1.047-18.41 6.316m-85.425-5.742-8.918 36.954-9.525-36.954h-15.673l-9.526 36.954-8.917-36.954h-12.464l13.68 52.863h14.795l10.268-37.528 10.168 37.528h14.795l14.457-52.863zm40.23 43.574c-8.749 0-15.302-6.924-15.302-16.89 0-9.964 6.756-16.888 15.302-16.888s15.47 6.519 15.47 16.652c0 10.134-6.755 16.89-15.335 16.89m0-45.094a27.36 27.36 0 0 0-27.732 28.204 27.63 27.63 0 1 0 55.228 0 27.394 27.394 0 0 0-27.631-28.07m81.237 28.51h2.837l17.193 25.975h13.883l-19.76-28.813a25.874 25.874 0 0 0 16.01-24.016h-12.26c0 11.383-8.986 15.707-17.903 15.707V3.89h-12.33v73.704h12.296z" data-v-3a96315e=""></path></svg></div></div> <h1 class="text-center h3 mb-md-6x d-none d-md-block" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1> <h1 class="text-center h4 mb-0 d-block d-md-none" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1></div>   <div class="mb-3x pb-3x d-block d-md-none" data-v-9654523a=""></div> <!----> <div data-v-9654523a=""><div class="mb-6x mb-6x" data-v-bdb9c802="" data-v-9654523a=""><!----> <div data-v-bdb9c802=""><div data-v-bdb9c802=""><div class="air3-input-group is-prepended"><div class="air3-input-prepend"><div class="air3-icon sm"><svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" role="img"><path vector-effect="non-scaling-stroke" stroke="var(--icon-color, #001e00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11a4 4 0 100-8 4 4 0 000 8zM5 21v-.31a7 7 0 017-7v0a7 7 0 017 7V21"></path></svg></div></div> <input id="login_username" name="login[username]" placeholder="Username or Email" aria-label="Username or email" inputmode="username email" aria-describedby="username-message" aria-required="true" autocomplete="off" autocapitalize="none" autocorrect="off" type="text" class="air3-input"> <div class="air3-input-append"><!----> <!----> <!----></div> <!----></div></div> </div>     <!---->  <!----></div></div> <div class="d-none" data-v-9654523a=""><input aria-describedby="input-password" type="password" id="login_password" name="password" autocomplete="current-password" data-v-9654523a=""></div> <button id="login_password_continue" button-role="continue" type="button" class="air3-btn mr-0 air3-btn-block mb-0 air3-btn-primary" data-v-9654523a="" target-form="username">Continue</button> <p class="btn-separator my-8x" data-v-9654523a=""><span class="font-weight-body" data-v-9654523a="">or</span></p> <div class="width-auto" data-v-9654523a=""><div class="air3-btn-row"><button id="login_google_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block gsso-button mb-0 air3-btn-primary" target-form="username"><span class="gsso-label">Continue with Google</span></button></div> <!----> <!----> <!----></div> <div class="width-auto mt-6x" data-v-9654523a=""><div class="air3-btn-row"><button id="login_apple_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block apple-sso-button mb-0 air3-btn-primary" target-form="username"><svg width="10px" height="11.4px" version="1.1" viewBox="0 0 3.8469 4.7625" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-64.345 -143.35)"><path d="m65.3 148.04c-0.28391-0.17313-0.67141-0.76332-0.84045-1.2801-0.08795-0.26886-0.11025-0.42084-0.11353-0.77372-5e-3 -0.53416 0.07013-0.78453 0.32071-1.0692 0.32908-0.37386 0.80475-0.48983 1.2754-0.31094 0.28741 0.10923 0.40289 0.10558 0.79215-0.0251 0.25755-0.0864 0.3669-0.10301 0.53413-0.0809 0.27892 0.0369 0.51512 0.14539 0.6838 0.31406l0.138 0.138-0.15036 0.12394c-0.35848 0.29549-0.46412 0.84523-0.24639 1.2822 0.09783 0.19631 0.33073 0.42321 0.48834 0.47574 0.07682 0.0256-0.27148 0.68647-0.49609 0.94128-0.31615 0.35864-0.47304 0.40634-0.86417 0.26274-0.38534-0.14149-0.49243-0.14492-0.83466-0.0268-0.37222 0.12848-0.51369 0.13441-0.68687 0.0288zm0.95956-3.6652c-0.04406-0.11481 0.09887-0.49259 0.25567-0.67578 0.14967-0.17485 0.45436-0.3477 0.61294-0.3477 0.08074 0 0.08756 0.0177 0.06932 0.17944-0.0488 0.43295-0.36807 0.79774-0.77487 0.88535-0.10672 0.0229-0.14178 0.0141-0.16305-0.0413z"></path></g></svg> Continue with Apple</button></div> <!----> <!----></div> <div class="d-none-mobile-app" data-v-9654523a=""><div class="mb-4x pb-12x d-block d-md-none" data-v-9654523a=""></div> <div class="mb-10x pb-10x pt-3x d-none d-md-block" data-v-9654523a=""></div></div>  </div> <div class="d-none d-block-mobile-app px-3x pb-6x text-center text-light" data-v-9654523a=""><small data-v-9654523a="">Upwork uses cookies for analytics, personalized content and ads. By using Upwork's services, you agree to this use of cookies.</small></div> <footer class="d-none-mobile-app" data-v-2a2b867a=""><div data-v-9654523a=""><div class="line-heading pb-3x my-3x text-separator font-weight-body" data-v-9654523a="">
+      Don't have an Upwork account?
+    </div> <a href="/signup/create-account" id="sign-up-link" class="up-n-link air3-btn air3-btn-secondary width-sm btn-block-sm mt-3x mb-6x px-8x" data-v-9654523a="">
+  Sign Up
+</a></div></footer> <div role="status" aria-busy="false" aria-label="Section is loading" class="air3-loader-overlay"><p class="loader-text" data-v-2a2b867a="">
+        Verifying...
+      </p> <div class="air3-icon lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="25 25 50 50" class="spinner"><circle cx="50" cy="50" r="20" stroke-width="4" stroke-miterlimit="10"></circle></svg></div></div></div></div></form>
+2025-01-09 13:40:49,399 - INFO - Injecting challenge interceptor...
+2025-01-09 13:40:49,624 - INFO - Challenge interceptor injected
+2025-01-09 13:40:49,625 - INFO - Looking for username field...
+2025-01-09 13:40:49,724 - INFO - Entering email...
+2025-01-09 13:40:55,143 - INFO - Looking for continue button...
+2025-01-09 13:40:55,290 - INFO - Clicking continue button...
+2025-01-09 13:40:55,345 - INFO - Waiting for page transition...
+2025-01-09 13:40:55,347 - DEBUG - 
+Page state after transition:
+2025-01-09 13:40:55,347 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:40:55,448 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:40:55,503 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="https://snap.licdn.com/li.lms-analytics/insight.old.min.js"></script><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradiu...
+2025-01-09 13:40:55,503 - DEBUG - Looking for key elements:
+2025-01-09 13:40:55,625 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:40:55,625 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:40:55,625 - DEBUG - - form elements: 1 found
+2025-01-09 13:40:55,625 - DEBUG - - error messages: 0 found
+2025-01-09 13:40:55,625 - DEBUG - - username input: 1 found
+2025-01-09 13:40:55,625 - DEBUG - - password input: 1 found
+2025-01-09 13:40:55,625 - DEBUG - - continue button: 1 found
+2025-01-09 13:40:55,625 - DEBUG - - login button: 0 found
+2025-01-09 13:40:55,627 - DEBUG - Form HTML: <form id="login" name="username" novalidate="novalidate" method="post" class="form auth-growable-flex text-center username px-md-8x auth-growable-flex" data-v-70950f61="" data-v-2a2b867a="" data-v-9654523a="" data-v-41148f78=""><button type="submit" tabindex="-1" aria-hidden="true" class="auth-submit-button" data-v-70950f61="" disabled="disabled"></button> <div class="loader-container auth-growable-flex" data-v-70950f61="" data-v-2a2b867a=""><div status-message="Verifying..." class="air3-loader-container auth-growable-flex" data-v-2a2b867a="" data-v-70950f61=""> <div class="mb-6x auth-growable-flex" data-v-2a2b867a=""><div data-v-2a2b867a=""><div class="m-xs-top d-none d-md-block" data-v-2a2b867a=""></div> <div class="m-sm-top d-block d-md-none" data-v-2a2b867a=""></div> <div class="mb-6x" data-v-2a2b867a=""><div class="d-none d-block-mobile-app login-mobile-logo mb-6x pb-2x" data-v-3a96315e="" data-v-9654523a=""><span class="visually-hidden" data-v-3a96315e="">Upwork</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 341.24 100" class="login-mobile-logo-2-75" data-v-3a96315e=""><path d="M93.534 68.271a22.091 22.091 0 0 1-17.497-10.336C78.3 39.898 84.887 34.29 93.6 34.29c8.715 0 15.336 6.756 15.336 16.89 0 10.133-6.756 16.889-15.336 16.889m0-45.06a26.246 26.246 0 0 0-26.684 20.537 87.824 87.824 0 0 1-6.52-18.984H38.881v26.685c0 9.694-4.392 16.89-13.005 16.89s-13.511-7.162-13.511-16.89V24.562H.002v26.685a29.083 29.083 0 0 0 7.127 20.2 24.557 24.557 0 0 0 18.713 7.937c14.896 0 25.334-11.45 25.334-27.833V33.513a87.384 87.384 0 0 0 12.363 27.192l-6.62 37.764h12.565l4.357-26.752a37.156 37.156 0 0 0 4.594 3.378 28.104 28.104 0 0 0 13.984 4.323h1.149a27.36 27.36 0 0 0 27.63-28.239 27.428 27.428 0 0 0-27.664-28.07m177.741 7.33v-5.674h-12.16V77.56h12.33V56.888c0-12.734 1.148-21.888 18.24-20.706V24.157c-7.972-.608-14.188 1.047-18.41 6.316m-85.425-5.742-8.918 36.954-9.525-36.954h-15.673l-9.526 36.954-8.917-36.954h-12.464l13.68 52.863h14.795l10.268-37.528 10.168 37.528h14.795l14.457-52.863zm40.23 43.574c-8.749 0-15.302-6.924-15.302-16.89 0-9.964 6.756-16.888 15.302-16.888s15.47 6.519 15.47 16.652c0 10.134-6.755 16.89-15.335 16.89m0-45.094a27.36 27.36 0 0 0-27.732 28.204 27.63 27.63 0 1 0 55.228 0 27.394 27.394 0 0 0-27.631-28.07m81.237 28.51h2.837l17.193 25.975h13.883l-19.76-28.813a25.874 25.874 0 0 0 16.01-24.016h-12.26c0 11.383-8.986 15.707-17.903 15.707V3.89h-12.33v73.704h12.296z" data-v-3a96315e=""></path></svg></div></div> <h1 class="text-center h3 mb-md-6x d-none d-md-block" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1> <h1 class="text-center h4 mb-0 d-block d-md-none" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1></div>   <div class="mb-3x pb-3x d-block d-md-none" data-v-9654523a=""></div> <!----> <div data-v-9654523a=""><div class="mb-6x mb-6x" data-v-bdb9c802="" data-v-9654523a="" value="will@feistyagency.com"><!----> <div data-v-bdb9c802=""><div data-v-bdb9c802=""><div class="air3-input-group is-prepended"><div class="air3-input-prepend"><div class="air3-icon sm"><svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" role="img"><path vector-effect="non-scaling-stroke" stroke="var(--icon-color, #001e00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11a4 4 0 100-8 4 4 0 000 8zM5 21v-.31a7 7 0 017-7v0a7 7 0 017 7V21"></path></svg></div></div> <input id="login_username" name="login[username]" placeholder="Username or Email" aria-label="Username or email" inputmode="username email" aria-describedby="username-message" aria-required="true" autocomplete="off" autocapitalize="none" autocorrect="off" type="text" class="air3-input"> <div class="air3-input-append"><!----> <!----> <!----></div> <!----></div></div> </div>     <!---->  <!----></div></div> <div class="d-none" data-v-9654523a=""><input aria-describedby="input-password" type="password" id="login_password" name="password" autocomplete="current-password" data-v-9654523a=""></div> <button id="login_password_continue" button-role="continue" type="button" class="air3-btn mr-0 air3-btn-block mb-0 air3-btn-primary" data-v-9654523a="" target-form="username" disabled="disabled">Continue</button> <p class="btn-separator my-8x" data-v-9654523a=""><span class="font-weight-body" data-v-9654523a="">or</span></p> <div class="width-auto" data-v-9654523a=""><div class="air3-btn-row"><button id="login_google_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block gsso-button mb-0 air3-btn-primary" target-form="username" disabled="disabled"><span class="gsso-label">Continue with Google</span></button></div> <!----> <!----> <!----></div> <div class="width-auto mt-6x" data-v-9654523a=""><div class="air3-btn-row"><button id="login_apple_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block apple-sso-button mb-0 air3-btn-primary" target-form="username" disabled="disabled"><svg width="10px" height="11.4px" version="1.1" viewBox="0 0 3.8469 4.7625" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-64.345 -143.35)"><path d="m65.3 148.04c-0.28391-0.17313-0.67141-0.76332-0.84045-1.2801-0.08795-0.26886-0.11025-0.42084-0.11353-0.77372-5e-3 -0.53416 0.07013-0.78453 0.32071-1.0692 0.32908-0.37386 0.80475-0.48983 1.2754-0.31094 0.28741 0.10923 0.40289 0.10558 0.79215-0.0251 0.25755-0.0864 0.3669-0.10301 0.53413-0.0809 0.27892 0.0369 0.51512 0.14539 0.6838 0.31406l0.138 0.138-0.15036 0.12394c-0.35848 0.29549-0.46412 0.84523-0.24639 1.2822 0.09783 0.19631 0.33073 0.42321 0.48834 0.47574 0.07682 0.0256-0.27148 0.68647-0.49609 0.94128-0.31615 0.35864-0.47304 0.40634-0.86417 0.26274-0.38534-0.14149-0.49243-0.14492-0.83466-0.0268-0.37222 0.12848-0.51369 0.13441-0.68687 0.0288zm0.95956-3.6652c-0.04406-0.11481 0.09887-0.49259 0.25567-0.67578 0.14967-0.17485 0.45436-0.3477 0.61294-0.3477 0.08074 0 0.08756 0.0177 0.06932 0.17944-0.0488 0.43295-0.36807 0.79774-0.77487 0.88535-0.10672 0.0229-0.14178 0.0141-0.16305-0.0413z"></path></g></svg> Continue with Apple</button></div> <!----> <!----></div> <div class="d-none-mobile-app" data-v-9654523a=""><div class="mb-4x pb-12x d-block d-md-none" data-v-9654523a=""></div> <div class="mb-10x pb-10x pt-3x d-none d-md-block" data-v-9654523a=""></div></div>  </div> <div class="d-none d-block-mobile-app px-3x pb-6x text-center text-light" data-v-9654523a=""><small data-v-9654523a="">Upwork uses cookies for analytics, personalized content and ads. By using Upwork's services, you agree to this use of cookies.</small></div> <footer class="d-none-mobile-app" data-v-2a2b867a=""><div data-v-9654523a=""><div class="line-heading pb-3x my-3x text-separator font-weight-body" data-v-9654523a="">
+      Don't have an Upwork account?
+    </div> <a href="/signup/create-account" id="sign-up-link" class="up-n-link air3-btn air3-btn-secondary width-sm btn-block-sm mt-3x mb-6x px-8x" data-v-9654523a="">
+  Sign Up
+</a></div></footer> <div role="status" aria-busy="false" aria-label="Section is loading" class="air3-loader-overlay"><p class="loader-text" data-v-2a2b867a="">
+        Verifying...
+      </p> <div class="air3-icon lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="25 25 50 50" class="spinner"><circle cx="50" cy="50" r="20" stroke-width="4" stroke-miterlimit="10"></circle></svg></div></div></div></div></form>
+2025-01-09 13:40:55,629 - INFO - Detected password page
+2025-01-09 13:40:55,629 - INFO - Looking for password field...
+2025-01-09 13:41:05,635 - ERROR - Error in login flow: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#login_password") to be visible
+  -     22 × locator resolved to hidden <input type="password" name="password" data-v-9654523a="" id="login_password" autocomplete="current-password" aria-describedby="input-password"/>
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 285, in handle_login_flow
+    password_input = page.wait_for_selector('#login_password', timeout=10000)
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 8169, in wait_for_selector
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.wait_for_selector(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            selector=selector, timeout=timeout, state=state, strict=strict
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_page.py", line 424, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 323, in wait_for_selector
+    await self._channel.send("waitForSelector", locals_to_params(locals()))
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#login_password") to be visible
+  -     22 × locator resolved to hidden <input type="password" name="password" data-v-9654523a="" id="login_password" autocomplete="current-password" aria-describedby="input-password"/>
+
+2025-01-09 13:41:05,638 - ERROR - Failed to handle login flow
+2025-01-09 13:41:06,066 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 13:42:38,354 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:42:42,605 - INFO - Navigating to Upwork login page...
+2025-01-09 13:42:46,498 - DEBUG - 
+Initial page state:
+2025-01-09 13:42:46,499 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:42:46,581 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:42:46,650 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:42:46,651 - DEBUG - Looking for key elements:
+2025-01-09 13:42:46,726 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:42:46,727 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:42:46,727 - DEBUG - - form elements: 1 found
+2025-01-09 13:42:46,727 - DEBUG - - error messages: 0 found
+2025-01-09 13:42:46,727 - DEBUG - - username input: 1 found
+2025-01-09 13:42:46,727 - DEBUG - - password input: 1 found
+2025-01-09 13:42:46,727 - DEBUG - - continue button: 1 found
+2025-01-09 13:42:46,727 - DEBUG - - login button: 0 found
+2025-01-09 13:42:46,734 - DEBUG - Form HTML: <form id="login" name="username" novalidate="novalidate" method="post" class="form auth-growable-flex text-center username px-md-8x auth-growable-flex" data-v-70950f61="" data-v-2a2b867a="" data-v-9654523a="" data-v-41148f78=""><button type="submit" tabindex="-1" aria-hidden="true" class="auth-submit-button" data-v-70950f61=""></button> <div class="loader-container auth-growable-flex" data-v-70950f61="" data-v-2a2b867a=""><div status-message="Verifying..." class="air3-loader-container auth-growable-flex" data-v-2a2b867a="" data-v-70950f61=""> <div class="mb-6x auth-growable-flex" data-v-2a2b867a=""><div data-v-2a2b867a=""><div class="m-xs-top d-none d-md-block" data-v-2a2b867a=""></div> <div class="m-sm-top d-block d-md-none" data-v-2a2b867a=""></div> <div class="mb-6x" data-v-2a2b867a=""><div class="d-none d-block-mobile-app login-mobile-logo mb-6x pb-2x" data-v-3a96315e="" data-v-9654523a=""><span class="visually-hidden" data-v-3a96315e="">Upwork</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 341.24 100" class="login-mobile-logo-2-75" data-v-3a96315e=""><path d="M93.534 68.271a22.091 22.091 0 0 1-17.497-10.336C78.3 39.898 84.887 34.29 93.6 34.29c8.715 0 15.336 6.756 15.336 16.89 0 10.133-6.756 16.889-15.336 16.889m0-45.06a26.246 26.246 0 0 0-26.684 20.537 87.824 87.824 0 0 1-6.52-18.984H38.881v26.685c0 9.694-4.392 16.89-13.005 16.89s-13.511-7.162-13.511-16.89V24.562H.002v26.685a29.083 29.083 0 0 0 7.127 20.2 24.557 24.557 0 0 0 18.713 7.937c14.896 0 25.334-11.45 25.334-27.833V33.513a87.384 87.384 0 0 0 12.363 27.192l-6.62 37.764h12.565l4.357-26.752a37.156 37.156 0 0 0 4.594 3.378 28.104 28.104 0 0 0 13.984 4.323h1.149a27.36 27.36 0 0 0 27.63-28.239 27.428 27.428 0 0 0-27.664-28.07m177.741 7.33v-5.674h-12.16V77.56h12.33V56.888c0-12.734 1.148-21.888 18.24-20.706V24.157c-7.972-.608-14.188 1.047-18.41 6.316m-85.425-5.742-8.918 36.954-9.525-36.954h-15.673l-9.526 36.954-8.917-36.954h-12.464l13.68 52.863h14.795l10.268-37.528 10.168 37.528h14.795l14.457-52.863zm40.23 43.574c-8.749 0-15.302-6.924-15.302-16.89 0-9.964 6.756-16.888 15.302-16.888s15.47 6.519 15.47 16.652c0 10.134-6.755 16.89-15.335 16.89m0-45.094a27.36 27.36 0 0 0-27.732 28.204 27.63 27.63 0 1 0 55.228 0 27.394 27.394 0 0 0-27.631-28.07m81.237 28.51h2.837l17.193 25.975h13.883l-19.76-28.813a25.874 25.874 0 0 0 16.01-24.016h-12.26c0 11.383-8.986 15.707-17.903 15.707V3.89h-12.33v73.704h12.296z" data-v-3a96315e=""></path></svg></div></div> <h1 class="text-center h3 mb-md-6x d-none d-md-block" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1> <h1 class="text-center h4 mb-0 d-block d-md-none" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1></div>   <div class="mb-3x pb-3x d-block d-md-none" data-v-9654523a=""></div> <!----> <div data-v-9654523a=""><div class="mb-6x mb-6x" data-v-bdb9c802="" data-v-9654523a=""><!----> <div data-v-bdb9c802=""><div data-v-bdb9c802=""><div class="air3-input-group is-prepended"><div class="air3-input-prepend"><div class="air3-icon sm"><svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" role="img"><path vector-effect="non-scaling-stroke" stroke="var(--icon-color, #001e00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11a4 4 0 100-8 4 4 0 000 8zM5 21v-.31a7 7 0 017-7v0a7 7 0 017 7V21"></path></svg></div></div> <input id="login_username" name="login[username]" placeholder="Username or Email" aria-label="Username or email" inputmode="username email" aria-describedby="username-message" aria-required="true" autocomplete="off" autocapitalize="none" autocorrect="off" type="text" class="air3-input"> <div class="air3-input-append"><!----> <!----> <!----></div> <!----></div></div> </div>     <!---->  <!----></div></div> <div class="d-none" data-v-9654523a=""><input aria-describedby="input-password" type="password" id="login_password" name="password" autocomplete="current-password" data-v-9654523a=""></div> <button id="login_password_continue" button-role="continue" type="button" class="air3-btn mr-0 air3-btn-block mb-0 air3-btn-primary" data-v-9654523a="" target-form="username">Continue</button> <p class="btn-separator my-8x" data-v-9654523a=""><span class="font-weight-body" data-v-9654523a="">or</span></p> <div class="width-auto" data-v-9654523a=""><div class="air3-btn-row"><button id="login_google_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block gsso-button mb-0 air3-btn-primary" target-form="username"><span class="gsso-label">Continue with Google</span></button></div> <!----> <!----> <!----></div> <div class="width-auto mt-6x" data-v-9654523a=""><div class="air3-btn-row"><button id="login_apple_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block apple-sso-button mb-0 air3-btn-primary" target-form="username"><svg width="10px" height="11.4px" version="1.1" viewBox="0 0 3.8469 4.7625" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-64.345 -143.35)"><path d="m65.3 148.04c-0.28391-0.17313-0.67141-0.76332-0.84045-1.2801-0.08795-0.26886-0.11025-0.42084-0.11353-0.77372-5e-3 -0.53416 0.07013-0.78453 0.32071-1.0692 0.32908-0.37386 0.80475-0.48983 1.2754-0.31094 0.28741 0.10923 0.40289 0.10558 0.79215-0.0251 0.25755-0.0864 0.3669-0.10301 0.53413-0.0809 0.27892 0.0369 0.51512 0.14539 0.6838 0.31406l0.138 0.138-0.15036 0.12394c-0.35848 0.29549-0.46412 0.84523-0.24639 1.2822 0.09783 0.19631 0.33073 0.42321 0.48834 0.47574 0.07682 0.0256-0.27148 0.68647-0.49609 0.94128-0.31615 0.35864-0.47304 0.40634-0.86417 0.26274-0.38534-0.14149-0.49243-0.14492-0.83466-0.0268-0.37222 0.12848-0.51369 0.13441-0.68687 0.0288zm0.95956-3.6652c-0.04406-0.11481 0.09887-0.49259 0.25567-0.67578 0.14967-0.17485 0.45436-0.3477 0.61294-0.3477 0.08074 0 0.08756 0.0177 0.06932 0.17944-0.0488 0.43295-0.36807 0.79774-0.77487 0.88535-0.10672 0.0229-0.14178 0.0141-0.16305-0.0413z"></path></g></svg> Continue with Apple</button></div> <!----> <!----></div> <div class="d-none-mobile-app" data-v-9654523a=""><div class="mb-4x pb-12x d-block d-md-none" data-v-9654523a=""></div> <div class="mb-10x pb-10x pt-3x d-none d-md-block" data-v-9654523a=""></div></div>  </div> <div class="d-none d-block-mobile-app px-3x pb-6x text-center text-light" data-v-9654523a=""><small data-v-9654523a="">Upwork uses cookies for analytics, personalized content and ads. By using Upwork's services, you agree to this use of cookies.</small></div> <footer class="d-none-mobile-app" data-v-2a2b867a=""><div data-v-9654523a=""><div class="line-heading pb-3x my-3x text-separator font-weight-body" data-v-9654523a="">
+      Don't have an Upwork account?
+    </div> <a href="/signup/create-account" id="sign-up-link" class="up-n-link air3-btn air3-btn-secondary width-sm btn-block-sm mt-3x mb-6x px-8x" data-v-9654523a="">
+  Sign Up
+</a></div></footer> <div role="status" aria-busy="false" aria-label="Section is loading" class="air3-loader-overlay"><p class="loader-text" data-v-2a2b867a="">
+        Verifying...
+      </p> <div class="air3-icon lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="25 25 50 50" class="spinner"><circle cx="50" cy="50" r="20" stroke-width="4" stroke-miterlimit="10"></circle></svg></div></div></div></div></form>
+2025-01-09 13:42:46,735 - INFO - Injecting challenge interceptor...
+2025-01-09 13:42:46,741 - INFO - Challenge interceptor injected
+2025-01-09 13:42:46,741 - INFO - Looking for username field...
+2025-01-09 13:42:46,772 - INFO - Entering email...
+2025-01-09 13:42:52,085 - INFO - Looking for continue button...
+2025-01-09 13:42:52,192 - INFO - Clicking continue button...
+2025-01-09 13:43:22,229 - ERROR - Error in login flow: Timeout 30000ms exceeded.
+=========================== logs ===========================
+waiting for navigation until 'load'
+============================================================
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 267, in handle_login_flow
+    with page.expect_navigation(timeout=30000) as navigation_info:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 85, in __exit__
+    self._event.value
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 59, in value
+    raise exception
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 207, in continuation
+    event = await waiter.result()
+            ^^^^^^^^^^^^^^^^^^^^^
+playwright._impl._errors.TimeoutError: Timeout 30000ms exceeded.
+=========================== logs ===========================
+waiting for navigation until 'load'
+============================================================
+2025-01-09 13:43:22,239 - ERROR - Failed to handle login flow
+2025-01-09 13:43:22,728 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 13:45:37,021 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:45:40,800 - INFO - Navigating to Upwork login page...
+2025-01-09 13:45:46,121 - DEBUG - 
+Initial page state:
+2025-01-09 13:45:46,123 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:45:46,213 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:45:46,243 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:45:46,243 - DEBUG - Looking for key elements:
+2025-01-09 13:45:46,328 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:45:46,328 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:45:46,328 - DEBUG - - form elements: 1 found
+2025-01-09 13:45:46,328 - DEBUG - - error messages: 0 found
+2025-01-09 13:45:46,328 - DEBUG - - username input: 1 found
+2025-01-09 13:45:46,328 - DEBUG - - password input: 1 found
+2025-01-09 13:45:46,328 - DEBUG - - continue button: 1 found
+2025-01-09 13:45:46,328 - DEBUG - - login button: 0 found
+2025-01-09 13:45:46,360 - DEBUG - Form HTML: <form id="login" name="username" novalidate="novalidate" method="post" class="form auth-growable-flex text-center username px-md-8x auth-growable-flex" data-v-70950f61="" data-v-2a2b867a="" data-v-9654523a="" data-v-41148f78=""><button type="submit" tabindex="-1" aria-hidden="true" class="auth-submit-button" data-v-70950f61=""></button> <div class="loader-container auth-growable-flex" data-v-70950f61="" data-v-2a2b867a=""><div status-message="Verifying..." class="air3-loader-container auth-growable-flex" data-v-2a2b867a="" data-v-70950f61=""> <div class="mb-6x auth-growable-flex" data-v-2a2b867a=""><div data-v-2a2b867a=""><div class="m-xs-top d-none d-md-block" data-v-2a2b867a=""></div> <div class="m-sm-top d-block d-md-none" data-v-2a2b867a=""></div> <div class="mb-6x" data-v-2a2b867a=""><div class="d-none d-block-mobile-app login-mobile-logo mb-6x pb-2x" data-v-3a96315e="" data-v-9654523a=""><span class="visually-hidden" data-v-3a96315e="">Upwork</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 341.24 100" class="login-mobile-logo-2-75" data-v-3a96315e=""><path d="M93.534 68.271a22.091 22.091 0 0 1-17.497-10.336C78.3 39.898 84.887 34.29 93.6 34.29c8.715 0 15.336 6.756 15.336 16.89 0 10.133-6.756 16.889-15.336 16.889m0-45.06a26.246 26.246 0 0 0-26.684 20.537 87.824 87.824 0 0 1-6.52-18.984H38.881v26.685c0 9.694-4.392 16.89-13.005 16.89s-13.511-7.162-13.511-16.89V24.562H.002v26.685a29.083 29.083 0 0 0 7.127 20.2 24.557 24.557 0 0 0 18.713 7.937c14.896 0 25.334-11.45 25.334-27.833V33.513a87.384 87.384 0 0 0 12.363 27.192l-6.62 37.764h12.565l4.357-26.752a37.156 37.156 0 0 0 4.594 3.378 28.104 28.104 0 0 0 13.984 4.323h1.149a27.36 27.36 0 0 0 27.63-28.239 27.428 27.428 0 0 0-27.664-28.07m177.741 7.33v-5.674h-12.16V77.56h12.33V56.888c0-12.734 1.148-21.888 18.24-20.706V24.157c-7.972-.608-14.188 1.047-18.41 6.316m-85.425-5.742-8.918 36.954-9.525-36.954h-15.673l-9.526 36.954-8.917-36.954h-12.464l13.68 52.863h14.795l10.268-37.528 10.168 37.528h14.795l14.457-52.863zm40.23 43.574c-8.749 0-15.302-6.924-15.302-16.89 0-9.964 6.756-16.888 15.302-16.888s15.47 6.519 15.47 16.652c0 10.134-6.755 16.89-15.335 16.89m0-45.094a27.36 27.36 0 0 0-27.732 28.204 27.63 27.63 0 1 0 55.228 0 27.394 27.394 0 0 0-27.631-28.07m81.237 28.51h2.837l17.193 25.975h13.883l-19.76-28.813a25.874 25.874 0 0 0 16.01-24.016h-12.26c0 11.383-8.986 15.707-17.903 15.707V3.89h-12.33v73.704h12.296z" data-v-3a96315e=""></path></svg></div></div> <h1 class="text-center h3 mb-md-6x d-none d-md-block" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1> <h1 class="text-center h4 mb-0 d-block d-md-none" data-v-2a2b867a=""><span data-v-9654523a="">Log in to Upwork</span></h1></div>   <div class="mb-3x pb-3x d-block d-md-none" data-v-9654523a=""></div> <!----> <div data-v-9654523a=""><div class="mb-6x mb-6x" data-v-bdb9c802="" data-v-9654523a=""><!----> <div data-v-bdb9c802=""><div data-v-bdb9c802=""><div class="air3-input-group is-prepended"><div class="air3-input-prepend"><div class="air3-icon sm"><svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" role="img"><path vector-effect="non-scaling-stroke" stroke="var(--icon-color, #001e00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11a4 4 0 100-8 4 4 0 000 8zM5 21v-.31a7 7 0 017-7v0a7 7 0 017 7V21"></path></svg></div></div> <input id="login_username" name="login[username]" placeholder="Username or Email" aria-label="Username or email" inputmode="username email" aria-describedby="username-message" aria-required="true" autocomplete="off" autocapitalize="none" autocorrect="off" type="text" class="air3-input"> <div class="air3-input-append"><!----> <!----> <!----></div> <!----></div></div> </div>     <!---->  <!----></div></div> <div class="d-none" data-v-9654523a=""><input aria-describedby="input-password" type="password" id="login_password" name="password" autocomplete="current-password" data-v-9654523a=""></div> <button id="login_password_continue" button-role="continue" type="button" class="air3-btn mr-0 air3-btn-block mb-0 air3-btn-primary" data-v-9654523a="" target-form="username">Continue</button> <p class="btn-separator my-8x" data-v-9654523a=""><span class="font-weight-body" data-v-9654523a="">or</span></p> <div class="width-auto" data-v-9654523a=""><div class="air3-btn-row"><button id="login_google_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block gsso-button mb-0 air3-btn-primary" target-form="username"><span class="gsso-label">Continue with Google</span></button></div> <!----> <!----> <!----></div> <div class="width-auto mt-6x" data-v-9654523a=""><div class="air3-btn-row"><button id="login_apple_submit" button-role="submit" type="button" class="air3-btn mr-0 air3-btn-block apple-sso-button mb-0 air3-btn-primary" target-form="username"><svg width="10px" height="11.4px" version="1.1" viewBox="0 0 3.8469 4.7625" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-64.345 -143.35)"><path d="m65.3 148.04c-0.28391-0.17313-0.67141-0.76332-0.84045-1.2801-0.08795-0.26886-0.11025-0.42084-0.11353-0.77372-5e-3 -0.53416 0.07013-0.78453 0.32071-1.0692 0.32908-0.37386 0.80475-0.48983 1.2754-0.31094 0.28741 0.10923 0.40289 0.10558 0.79215-0.0251 0.25755-0.0864 0.3669-0.10301 0.53413-0.0809 0.27892 0.0369 0.51512 0.14539 0.6838 0.31406l0.138 0.138-0.15036 0.12394c-0.35848 0.29549-0.46412 0.84523-0.24639 1.2822 0.09783 0.19631 0.33073 0.42321 0.48834 0.47574 0.07682 0.0256-0.27148 0.68647-0.49609 0.94128-0.31615 0.35864-0.47304 0.40634-0.86417 0.26274-0.38534-0.14149-0.49243-0.14492-0.83466-0.0268-0.37222 0.12848-0.51369 0.13441-0.68687 0.0288zm0.95956-3.6652c-0.04406-0.11481 0.09887-0.49259 0.25567-0.67578 0.14967-0.17485 0.45436-0.3477 0.61294-0.3477 0.08074 0 0.08756 0.0177 0.06932 0.17944-0.0488 0.43295-0.36807 0.79774-0.77487 0.88535-0.10672 0.0229-0.14178 0.0141-0.16305-0.0413z"></path></g></svg> Continue with Apple</button></div> <!----> <!----></div> <div class="d-none-mobile-app" data-v-9654523a=""><div class="mb-4x pb-12x d-block d-md-none" data-v-9654523a=""></div> <div class="mb-10x pb-10x pt-3x d-none d-md-block" data-v-9654523a=""></div></div>  </div> <div class="d-none d-block-mobile-app px-3x pb-6x text-center text-light" data-v-9654523a=""><small data-v-9654523a="">Upwork uses cookies for analytics, personalized content and ads. By using Upwork's services, you agree to this use of cookies.</small></div> <footer class="d-none-mobile-app" data-v-2a2b867a=""><div data-v-9654523a=""><div class="line-heading pb-3x my-3x text-separator font-weight-body" data-v-9654523a="">
+      Don't have an Upwork account?
+    </div> <a href="/signup/create-account" id="sign-up-link" class="up-n-link air3-btn air3-btn-secondary width-sm btn-block-sm mt-3x mb-6x px-8x" data-v-9654523a="">
+  Sign Up
+</a></div></footer> <div role="status" aria-busy="false" aria-label="Section is loading" class="air3-loader-overlay"><p class="loader-text" data-v-2a2b867a="">
+        Verifying...
+      </p> <div class="air3-icon lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="25 25 50 50" class="spinner"><circle cx="50" cy="50" r="20" stroke-width="4" stroke-miterlimit="10"></circle></svg></div></div></div></div></form>
+2025-01-09 13:45:46,360 - INFO - Injecting challenge interceptor...
+2025-01-09 13:45:46,382 - INFO - Challenge interceptor injected
+2025-01-09 13:45:46,382 - INFO - Looking for username field...
+2025-01-09 13:45:46,415 - INFO - Entering email...
+2025-01-09 13:45:52,019 - INFO - Looking for continue button...
+2025-01-09 13:45:52,075 - INFO - Clicking continue button...
+2025-01-09 13:45:52,120 - INFO - Waiting for potential challenge...
+2025-01-09 13:45:55,137 - INFO - Waiting for password field...
+2025-01-09 13:46:25,617 - ERROR - Timeout waiting for password field
+2025-01-09 13:46:25,618 - ERROR - Could not proceed to password step
+2025-01-09 13:46:25,618 - ERROR - Failed to handle login flow
+2025-01-09 13:46:26,120 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 13:48:37,864 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:48:41,478 - INFO - Navigating to Upwork login page...
+2025-01-09 13:48:45,658 - DEBUG - 
+Initial page state:
+2025-01-09 13:48:45,659 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:48:45,706 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:48:45,765 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:48:45,765 - DEBUG - Looking for key elements:
+2025-01-09 13:48:45,886 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:48:45,886 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:48:45,886 - DEBUG - - form elements: 1 found
+2025-01-09 13:48:45,886 - DEBUG - - error messages: 0 found
+2025-01-09 13:48:45,886 - DEBUG - - username input: 1 found
+2025-01-09 13:48:45,886 - DEBUG - - password input: 1 found
+2025-01-09 13:48:45,886 - DEBUG - - continue button: 1 found
+2025-01-09 13:48:45,886 - DEBUG - - login button: 0 found
+2025-01-09 13:48:45,886 - INFO - Injecting challenge interceptor...
+2025-01-09 13:48:45,891 - INFO - Challenge interceptor injected
+2025-01-09 13:48:45,892 - INFO - Looking for username field...
+2025-01-09 13:48:45,929 - INFO - Entering email...
+2025-01-09 13:48:50,011 - INFO - Looking for continue button...
+2025-01-09 13:48:50,244 - INFO - Clicking continue button...
+2025-01-09 13:48:50,418 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:49:00,419 - INFO - No Cloudflare challenge detected
+2025-01-09 13:49:00,421 - INFO - Waiting for password field...
+2025-01-09 13:49:00,434 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:49:10,645 - INFO - No Cloudflare challenge detected
+2025-01-09 13:49:11,657 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:49:21,857 - INFO - No Cloudflare challenge detected
+2025-01-09 13:49:22,866 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:49:33,054 - INFO - No Cloudflare challenge detected
+2025-01-09 13:49:34,055 - ERROR - Timeout waiting for password field
+2025-01-09 13:49:34,055 - ERROR - Could not proceed to password step
+2025-01-09 13:49:34,055 - ERROR - Failed to handle login flow
+2025-01-09 13:49:34,779 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 13:50:34,643 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:50:38,232 - INFO - Navigating to Upwork login page...
+2025-01-09 13:50:42,867 - DEBUG - 
+Initial page state:
+2025-01-09 13:50:42,868 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:50:42,926 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:50:42,965 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:50:42,965 - DEBUG - Looking for key elements:
+2025-01-09 13:50:43,037 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:50:43,037 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:50:43,037 - DEBUG - - form elements: 1 found
+2025-01-09 13:50:43,037 - DEBUG - - error messages: 0 found
+2025-01-09 13:50:43,037 - DEBUG - - username input: 1 found
+2025-01-09 13:50:43,037 - DEBUG - - password input: 1 found
+2025-01-09 13:50:43,037 - DEBUG - - continue button: 1 found
+2025-01-09 13:50:43,037 - DEBUG - - login button: 0 found
+2025-01-09 13:50:43,037 - INFO - Injecting challenge interceptor...
+2025-01-09 13:50:43,046 - INFO - Challenge interceptor injected
+2025-01-09 13:50:43,046 - INFO - Looking for username field...
+2025-01-09 13:50:43,055 - INFO - Entering email...
+2025-01-09 13:50:53,757 - INFO - Looking for continue button...
+2025-01-09 13:50:53,862 - INFO - Clicking continue button...
+2025-01-09 13:50:53,928 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:51:04,112 - INFO - No Cloudflare challenge detected
+2025-01-09 13:51:04,112 - INFO - Waiting for password field...
+2025-01-09 13:51:04,117 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:51:14,217 - INFO - No Cloudflare challenge detected
+2025-01-09 13:51:15,236 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:51:25,515 - INFO - No Cloudflare challenge detected
+2025-01-09 13:51:26,527 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:51:36,787 - INFO - No Cloudflare challenge detected
+2025-01-09 13:51:37,791 - ERROR - Timeout waiting for password field
+2025-01-09 13:51:37,791 - ERROR - Could not proceed to password step
+2025-01-09 13:51:37,791 - ERROR - Failed to handle login flow
+2025-01-09 13:51:38,283 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 13:53:27,935 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:53:31,704 - INFO - Navigating to Upwork login page...
+2025-01-09 13:53:36,061 - DEBUG - 
+Initial page state:
+2025-01-09 13:53:36,061 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:53:36,093 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:53:36,157 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:53:36,157 - DEBUG - Looking for key elements:
+2025-01-09 13:53:36,317 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:53:36,317 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:53:36,317 - DEBUG - - form elements: 1 found
+2025-01-09 13:53:36,317 - DEBUG - - error messages: 0 found
+2025-01-09 13:53:36,317 - DEBUG - - username input: 1 found
+2025-01-09 13:53:36,317 - DEBUG - - password input: 1 found
+2025-01-09 13:53:36,317 - DEBUG - - continue button: 1 found
+2025-01-09 13:53:36,317 - DEBUG - - login button: 0 found
+2025-01-09 13:53:36,317 - INFO - Injecting challenge interceptor...
+2025-01-09 13:53:36,328 - INFO - Challenge interceptor injected
+2025-01-09 13:53:36,328 - INFO - Looking for username field...
+2025-01-09 13:53:36,452 - INFO - Entering email...
+2025-01-09 13:53:40,103 - INFO - Looking for continue button...
+2025-01-09 13:53:40,218 - INFO - Clicking continue button...
+2025-01-09 13:53:40,343 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:53:50,410 - INFO - No Cloudflare challenge detected
+2025-01-09 13:53:50,412 - INFO - Waiting for password field...
+2025-01-09 13:53:50,421 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:54:00,813 - INFO - No Cloudflare challenge detected
+2025-01-09 13:54:01,839 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:54:12,085 - INFO - No Cloudflare challenge detected
+2025-01-09 13:54:13,095 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:54:23,321 - INFO - No Cloudflare challenge detected
+2025-01-09 13:54:24,326 - ERROR - Timeout waiting for password field
+2025-01-09 13:54:24,326 - ERROR - Could not proceed to password step
+2025-01-09 13:54:24,326 - ERROR - Failed to handle login flow
+2025-01-09 13:54:24,836 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 13:56:05,032 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:56:09,182 - INFO - Navigating to Upwork login page...
+2025-01-09 13:56:15,286 - DEBUG - 
+Initial page state:
+2025-01-09 13:56:15,287 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:56:15,359 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:56:15,402 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:56:15,402 - DEBUG - Looking for key elements:
+2025-01-09 13:56:15,522 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:56:15,522 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:56:15,522 - DEBUG - - form elements: 1 found
+2025-01-09 13:56:15,522 - DEBUG - - error messages: 0 found
+2025-01-09 13:56:15,522 - DEBUG - - username input: 1 found
+2025-01-09 13:56:15,522 - DEBUG - - password input: 1 found
+2025-01-09 13:56:15,522 - DEBUG - - continue button: 1 found
+2025-01-09 13:56:15,522 - DEBUG - - login button: 0 found
+2025-01-09 13:56:15,523 - INFO - Looking for username field...
+2025-01-09 13:56:15,584 - INFO - Entering email...
+2025-01-09 13:56:20,028 - INFO - Looking for continue button...
+2025-01-09 13:56:20,142 - INFO - Clicking continue button...
+2025-01-09 13:56:20,194 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:56:30,704 - INFO - No Cloudflare challenge detected
+2025-01-09 13:56:30,705 - INFO - Waiting for password field...
+2025-01-09 13:56:30,714 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:56:40,944 - INFO - No Cloudflare challenge detected
+2025-01-09 13:56:41,955 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:56:52,472 - INFO - No Cloudflare challenge detected
+2025-01-09 13:56:53,497 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:57:03,778 - INFO - No Cloudflare challenge detected
+2025-01-09 13:57:04,799 - ERROR - Timeout waiting for password field
+2025-01-09 13:57:04,801 - ERROR - Could not proceed to password step
+2025-01-09 13:57:04,801 - ERROR - Failed to handle login flow
+2025-01-09 13:57:05,714 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 13:58:07,367 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:58:11,454 - INFO - Navigating to Upwork login page...
+2025-01-09 13:58:15,543 - DEBUG - 
+Initial page state:
+2025-01-09 13:58:15,544 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:58:15,591 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:58:15,639 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:58:15,639 - DEBUG - Looking for key elements:
+2025-01-09 13:58:15,714 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:58:15,714 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:58:15,714 - DEBUG - - form elements: 1 found
+2025-01-09 13:58:15,714 - DEBUG - - error messages: 0 found
+2025-01-09 13:58:15,714 - DEBUG - - username input: 1 found
+2025-01-09 13:58:15,714 - DEBUG - - password input: 1 found
+2025-01-09 13:58:15,714 - DEBUG - - continue button: 1 found
+2025-01-09 13:58:15,714 - DEBUG - - login button: 0 found
+2025-01-09 13:58:15,714 - INFO - Looking for username field...
+2025-01-09 13:58:15,725 - INFO - Entering email...
+2025-01-09 13:58:19,014 - INFO - Looking for continue button...
+2025-01-09 13:58:19,059 - INFO - Clicking continue button...
+2025-01-09 13:58:19,129 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:58:29,188 - INFO - No Cloudflare challenge detected
+2025-01-09 13:58:29,188 - INFO - Waiting for password field...
+2025-01-09 13:58:29,193 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:58:39,443 - INFO - No Cloudflare challenge detected
+2025-01-09 13:58:40,455 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:58:50,694 - INFO - No Cloudflare challenge detected
+2025-01-09 13:58:51,707 - INFO - Checking for Cloudflare challenge...
+2025-01-09 13:59:01,983 - INFO - No Cloudflare challenge detected
+2025-01-09 13:59:02,990 - ERROR - Timeout waiting for password field
+2025-01-09 13:59:02,990 - ERROR - Could not proceed to password step
+2025-01-09 13:59:02,990 - ERROR - Failed to handle login flow
+2025-01-09 13:59:03,658 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 14:00:08,015 - DEBUG - Using selector: KqueueSelector
+2025-01-09 14:00:11,664 - INFO - Navigating to Upwork login page...
+2025-01-09 14:00:16,180 - DEBUG - 
+Initial page state:
+2025-01-09 14:00:16,180 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 14:00:16,216 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 14:00:16,262 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 14:00:16,262 - DEBUG - Looking for key elements:
+2025-01-09 14:00:16,380 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 14:00:16,380 - DEBUG - - turnstile input: 0 found
+2025-01-09 14:00:16,380 - DEBUG - - form elements: 1 found
+2025-01-09 14:00:16,380 - DEBUG - - error messages: 0 found
+2025-01-09 14:00:16,380 - DEBUG - - username input: 1 found
+2025-01-09 14:00:16,380 - DEBUG - - password input: 1 found
+2025-01-09 14:00:16,380 - DEBUG - - continue button: 1 found
+2025-01-09 14:00:16,380 - DEBUG - - login button: 0 found
+2025-01-09 14:00:16,380 - INFO - Looking for username field...
+2025-01-09 14:00:16,402 - INFO - Entering email...
+2025-01-09 14:00:20,284 - INFO - Looking for continue button...
+2025-01-09 14:00:20,392 - INFO - Clicking continue button...
+2025-01-09 14:00:20,423 - INFO - Checking for Cloudflare challenge...
+2025-01-09 14:00:30,775 - INFO - No Cloudflare challenge detected
+2025-01-09 14:00:30,777 - INFO - Waiting for password field...
+2025-01-09 14:00:30,786 - INFO - Checking for Cloudflare challenge...
+2025-01-09 14:00:35,442 - ERROR - Error in login flow: Page.title: Target page, context or browser has been closed
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 258, in handle_login_flow
+    if not wait_for_password_field(page):
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 216, in wait_for_password_field
+    if check_for_challenge(page):
+       ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 195, in check_for_challenge
+    if "Just a moment..." in page.title():
+                             ~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 9795, in title
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.title()))
+                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_page.py", line 797, in title
+    return await self._main_frame.title()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 774, in title
+    return await self._channel.send("title")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.title: Target page, context or browser has been closed
+2025-01-09 14:00:35,444 - ERROR - Failed to handle login flow
+2025-01-09 14:00:35,885 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 14:02:40,260 - DEBUG - Using selector: KqueueSelector
+2025-01-09 14:02:46,395 - INFO - Navigating to Upwork login page...
+2025-01-09 14:02:54,626 - DEBUG - 
+Initial page state:
+2025-01-09 14:02:54,627 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 14:02:54,658 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 14:02:54,678 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 14:02:54,678 - DEBUG - Looking for key elements:
+2025-01-09 14:02:54,717 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 14:02:54,717 - DEBUG - - turnstile input: 0 found
+2025-01-09 14:02:54,717 - DEBUG - - form elements: 1 found
+2025-01-09 14:02:54,717 - DEBUG - - error messages: 0 found
+2025-01-09 14:02:54,717 - DEBUG - - username input: 1 found
+2025-01-09 14:02:54,717 - DEBUG - - password input: 1 found
+2025-01-09 14:02:54,717 - DEBUG - - continue button: 1 found
+2025-01-09 14:02:54,717 - DEBUG - - login button: 0 found
+2025-01-09 14:02:54,717 - INFO - Looking for username field...
+2025-01-09 14:02:54,730 - INFO - Entering email...
+2025-01-09 14:02:57,312 - INFO - Looking for continue button...
+2025-01-09 14:02:57,318 - INFO - Clicking continue button...
+2025-01-09 14:03:07,345 - ERROR - Error in login flow: Timeout 10000ms exceeded.
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 253, in handle_login_flow
+    page.wait_for_load_state('networkidle', timeout=10000)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 9104, in wait_for_load_state
+    self._sync(self._impl_obj.wait_for_load_state(state=state, timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_page.py", line 567, in wait_for_load_state
+    return await self._main_frame.wait_for_load_state(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 243, in wait_for_load_state
+    return await self._wait_for_load_state_impl(state, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 271, in _wait_for_load_state_impl
+    await waiter.result()
+playwright._impl._errors.TimeoutError: Timeout 10000ms exceeded.
+2025-01-09 14:03:07,352 - ERROR - Failed to handle login flow
+2025-01-09 14:03:07,575 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 14:04:39,696 - DEBUG - Using selector: KqueueSelector
+2025-01-09 14:04:42,473 - INFO - Navigating to Upwork login page...
+2025-01-09 14:04:48,069 - DEBUG - 
+Initial page state:
+2025-01-09 14:04:48,075 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 14:04:48,095 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 14:04:48,112 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 14:04:48,112 - DEBUG - Looking for key elements:
+2025-01-09 14:04:48,169 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 14:04:48,170 - DEBUG - - turnstile input: 0 found
+2025-01-09 14:04:48,170 - DEBUG - - form elements: 1 found
+2025-01-09 14:04:48,171 - DEBUG - - error messages: 0 found
+2025-01-09 14:04:48,171 - DEBUG - - username input: 1 found
+2025-01-09 14:04:48,171 - DEBUG - - password input: 1 found
+2025-01-09 14:04:48,171 - DEBUG - - continue button: 1 found
+2025-01-09 14:04:48,171 - DEBUG - - login button: 0 found
+2025-01-09 14:04:48,172 - INFO - Looking for username field...
+2025-01-09 14:04:48,214 - INFO - Entering email...
+2025-01-09 14:04:50,872 - INFO - Looking for continue button...
+2025-01-09 14:04:50,879 - INFO - Clicking continue button...
+2025-01-09 14:04:50,903 - INFO - Waiting for page to settle...
+2025-01-09 14:04:53,908 - INFO - Checking for Cloudflare challenge...
+2025-01-09 14:05:04,169 - INFO - No Cloudflare challenge detected
+2025-01-09 14:05:04,171 - INFO - Waiting for password field...
+2025-01-09 14:05:04,175 - INFO - Checking for Cloudflare challenge...
+2025-01-09 14:05:14,690 - INFO - No Cloudflare challenge detected
+2025-01-09 14:05:15,707 - INFO - Checking for Cloudflare challenge...
+2025-01-09 14:05:26,028 - INFO - No Cloudflare challenge detected
+2025-01-09 14:05:27,039 - INFO - Checking for Cloudflare challenge...
+2025-01-09 14:05:37,407 - INFO - No Cloudflare challenge detected
+2025-01-09 14:05:38,410 - ERROR - Timeout waiting for password field
+2025-01-09 14:05:38,410 - ERROR - Could not proceed to password step
+2025-01-09 14:05:38,410 - ERROR - Failed to handle login flow
+2025-01-09 14:05:38,595 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 14:06:58,429 - DEBUG - Using selector: KqueueSelector
+2025-01-09 14:07:03,153 - INFO - Navigating to Upwork login page...
+2025-01-09 14:07:11,089 - DEBUG - 
+Initial page state:
+2025-01-09 14:07:11,089 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 14:07:11,127 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 14:07:11,170 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 14:07:11,171 - DEBUG - Looking for key elements:
+2025-01-09 14:07:11,262 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 14:07:11,262 - DEBUG - - turnstile input: 0 found
+2025-01-09 14:07:11,262 - DEBUG - - form elements: 1 found
+2025-01-09 14:07:11,262 - DEBUG - - error messages: 0 found
+2025-01-09 14:07:11,262 - DEBUG - - username input: 1 found
+2025-01-09 14:07:11,262 - DEBUG - - password input: 1 found
+2025-01-09 14:07:11,262 - DEBUG - - continue button: 1 found
+2025-01-09 14:07:11,262 - DEBUG - - login button: 0 found
+2025-01-09 14:07:11,262 - INFO - Looking for username field...
+2025-01-09 14:07:11,275 - INFO - Entering email...
+2025-01-09 14:07:13,757 - INFO - Looking for continue button...
+2025-01-09 14:07:13,767 - INFO - Clicking continue button...
+2025-01-09 14:07:13,787 - INFO - Waiting for page to settle...
+2025-01-09 14:07:16,788 - INFO - Checking for Cloudflare challenge...
+2025-01-09 14:07:27,053 - INFO - No Cloudflare challenge detected
+2025-01-09 14:07:27,055 - INFO - Waiting for password field...
+2025-01-09 14:07:27,066 - INFO - Checking for Cloudflare challenge...
+2025-01-09 14:07:37,310 - INFO - No Cloudflare challenge detected
+2025-01-09 14:07:38,323 - INFO - Checking for Cloudflare challenge...
+2025-01-09 14:07:48,623 - INFO - No Cloudflare challenge detected
+2025-01-09 14:07:49,634 - INFO - Checking for Cloudflare challenge...
+2025-01-09 14:07:51,720 - ERROR - Error closing browser: Event loop is closed! Is Playwright already stopped?
+2025-01-09 14:17:08,051 - DEBUG - Using selector: KqueueSelector
+2025-01-09 14:17:11,376 - INFO - Navigating to Upwork login page...
+2025-01-09 14:17:19,488 - DEBUG - 
+Initial page state:
+2025-01-09 14:17:19,488 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 14:17:19,508 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 14:17:19,530 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 14:17:19,530 - DEBUG - Looking for key elements:
+2025-01-09 14:17:19,567 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 14:17:19,567 - DEBUG - - turnstile input: 0 found
+2025-01-09 14:17:19,568 - DEBUG - - form elements: 1 found
+2025-01-09 14:17:19,568 - DEBUG - - error messages: 0 found
+2025-01-09 14:17:19,568 - DEBUG - - username input: 1 found
+2025-01-09 14:17:19,568 - DEBUG - - password input: 1 found
+2025-01-09 14:17:19,568 - DEBUG - - continue button: 1 found
+2025-01-09 14:17:19,568 - DEBUG - - login button: 0 found
+2025-01-09 14:17:19,568 - INFO - Looking for username field...
+2025-01-09 14:17:19,578 - INFO - Entering email...
+2025-01-09 14:17:39,654 - ERROR - Task was destroyed but it is pending!
+task: <Task pending name='Task-21' coro=<Browser.close() running at /Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_browser.py:183> cb=[SyncBase._sync.<locals>.<lambda>() at /Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py:111]>
+2025-01-09 14:17:39,655 - ERROR - Task was destroyed but it is pending!
+task: <Task pending name='Task-19' coro=<ElementHandle.type() done, defined at /Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_element_handle.py:215> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[SyncBase._sync.<locals>.<lambda>() at /Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py:111, ProtocolCallback.__init__.<locals>.cb() at /Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py:198]>

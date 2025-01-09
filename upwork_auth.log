@@ -1,0 +1,37 @@
+2025-01-09 13:27:16,818 - DEBUG - Using selector: KqueueSelector
+2025-01-09 13:27:20,434 - INFO - Navigating to Upwork login page...
+2025-01-09 13:27:25,690 - DEBUG - 
+Initial page state:
+2025-01-09 13:27:25,691 - DEBUG - URL: https://www.upwork.com/ab/account-security/login
+2025-01-09 13:27:25,740 - DEBUG - Title: Upwork Login - Log in to your Upwork account
+2025-01-09 13:27:25,795 - DEBUG - HTML Content (first 500 chars): <!DOCTYPE html><html lang="en" theme="air-3-0" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D,%22theme%22:%7B%22ssr%22:%22air-3-0%22%7D%7D" data-gl-app=""><head><script async="" src="//static.ads-twitter.com/uwt.js"></script><script src="//bat.bing.com/bat.js" async=""></script><script id="pdst-capture" async="" src="https://cdn.pdst.fm/ping.min.js"></script><script async="" src="https://d.impactradius-event.com/A2798569-68a2-43d5-98ff-96c66d56992b1.js"></script><script type="text/javascrip...
+2025-01-09 13:27:25,795 - DEBUG - Looking for key elements:
+2025-01-09 13:27:25,913 - DEBUG - - turnstile iframe: 0 found
+2025-01-09 13:27:25,913 - DEBUG - - turnstile input: 0 found
+2025-01-09 13:27:25,913 - DEBUG - - form elements: 1 found
+2025-01-09 13:27:25,914 - DEBUG - - error messages: 0 found
+2025-01-09 13:27:25,961 - DEBUG - Turnstile params: No turnstile params
+2025-01-09 13:28:57,919 - INFO - Saving cookies...
+2025-01-09 13:28:58,002 - ERROR - Error: BrowserContext.cookies: Target page, context or browser has been closed
+Traceback (most recent call last):
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/scripts/save_upwork_cookies.py", line 282, in save_cookies
+    with open(cookie_file, 'w') as f:
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 12819, in cookies
+    self._sync(self._impl_obj.cookies(urls=mapping.to_impl(urls)))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_browser_context.py", line 332, in cookies
+    return await self._channel.send("cookies", dict(urls=urls))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/venv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: BrowserContext.cookies: Target page, context or browser has been closed
