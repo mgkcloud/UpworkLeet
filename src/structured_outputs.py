@@ -60,9 +60,7 @@ class Questions(BaseModel):
     questions: List[dict] = Field(description="List of questions from the job application", default_factory=list)
 
 class Answer(BaseModel):
-    question: str = Field(description="The original question text")
     answer: str = Field(description="The answer to the question")
-    type: QuestionType = Field(description="The type of question")
 
 class Answers(BaseModel):
-    answers: List[dict] = Field(description="List of answers to the job application questions", default_factory=list)
+    answers: List[Answer] = Field(description="List of answers to the job application questions", default_factory=list)

@@ -527,7 +527,7 @@ def scrape_upwork_data(search_config, num_jobs=20, rate_limit_delay=5):
             return pd.DataFrame()  # Return empty DataFrame if no jobs were scraped
 
         jobs_df = process_job_info_data(jobs_data)
-        logger.info(f"Upwork data scraping completed for query: {search_query}")
+        logger.info(f"Upwork data scraping completed for config: {search_config}")
         return jobs_df
 
     except Exception as e:
@@ -880,23 +880,32 @@ def scrape_job_questions(apply_url: str) -> dict:
                 # Then check for questions area
                 questions_area = page.locator(".fe-proposal-job-questions")
                 if questions_area.count() > 0:
-                    # Wait for all question elements to be loaded
-                    questions_area.wait_for(timeout=10000)
+                    # Check if questions area exists but is hidden
+                    is_visible = questions_area.is_visible()
+                    if not is_visible:
+                        logger.info("Questions area exists but is hidden (no questions)")
+                        return {"questions": []}
+                        
+                    # Wait for questions to be loaded
+                    questions_area.wait_for(state="visible", timeout=30000)
                     
-                    # Extract questions directly using Playwright
+                    # Try to find questions with different selectors
                     questions = []
-                    question_elements = questions_area.locator(".form-group")
-                    count = question_elements.count()
                     
-                    for i in range(count):
-                        element = question_elements.nth(i)
-                        label = element.locator(".label").text_content()
-                        if label:
-                            label = label.strip()
-                            questions.append({
-                                "text": label,
-                                "type": "text"  # Default to text type
-                            })
+                    # Try direct label elements first since they're more reliable
+                    labels = questions_area.locator(".label")
+                    count = labels.count()
+                    if count > 0:
+                        for i in range(count):
+                            label = labels.nth(i).text_content()
+                            if label:
+                                label = label.strip()
+                                # Skip labels that are part of the cover letter section
+                                if "Cover Letter" not in label and "Attachments" not in label:
+                                    questions.append({
+                                        "text": label,
+                                        "type": "text"  # Default to text type
+                                    })
                     
                     logger.info(f"Found {len(questions)} questions using direct extraction")
                     return {"questions": questions}
@@ -978,8 +987,11 @@ def generate_question_answers(job_description: str, questions: List[dict]) -> di
                 question_data["options"] = q["options"]
             formatted_questions.append(question_data)
             
+        # Extract just the description if job_description is a dict
+        job_desc = job_description["description"] if isinstance(job_description, dict) else job_description
+        
         prompt = ANSWER_QUESTIONS_PROMPT_TEMPLATE.format(
-            job_description=job_description,
+            job_description=job_desc,
             technical_background=technical_background,
             work_approach=work_approach,
             questions=json.dumps(formatted_questions, indent=2)
@@ -987,28 +999,40 @@ def generate_question_answers(job_description: str, questions: List[dict]) -> di
         
         completion, _ = call_gemini_api(prompt, None)  # Don't use schema validation for flexibility
         
-        # Handle potential markdown code block wrapping
-        if isinstance(completion, str) and "```json" in completion:
-            # Extract JSON from markdown code block
-            json_str = completion.split("```json")[1].split("```")[0].strip()
+        logger.debug(f"Raw completion response: {truncate_content(str(completion))}")
+        
+        # Ensure we have a valid completion object
+        if isinstance(completion, str):
             try:
-                completion = json.loads(json_str)
-            except json.JSONDecodeError:
-                logger.error("Failed to parse JSON from markdown response")
+                # Handle potential markdown code block wrapping
+                if "```json" in completion:
+                    json_str = completion.split("```json")[1].split("```")[0].strip()
+                    logger.debug(f"Extracted JSON string: {truncate_content(json_str)}")
+                    completion = json.loads(json_str)
+                else:
+                    completion = json.loads(completion)
+            except json.JSONDecodeError as e:
+                logger.error(f"Failed to parse JSON response: {e}")
+                logger.debug(f"Failed JSON content: {truncate_content(str(completion))}")
+                return {"answers": []}
+
+        if isinstance(completion, dict):
+            answers = completion.get("answers", [])
+            logger.debug(f"Extracted answers: {truncate_content(str(answers))}")
+            
+            if not answers:
+                logger.error("No answers found in response")
                 return {"answers": []}
                 
-        if isinstance(completion, dict) and "answers" in completion:
-            answers = completion["answers"]
             # Validate and format each answer
             formatted_answers = []
-            for answer, question in zip(answers, questions):
+            for answer in answers:
+                logger.debug(f"Processing answer: {truncate_content(str(answer))}")
+                
                 if isinstance(answer, dict) and "answer" in answer:
-                    formatted_answer = {
-                        "question": question["text"],  # Use original question text
-                        "answer": answer["answer"],
-                        "type": question.get("type", "text")  # Use original question type
-                    }
-                    formatted_answers.append(formatted_answer)
+                    formatted_answers.append({"answer": answer["answer"]})
+                else:
+                    logger.error(f"Invalid answer format: {truncate_content(str(answer))}")
             
             if formatted_answers:
                 logger.debug(f"Generated {len(formatted_answers)} answers")

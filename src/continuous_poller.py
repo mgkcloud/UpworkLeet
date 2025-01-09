@@ -203,7 +203,14 @@ class UpworkPoller:
                     },
                     "application_details": {
                         "questions": questions_data.get("questions", []),
-                        "answers": answers_data.get("answers", [])
+                        "answers": [
+                            {
+                                "question": q["text"],
+                                "answer": a["answer"],
+                                "type": q.get("type", "text")
+                            }
+                            for q, a in zip(questions_data.get("questions", []), answers_data.get("answers", []))
+                        ]
                     },
                     "metadata": {
                         "processed_at": processed_data.get("processed_at"),

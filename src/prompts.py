@@ -136,36 +136,28 @@ Return a JSON object with this structure:
 {{
   "answers": [
     {{
-      "question": "original question text",
-      "answer": "your detailed answer here",
-      "type": "text" or "multiple_choice" or "yes_no"
+      "answer": "your detailed answer here"
     }}
   ]
 }}
 
+Note: Return ONLY the answer content in the "answer" field. The question text and type will be handled by the system.
+
 Example response:
 {{
   "answers": [
-    {
-      "question": "What is your experience with AI development?",
-      "answer": "I have 5+ years of experience developing AI solutions...",
-      "type": "text"
-    },
-    {
-      "question": "Are you available to start immediately?",
-      "answer": "Yes, I can start right away. I currently have...",
-      "type": "yes_no"
-    },
-    {
-      "question": "Tell us of your skills beyond VAPI. Are you a Python or JavaScript developer? Do you do ML work?",
-      "answer": "Beyond VAPI, I am a full-stack developer with 8+ years of experience. I am proficient in both Python and JavaScript/TypeScript, often using Node.js for backend development. Additionally, I have extensive experience in ML development, specifically with LLMs, including GPT models, LangChain, and building custom AI agents.",
-      "type": "text"
-    },
-    {
-      "question": "How familiar are you with working in N8N? It'll be a requirement to use it, but if you know Make.com you can transition pretty easily. Will this be an issue for you?",
-      "answer": "I have extensive experience working with N8N, as described in my background. I have built custom nodes, integrated it with numerous APIs, and created full automation platforms using it. Additionally, I've used Make.com and understand the core concepts behind workflow automation, making the transition seamless. Therefore, N8N usage will absolutely not be an issue for me.",
-      "type": "yes_no"
-    }
+    {{
+      "answer": "I have 5+ years of experience developing AI solutions, specializing in LLMs and custom AI agents. My background includes..."
+    }},
+    {{
+      "answer": "Yes, I can start right away. I currently have availability to fully commit to this project..."
+    }},
+    {{
+      "answer": "Beyond VAPI, I am a full-stack developer with 8+ years of experience. I am proficient in both Python and JavaScript/TypeScript, often using Node.js for backend development. Additionally, I have extensive experience in ML development, specifically with LLMs, including GPT models, LangChain, and building custom AI agents."
+    }},
+    {{
+      "answer": "I have extensive experience working with N8N, as described in my background. I have built custom nodes, integrated it with numerous APIs, and created full automation platforms using it. Additionally, I've used Make.com and understand the core concepts behind workflow automation, making the transition seamless. Therefore, N8N usage will absolutely not be an issue for me."
+    }}
   ]
 }}
 """
