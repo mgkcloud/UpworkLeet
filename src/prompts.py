@@ -42,6 +42,95 @@ Example response for individual job page:
 }}
 """
 
+SCRAPE_QUESTIONS_PROMPT_TEMPLATE = """
+You are an expert at analyzing Upwork job application forms. Your task is to extract any additional questions that appear after the cover letter section.
+
+<content>
+{markdown_content}
+</content>
+
+Look for these specific patterns:
+1. Text fields with labels ending in "?"
+2. Required/Optional field indicators
+3. Radio button groups (Yes/No questions)
+4. Checkbox lists (multiple choice)
+5. Textareas for longer answers
+6. Questions about:
+   - Experience with specific technologies
+   - Availability/Timeline
+   - Rate expectations
+   - Portfolio/Similar work examples
+   - Certifications/Qualifications
+
+Return a JSON object with this structure:
+{{
+  "questions": [
+    {{
+      "text": "The exact question text",
+      "type": "text" or "multiple_choice" or "yes_no",
+      "options": ["option1", "option2"] // Only for multiple_choice
+    }}
+  ]
+}}
+
+Example questions to look for:
+- "What is your experience with [technology]?"
+- "Are you available to start immediately?"
+- "Which of these skills do you have?"
+- "Have you worked on similar projects?"
+- "What is your expected timeline?"
+- "Do you have experience with [specific tool/framework]?"
+
+If no questions are found, return: {{"questions": []}}
+
+Remember:
+- Extract the exact question text
+- Determine the correct question type
+- Include all options for multiple choice questions
+- Look for both required and optional questions
+"""
+
+ANSWER_QUESTIONS_PROMPT_TEMPLATE = """
+Generate answers for the following job application questions. Use the provided background information and job details to craft relevant, specific answers.
+
+Job Description:
+<job_description>
+{job_description}
+</job_description>
+
+Technical Background:
+<technical_background>
+{technical_background}
+</technical_background>
+
+Work Approach:
+<work_approach>
+{work_approach}
+</work_approach>
+
+Questions to Answer:
+{questions}
+
+Guidelines:
+1. Provide specific, detailed answers that demonstrate expertise
+2. Reference relevant experience from the background information
+3. Keep answers concise but comprehensive
+4. Maintain a professional tone
+5. For multiple choice questions, select the most relevant options
+6. For yes/no questions, explain the reasoning behind the answer
+
+Return a JSON object with this structure:
+{{
+  "answers": [
+    {{
+      "question": "original question text",
+      "answer": "your answer here",
+      "type": "question type from input"
+    }}
+  ]
+}}
+"""
+
 SCORE_JOBS_PROMPT_TEMPLATE = """
 You are a job matching expert specializing in pairing freelancers with the most suitable Upwork jobs. 
 Your task is to evaluate each job based on the following criteria:
@@ -114,6 +203,16 @@ Job Description:
 <job_description>
 {job_description}
 </job_description>
+
+Technical Background:
+<technical_background>
+{technical_background}
+</technical_background>
+
+Work Approach:
+<work_approach>
+{work_approach}
+</work_approach>
 
 The script should include:
 1. A brief introduction for the freelancer to use

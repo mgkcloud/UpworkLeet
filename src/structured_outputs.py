@@ -45,3 +45,24 @@ class CoverLetter(BaseModel):
     
 class CallScript(BaseModel):
     script: str = Field(description="The generated call script")
+
+class QuestionType(str, Enum):
+    TEXT = "text"
+    MULTIPLE_CHOICE = "multiple_choice"
+    YES_NO = "yes_no"
+
+class Question(BaseModel):
+    text: str = Field(description="The question text")
+    type: QuestionType = Field(description="The type of question")
+    options: Optional[List[str]] = Field(description="Options for multiple choice questions")
+
+class Questions(BaseModel):
+    questions: List[dict] = Field(description="List of questions from the job application", default_factory=list)
+
+class Answer(BaseModel):
+    question: str = Field(description="The original question text")
+    answer: str = Field(description="The answer to the question")
+    type: QuestionType = Field(description="The type of question")
+
+class Answers(BaseModel):
+    answers: List[dict] = Field(description="List of answers to the job application questions", default_factory=list)

@@ -1,5 +1,7 @@
 import os
 import json
+import uuid
+import hashlib
 from datetime import datetime
 from .utils import setup_logger, truncate_content
 
@@ -39,16 +41,52 @@ class JobTracker:
         except Exception as e:
             logger.error(f"Error saving to {filepath}: {truncate_content(str(e))}")
 
-    def is_job_seen(self, job_id):
-        """Check if a job has been seen before"""
+    def is_job_seen(self, job_data):
+        """Check if a job has been seen before based on Upwork ID"""
         seen_jobs = self._load_json(self.seen_jobs_file)
-        return job_id in seen_jobs
+        upwork_id = job_data.get('upwork_id')
+        
+        if not upwork_id:
+            logger.warning("No Upwork ID found in job data")
+            # Fall back to description hash if no Upwork ID
+            description = job_data.get('description', '')
+            if not description:
+                return False
+            description_hash = hashlib.md5(description.encode()).hexdigest()
+            for job in seen_jobs.values():
+                if job.get('description_hash') == description_hash:
+                    return True
+            return False
+            
+        # Check if any existing job matches this Upwork ID
+        return upwork_id in seen_jobs
 
-    def mark_job_seen(self, job_id, job_data):
+    def mark_job_seen(self, job_data):
         """Mark a job as seen with timestamp"""
         seen_jobs = self._load_json(self.seen_jobs_file)
+        upwork_id = job_data.get('upwork_id')
+        
+        if not upwork_id:
+            logger.warning("No Upwork ID found in job data")
+            # Fall back to description hash if no Upwork ID
+            description = job_data.get('description', '')
+            if not description:
+                job_id = str(uuid.uuid4())
+            else:
+                description_hash = hashlib.md5(description.encode()).hexdigest()
+                # Check if we've seen this description before
+                for existing_job in seen_jobs.values():
+                    if existing_job.get('description_hash') == description_hash:
+                        return existing_job.get('job_id')
+                job_id = str(uuid.uuid4())
+                job_data['description_hash'] = description_hash
+        else:
+            job_id = upwork_id
+            
+        job_data['job_id'] = job_id
         seen_jobs[job_id] = job_data
         self._save_json(self.seen_jobs_file, seen_jobs)
+        return job_id
 
     def mark_job_processed(self, job_id, processing_result):
         """Mark a job as processed with result data"""
@@ -78,13 +116,16 @@ class JobTracker:
         seen_jobs = self._load_json(self.seen_jobs_file)
         processed_jobs = self._load_json(self.processed_jobs_file)
         
-        # Clean seen jobs - we don't track timestamps for seen jobs anymore
-        # Just keep all seen jobs for now
-        
         # Clean processed jobs
         processed_jobs = {
             k: v for k, v in processed_jobs.items()
             if datetime.fromisoformat(v["processed_at"]).timestamp() > cutoff
+        }
+        
+        # Clean seen jobs that are no longer in processed_jobs
+        seen_jobs = {
+            k: v for k, v in seen_jobs.items()
+            if k in processed_jobs
         }
         
         self._save_json(self.seen_jobs_file, seen_jobs)

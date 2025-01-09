@@ -4,7 +4,7 @@ logger = setup_logger('scrape_upwork_jobs')
 
 if __name__ == "__main__":
     logger.info("Starting Upwork job scraping")
-    search_query = "AI agent developer"
+    search_query = "agentic system specialist"
     number_of_jobs = 10
     job_listings = scrape_upwork_data(search_query, number_of_jobs)
     logger.debug(f"Job listings: {truncate_content(str(job_listings))}")

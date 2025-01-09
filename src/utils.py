@@ -1,4 +1,4 @@
-import os, re, time, json
+import os, re, time, json, hashlib
 import html2text
 import pandas as pd
 from datetime import datetime
@@ -6,12 +6,15 @@ from tqdm import tqdm
 from playwright.sync_api import sync_playwright
 import google.generativeai as genai
 import logging
+from typing import List, Optional
 from .structured_outputs import (
     UpworkJobs,
     JobInformation,
     JobScores,
     CoverLetter,
     CallScript,
+    Questions,
+    Answers,
 )
 from .prompts import *
 
@@ -210,12 +213,14 @@ def scrape_website_to_markdown(url: str) -> str:
     logger.info(f"Scraping website: {url}")
     USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
 
-    # Create a cache directory if it doesn't exist
-    cache_dir = "./files/cache"
+    # Determine cache directory based on URL type
+    if "/apply/" in url:
+        cache_dir = "./files/cache/apply_pages"
+    else:
+        cache_dir = "./files/cache/search_pages"
     os.makedirs(cache_dir, exist_ok=True)
     
     # Create a filename based on a hash of the URL
-    import hashlib
     url_hash = hashlib.md5(url.encode()).hexdigest()
     filename = os.path.join(cache_dir, f"{url_hash}.md")
     
@@ -274,15 +279,24 @@ def scrape_upwork_data(search_query, num_jobs=20, rate_limit_delay=5):
                 full_link = f"https://www.upwork.com{link}"
                 
                 # Create cache filename using MD5 hash
-                import hashlib
                 url_hash = hashlib.md5(full_link.encode()).hexdigest()
-                cache_path = os.path.join("./files/cache", f"{url_hash}.md")
+                cache_path = os.path.join("./files/cache/search_pages", f"{url_hash}.md")
                 
                 job_page_content = scrape_website_to_markdown(full_link)
                 prompt = SCRAPER_PROMPT_TEMPLATE.format(markdown_content=job_page_content)
                 completion, _ = call_gemini_api(prompt, JobInformation)
                 
                 if isinstance(completion, dict):
+                    # Extract Upwork job ID from URL
+                    job_id_match = re.search(r'_~([^/]+)/', full_link)
+                    if job_id_match:
+                        upwork_id = job_id_match.group(1)
+                        completion['url'] = full_link  # Add the full URL to the job data
+                        completion['apply_url'] = f"https://www.upwork.com/nx/proposals/job/~{upwork_id}/apply/"  # Add apply URL
+                        completion['upwork_id'] = upwork_id  # Store the Upwork ID for matching
+                        logger.debug(f"Extracted Upwork ID: {upwork_id}")
+                    else:
+                        logger.warning(f"Could not extract Upwork ID from URL: {full_link}")
                     jobs_data.append(completion)
                     logger.debug(f"Scraped job: {truncate_content(completion.get('title', 'Unknown'))}")
                 else:
@@ -488,13 +502,113 @@ def generate_cover_letter(job_desc, profile):
         return {"letter": f"Error generating cover letter: {str(e)}"}
 
 
+def scrape_job_questions(apply_url: str) -> dict:
+    """Scrape additional questions from the job application page"""
+    logger.info(f"Scraping questions from: {apply_url}")
+    try:
+        # Use special handling for apply pages
+        with sync_playwright() as playwright:
+            browser = playwright.firefox.launch(headless=True)
+            context = browser.new_context(
+                user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+            )
+
+            page = context.new_page()
+            page.goto(apply_url, wait_until="networkidle")
+            
+            # Wait for application form to load
+            page.wait_for_selector("form", timeout=10000)
+            html_content = page.content()
+            logger.debug(f"Retrieved content from {apply_url}")
+
+            browser.close()
+
+        # Convert HTML to markdown with special handling for forms
+        h = html2text.HTML2Text()
+        h.ignore_links = False
+        h.ignore_images = True
+        h.ignore_tables = False
+        h.body_width = 0  # Don't wrap lines
+        markdown_content = h.handle(html_content)
+
+        # Save to apply pages cache
+        cache_dir = "./files/cache/apply_pages"
+        os.makedirs(cache_dir, exist_ok=True)
+        url_hash = hashlib.md5(apply_url.encode()).hexdigest()
+        cache_path = os.path.join(cache_dir, f"{url_hash}.md")
+        with open(cache_path, "w", encoding="utf-8") as f:
+            f.write(markdown_content)
+        logger.debug(f"Apply page content saved to cache: {cache_path}")
+
+        # Extract questions using dedicated prompt
+        prompt = SCRAPE_QUESTIONS_PROMPT_TEMPLATE.format(markdown_content=markdown_content)
+        completion, _ = call_gemini_api(prompt, None)  # Don't use schema validation for questions
+        
+        if isinstance(completion, dict):
+            questions = completion.get("questions", [])
+            logger.debug(f"Found {len(questions)} questions")
+            # Convert to expected format
+            formatted_questions = []
+            for q in questions:
+                if isinstance(q, dict) and "text" in q:
+                    formatted_questions.append({
+                        "text": q["text"],
+                        "type": q.get("type", "text"),
+                        "options": q.get("options", []) if q.get("type") == "multiple_choice" else None
+                    })
+            return {"questions": formatted_questions}
+        else:
+            logger.warning("No questions found in apply page")
+            return {"questions": []}
+            
+    except Exception as e:
+        logger.error(f"Error scraping questions: {truncate_content(str(e))}")
+        return {"questions": []}
+
+def generate_question_answers(job_data: dict, questions: List[dict]) -> dict:
+    """Generate answers for job application questions"""
+    logger.info("Generating answers for application questions")
+    try:
+        # Read background information
+        with open("files/background/technical_experience.md", "r") as f:
+            technical_background = f.read()
+        with open("files/background/work_approach.md", "r") as f:
+            work_approach = f.read()
+            
+        prompt = ANSWER_QUESTIONS_PROMPT_TEMPLATE.format(
+            job_description=job_data["description"],
+            technical_background=technical_background,
+            work_approach=work_approach,
+            questions=json.dumps(questions, indent=2)
+        )
+        
+        completion, _ = call_gemini_api(prompt, Answers)
+        if isinstance(completion, dict) and "answers" in completion:
+            logger.debug(f"Generated {len(completion['answers'])} answers")
+            return completion
+        else:
+            logger.error(f"Invalid answer response format: {completion}")
+            return {"answers": []}
+            
+    except Exception as e:
+        logger.error(f"Error generating answers: {truncate_content(str(e))}")
+        return {"answers": []}
+
 def generate_interview_script_content(job_desc):
     logger.info("Generating interview script content")
     try:
         logger.debug(f"Job description length: {len(job_desc)}")
         
+        # Read background information
+        with open("files/background/technical_experience.md", "r") as f:
+            technical_background = f.read()
+        with open("files/background/work_approach.md", "r") as f:
+            work_approach = f.read()
+        
         call_script_writer_prompt = GENERATE_CALL_SCRIPT_PROMPT_TEMPLATE.format(
-            job_description=job_desc
+            job_description=job_desc,
+            technical_background=technical_background,
+            work_approach=work_approach
         )
         logger.debug("Generated interview script prompt")
         

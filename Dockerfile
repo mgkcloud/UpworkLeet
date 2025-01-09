@@ -41,7 +41,7 @@ ENV POLLING_INTERVAL=480
 ENV MAX_JOBS_PER_POLL=10
 ENV JOB_RETENTION_DAYS=30
 ENV HIGH_VALUE_THRESHOLD=7.0
-ENV WEBHOOK_URL="https://n8n.fy.studio/webhook-test/a9a844f3-d651-4413-8bf3-820c6877b153"
+ENV WEBHOOK_URL="https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"
 
 # Create volume mount points
 VOLUME ["/app/files/job_tracking", "/app/files/cache", "/app/logs"]
