@@ -112,12 +112,25 @@ Questions to Answer:
 {questions}
 
 Guidelines:
-1. Provide specific, detailed answers that demonstrate expertise
-2. Reference relevant experience from the background information
-3. Keep answers concise but comprehensive
-4. Maintain a professional tone
-5. For multiple choice questions, select the most relevant options
-6. For yes/no questions, explain the reasoning behind the answer
+1. **Specificity & Detail**: Provide specific, detailed answers that demonstrate expertise.
+2. **Relevant Experience**: Reference relevant experience from the background information.
+3. **Conciseness**: Keep answers concise but comprehensive.
+4. **Professional Tone**: Maintain a professional tone throughout.
+5. **Multiple Choice Questions**:
+   - Select the most relevant options based on the background information.
+6. **Yes/No Questions**:
+   - Provide a clear yes or no answer.
+   - **Explanation**: Include reasoning or context behind the answer.
+7. **Multi-part Questions**:
+   - Address each part of the question clearly and separately.
+   - Ensure coherence and logical flow between parts.
+8. **Compound Questions**:
+   - Break down compound questions into individual responses.
+   - Ensure each sub-question is answered thoroughly.
+
+**Example Handling:**
+- For a question like "Tell us of your skills beyond VAPI. Are you a Python or JavaScript developer? Do you do ML work?", structure the answer to address each sub-question in separate paragraphs or sections.
+- For contextual prompts, ensure the response acknowledges the context before answering the main question.
 
 Return a JSON object with this structure:
 {{
@@ -133,16 +146,26 @@ Return a JSON object with this structure:
 Example response:
 {{
   "answers": [
-    {{
+    {
       "question": "What is your experience with AI development?",
       "answer": "I have 5+ years of experience developing AI solutions...",
       "type": "text"
-    }},
-    {{
+    },
+    {
       "question": "Are you available to start immediately?",
       "answer": "Yes, I can start right away. I currently have...",
       "type": "yes_no"
-    }}
+    },
+    {
+      "question": "Tell us of your skills beyond VAPI. Are you a Python or JavaScript developer? Do you do ML work?",
+      "answer": "Beyond VAPI, I am a full-stack developer with 8+ years of experience. I am proficient in both Python and JavaScript/TypeScript, often using Node.js for backend development. Additionally, I have extensive experience in ML development, specifically with LLMs, including GPT models, LangChain, and building custom AI agents.",
+      "type": "text"
+    },
+    {
+      "question": "How familiar are you with working in N8N? It'll be a requirement to use it, but if you know Make.com you can transition pretty easily. Will this be an issue for you?",
+      "answer": "I have extensive experience working with N8N, as described in my background. I have built custom nodes, integrated it with numerous APIs, and created full automation platforms using it. Additionally, I've used Make.com and understand the core concepts behind workflow automation, making the transition seamless. Therefore, N8N usage will absolutely not be an issue for me.",
+      "type": "yes_no"
+    }
   ]
 }}
 """
