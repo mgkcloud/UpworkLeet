@@ -1,6 +1,30 @@
 {
   "searches": [
     {
+        "type": "skill",
+        "ontology_skill_uid": "1031626761858170880"
+    },
+    {
+        "type": "skill",
+        "ontology_skill_uid": "1623716863997775872"
+    },
+    {
+        "type": "skill",
+        "ontology_skill_uid": "1623716864178130944"
+    },
+    {
+        "type": "skill",
+        "ontology_skill_uid": "1691099315676131329"
+    },
+    {
+        "type": "skill",
+        "ontology_skill_uid": "1691099313604145152"
+    },
+    {
+        "type": "skill",
+        "ontology_skill_uid": "1691099314245873665"
+    },
+    {
       "type": "skill",
       "ontology_skill_uid": "1504884906003529729"
     },
