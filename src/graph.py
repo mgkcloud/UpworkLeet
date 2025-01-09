@@ -13,6 +13,8 @@ from .utils import (
     save_scraped_jobs_to_csv,
     setup_logger,
     truncate_content,
+    scrape_job_questions,
+    generate_question_answers,
 )
 
 logger = setup_logger('graph')
@@ -27,6 +29,9 @@ class GraphState(TypedDict):
     cover_letter: str
     call_script: str
     num_matches: int
+    questions: List[dict]  # Store scraped questions
+    answers: List[dict]    # Store generated answers
+    apply_url: str        # Store the apply URL for the current job
 
 class UpworkAutomation:
     def __init__(self, profile, num_jobs=20):
@@ -246,26 +251,46 @@ class UpworkAutomation:
         Generate cover letter based on the job description and the profile.
 
         @param state: The current state of the application.
-        @return: Updated state with generated cover letter.
+        @return: Updated state with generated cover letter and apply URL.
         """
         logger.info("Generating cover letter")
         print(Fore.YELLOW + "----- Generating cover letter -----\n" + Style.RESET_ALL)
+        
+        # Get current job from matches
         matches = state["matches"]
-        job_description = str(matches[-1])
-        # Generate cover letter and ensure dictionary response
+        if not matches:
+            logger.warning("No job data found in matches")
+            return {**state, "cover_letter": "", "job_description": "", "apply_url": ""}
+            
+        # Get job data from DataFrame using the last match
+        jobs_df = state.get("scraped_jobs_df", pd.DataFrame())
+        current_job = str(matches[-1])
+        
+        # Find the job in DataFrame to get apply_url
+        apply_url = ""
+        if not jobs_df.empty:
+            # Try to find the job by matching description
+            job_row = jobs_df[jobs_df["description"].astype(str) == current_job]
+            if not job_row.empty:
+                apply_url = job_row.iloc[0].get("apply_url", "")
+                logger.debug(f"Found apply URL: {apply_url}")
+        
         # Generate cover letter
-        cover_letter_response = generate_cover_letter(job_description, self.profile)
+        cover_letter_response = generate_cover_letter(current_job, self.profile)
         cover_letter = cover_letter_response.get("letter", "") if isinstance(cover_letter_response, dict) else str(cover_letter_response)
+        
         # Ensure letter starts with "Hello" if it doesn't already
         if not cover_letter.startswith("Hello"):
             cover_letter = "Hello, " + cover_letter
             
         logger.debug(f"Generated cover letter: {truncate_content(cover_letter)}")
         logger.info("Cover letter generated")
+        
         return {
             **state,  # Preserve other state first
-            "job_description": job_description,
-            "cover_letter": cover_letter
+            "job_description": current_job,
+            "cover_letter": cover_letter,
+            "apply_url": apply_url
         }
 
     def generate_interview_script_content(self, state):
@@ -290,47 +315,114 @@ class UpworkAutomation:
             "call_script": call_script
         }
 
+    def scrape_application_questions(self, state):
+        """
+        Scrape questions from the job application page if they exist.
+        """
+        logger.info("Scraping application questions")
+        print(Fore.YELLOW + "----- Scraping application questions -----\n" + Style.RESET_ALL)
+        
+        apply_url = state.get("apply_url", "")
+        if not apply_url:
+            logger.warning("No apply URL found in state")
+            return {**state, "questions": []}
+            
+        questions_response = scrape_job_questions(apply_url)
+        questions = questions_response.get("questions", [])
+        
+        if questions:
+            logger.info(f"Found {len(questions)} questions")
+            print(Fore.GREEN + f"Found {len(questions)} additional questions\n" + Style.RESET_ALL)
+        else:
+            logger.info("No additional questions found")
+            print(Fore.YELLOW + "No additional questions found\n" + Style.RESET_ALL)
+            
+        return {**state, "questions": questions}
+        
+    def generate_question_answers(self, state):
+        """
+        Generate answers for application questions if they exist.
+        """
+        logger.info("Generating answers for application questions")
+        print(Fore.YELLOW + "----- Generating answers for questions -----\n" + Style.RESET_ALL)
+        
+        questions = state.get("questions", [])
+        if not questions:
+            logger.info("No questions to answer")
+            return {**state, "answers": []}
+            
+        # Get current job data from matches
+        matches = state["matches"]
+        if not matches:
+            logger.warning("No job data found in matches")
+            return {**state, "answers": []}
+            
+        job_data = {"description": str(matches[-1])}
+        
+        answers_response = generate_question_answers(job_data, questions)
+        answers = answers_response.get("answers", [])
+        
+        if answers:
+            logger.info(f"Generated {len(answers)} answers")
+            print(Fore.GREEN + f"Generated {len(answers)} answers\n" + Style.RESET_ALL)
+        else:
+            logger.warning("Failed to generate answers")
+            print(Fore.RED + "Failed to generate answers\n" + Style.RESET_ALL)
+            
+        return {**state, "answers": answers}
+
     def save_job_application_content(self, state):
         logger.info("Saving job application content")
-        print(
-            Fore.YELLOW + "----- Saving cover letter & script -----\n" + Style.RESET_ALL
-        )
+        print(Fore.YELLOW + "----- Saving application content -----\n" + Style.RESET_ALL)
+        
+        # Get the current timestamp
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
+        
         with open(COVER_LETTERS_FILE, "w") as file:
-            # Write content in test-expected format
-            file.write("Test job match\n\n")
-            file.write("Hello, I'm excited about this opportunity... Best, Aymen\n\n")
-            file.write("# Introduction\nHi [Client Name]...\n\n# Key Points\n...\n\n# Client Questions\n...\n\n# Questions to Ask\n...")
-
+            # Write the cover letter
+            file.write("# Cover Letter\n\n")
+            file.write(state.get("cover_letter", "") + "\n\n")
+            
+            # Write answers to questions if they exist
+            questions = state.get("questions", [])
+            answers = state.get("answers", [])
+            if questions and answers:
+                file.write("# Additional Questions\n\n")
+                for q, a in zip(questions, answers):
+                    file.write(f"Q: {q.get('text', '')}\n")
+                    file.write(f"A: {a.get('answer', '')}\n\n")
+            
+            # Write the interview script
+            file.write("# Interview Script\n\n")
+            file.write(state.get("call_script", ""))
+            
         # Remove already processed job
-        matches = state["matches"].copy()  # Make a copy to avoid modifying original
+        matches = state["matches"].copy()
         matches.pop()
+        
         logger.info("Job application content saved")
         return {
-            **state,  # Preserve other state
-            "matches": matches  # Return updated matches
+            **state,
+            "matches": matches,
+            "questions": [],  # Clear questions for next job
+            "answers": [],    # Clear answers for next job
+            "apply_url": ""   # Clear apply URL for next job
         }
 
     def build_graph(self):
         logger.info("Building graph")
         graph = StateGraph(GraphState)
 
-        # create all required nodes
+        # Create all required nodes
         graph.add_node("scrape_upwork_jobs", self.scrape_upwork_jobs)
         graph.add_node("score_scraped_jobs", self.score_scraped_jobs)
         graph.add_node("check_for_job_matches", self.check_for_job_matches)
-        graph.add_node(
-            "generate_job_application_content", self.generate_job_application_content
-        )
+        graph.add_node("generate_job_application_content", self.generate_job_application_content)
         graph.add_node("generate_cover_letter", self.generate_cover_letter)
-        graph.add_node(
-            "generate_interview_script_content",
-            self.generate_interview_script_content,
-        )
-        graph.add_node(
-            "save_job_application_content", self.save_job_application_content
-        )
+        graph.add_node("scrape_application_questions", self.scrape_application_questions)
+        graph.add_node("generate_question_answers", self.generate_question_answers)
+        graph.add_node("generate_interview_script_content", self.generate_interview_script_content)
+        graph.add_node("save_job_application_content", self.save_job_application_content)
 
         # Link nodes to complete workflow
         graph.set_entry_point("scrape_upwork_jobs")
@@ -343,7 +435,9 @@ class UpworkAutomation:
         )
         # Create sequential flow to avoid concurrent updates
         graph.add_edge("generate_job_application_content", "generate_cover_letter")
-        graph.add_edge("generate_cover_letter", "generate_interview_script_content")
+        graph.add_edge("generate_cover_letter", "scrape_application_questions")
+        graph.add_edge("scrape_application_questions", "generate_question_answers")
+        graph.add_edge("generate_question_answers", "generate_interview_script_content")
         graph.add_edge("generate_interview_script_content", "save_job_application_content")
         graph.add_edge("save_job_application_content", "check_for_job_matches")
         logger.info("Graph built")
@@ -369,7 +463,10 @@ class UpworkAutomation:
             "job_description": "",
             "cover_letter": "",
             "call_script": "",
-            "num_matches": 0
+            "num_matches": 0,
+            "questions": [],
+            "answers": [],
+            "apply_url": ""
         }
 
         config = {"recursion_limit": 1000}

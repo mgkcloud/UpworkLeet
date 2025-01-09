@@ -124,8 +124,24 @@ Return a JSON object with this structure:
   "answers": [
     {{
       "question": "original question text",
-      "answer": "your answer here",
-      "type": "question type from input"
+      "answer": "your detailed answer here",
+      "type": "text" or "multiple_choice" or "yes_no"
+    }}
+  ]
+}}
+
+Example response:
+{{
+  "answers": [
+    {{
+      "question": "What is your experience with AI development?",
+      "answer": "I have 5+ years of experience developing AI solutions...",
+      "type": "text"
+    }},
+    {{
+      "question": "Are you available to start immediately?",
+      "answer": "Yes, I can start right away. I currently have...",
+      "type": "yes_no"
     }}
   ]
 }}

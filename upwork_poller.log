@@ -2514,3 +2514,271 @@
 {{"timestamp": "2025-01-09 15:02:03.806", "level": "DEBUG", "logger": "upwork_poller", "message": "Using webhook URL from environment: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
 {{"timestamp": "2025-01-09 15:02:03.808", "level": "INFO", "logger": "upwork_poller", "message": "Starting Upwork poller for query: AI agent Developer"}}
 {{"timestamp": "2025-01-09 15:02:03.808", "level": "DEBUG", "logger": "upwork_poller", "message": "Polling for new jobs..."}}
+{{"timestamp": "2025-01-09 15:03:41.744", "level": "DEBUG", "logger": "upwork_poller", "message": "Scored jobs DataFrame: ['description', 'duration', 'experience_level', 'job_type', 'title', 'client_infomation', 'rate', 'url', 'apply_url', 'upwork_id', 'job_id', 'score']"}}
+{{"timestamp": "2025-01-09 15:03:41.745", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process new jobs..."}}
+{{"timestamp": "2025-01-09 15:03:41.746", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Agent Development with LLMs"}}
+{{"timestamp": "2025-01-09 15:03:41.746", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Founding Engineer for Gamified EdTech Platform"}}
+{{"timestamp": "2025-01-09 15:03:41.746", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Convert PDF printouts to searchable text and add to OneNote"}}
+{{"timestamp": "2025-01-09 15:03:41.747", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Instantly.ai sales campaign set-up and management"}}
+{{"timestamp": "2025-01-09 15:03:41.747", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Real Estate Cash in Cash determination AI"}}
+{{"timestamp": "2025-01-09 15:03:41.747", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Chat Bot Development in Python"}}
+{{"timestamp": "2025-01-09 15:03:41.748", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Need help to identify WooComerce subscription users on my Replit MERN web app"}}
+{{"timestamp": "2025-01-09 15:03:41.748", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: VAPI + N8N (or make)"}}
+{{"timestamp": "2025-01-09 15:03:41.748", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Expert AI Agent Developer for Receipt Automation in Fintech Startup"}}
+{{"timestamp": "2025-01-09 15:03:41.748", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Chatbot Development for Facebook Marketplace in English and Fr…"}}
+{{"timestamp": "2025-01-09 15:03:41.748", "level": "DEBUG", "logger": "upwork_poller", "message": "Getting unprocessed jobs..."}}
+{{"timestamp": "2025-01-09 15:03:41.749", "level": "DEBUG", "logger": "upwork_poller", "message": "Found 6 unprocessed jobs"}}
+{{"timestamp": "2025-01-09 15:03:41.749", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:03:41.749", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:03:41.749", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'I am seeking a developer or automation specialist to build a system that:1. Parses incoming property leads (via email and/or SMS) to extract relevant\ninformation (address, price, uni..."}}
+{{"timestamp": "2025-01-09 15:03:41.749", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877148463587724222 (score: 8.0)"}}
+{{"timestamp": "2025-01-09 15:03:41.749", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:04:13.235", "level": "DEBUG", "logger": "upwork_poller", "message": "Sending webhook to URL: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:04:14.004", "level": "DEBUG", "logger": "upwork_poller", "message": "Webhook sent for job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:04:14.007", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:04:14.007", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:04:14.008", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877146718346218430"}}
+{{"timestamp": "2025-01-09 15:04:14.008", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877146718346218430"}}
+{{"timestamp": "2025-01-09 15:04:14.009", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'We are looking for an experienced Python developer to create an intelligent\nchat bot powered by AI technologies. The ideal candidate will must have\nexperience in developing agentic ..."}}
+{{"timestamp": "2025-01-09 15:04:14.009", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877146718346218430 (score: 9.0)"}}
+{{"timestamp": "2025-01-09 15:04:14.009", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877146718346218430"}}
+{{"timestamp": "2025-01-09 15:04:43.371", "level": "DEBUG", "logger": "upwork_poller", "message": "Sending webhook to URL: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:04:44.096", "level": "DEBUG", "logger": "upwork_poller", "message": "Webhook sent for job 021877146718346218430"}}
+{{"timestamp": "2025-01-09 15:04:44.099", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877146718346218430"}}
+{{"timestamp": "2025-01-09 15:04:44.100", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877146718346218430"}}
+{{"timestamp": "2025-01-09 15:04:44.101", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877139327902878654"}}
+{{"timestamp": "2025-01-09 15:04:44.101", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877139327902878654"}}
+{{"timestamp": "2025-01-09 15:04:44.101", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': "I used Replit, mainly its AI agent, to build and deploy a MERN web app via\nReplit. I then created a marketing site for it using WordPress and managed\nsubscriptions with WooCommerce...."}}
+{{"timestamp": "2025-01-09 15:04:44.102", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877139327902878654"}}
+{{"timestamp": "2025-01-09 15:04:44.102", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877139327902878654"}}
+{{"timestamp": "2025-01-09 15:04:44.103", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:04:44.103", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:04:44.103", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': "Looking for experienced VAPI.ai developers who have worked with clients\nalready to build ai voice agents.  \n  \nMUST know how to make tools using Make or N8N (you will need to pick ..."}}
+{{"timestamp": "2025-01-09 15:04:44.103", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877136828580039614 (score: 8.0)"}}
+{{"timestamp": "2025-01-09 15:04:44.103", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:04:49.581", "level": "INFO", "logger": "upwork_poller", "message": "Stopping poller..."}}
+{{"timestamp": "2025-01-09 15:14:25.127", "level": "DEBUG", "logger": "upwork_poller", "message": "Loading environment from: /Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/.env"}}
+{{"timestamp": "2025-01-09 15:14:25.128", "level": "DEBUG", "logger": "upwork_poller", "message": "Environment variables:"}}
+{{"timestamp": "2025-01-09 15:14:25.128", "level": "DEBUG", "logger": "upwork_poller", "message": "WEBHOOK_URL=https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:14:25.128", "level": "DEBUG", "logger": "upwork_poller", "message": "POLLING_INTERVAL=60"}}
+{{"timestamp": "2025-01-09 15:14:25.128", "level": "DEBUG", "logger": "upwork_poller", "message": "HIGH_VALUE_THRESHOLD=7"}}
+{{"timestamp": "2025-01-09 15:14:25.134", "level": "DEBUG", "logger": "upwork_poller", "message": "Using webhook URL from environment: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:14:25.135", "level": "INFO", "logger": "upwork_poller", "message": "Starting Upwork poller for query: AI agent Developer"}}
+{{"timestamp": "2025-01-09 15:14:25.135", "level": "DEBUG", "logger": "upwork_poller", "message": "Polling for new jobs..."}}
+{{"timestamp": "2025-01-09 15:16:02.297", "level": "DEBUG", "logger": "upwork_poller", "message": "Scored jobs DataFrame: ['description', 'duration', 'experience_level', 'job_type', 'title', 'client_infomation', 'rate', 'url', 'apply_url', 'upwork_id', 'job_id', 'score']"}}
+{{"timestamp": "2025-01-09 15:16:02.298", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process new jobs..."}}
+{{"timestamp": "2025-01-09 15:16:02.300", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Agent Development with LLMs"}}
+{{"timestamp": "2025-01-09 15:16:02.302", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Founding Engineer for Gamified EdTech Platform"}}
+{{"timestamp": "2025-01-09 15:16:02.302", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Convert PDF printouts to searchable text and add to OneNote"}}
+{{"timestamp": "2025-01-09 15:16:02.303", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Instantly.ai sales campaign set-up and management"}}
+{{"timestamp": "2025-01-09 15:16:02.303", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Real Estate Cash in Cash determination AI"}}
+{{"timestamp": "2025-01-09 15:16:02.303", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Chat Bot Development in Python"}}
+{{"timestamp": "2025-01-09 15:16:02.303", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Need help to identify WooComerce subscription users on my Replit MERN web app"}}
+{{"timestamp": "2025-01-09 15:16:02.303", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: VAPI + N8N (or make)"}}
+{{"timestamp": "2025-01-09 15:16:02.304", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: Expert AI Agent Developer for Receipt Automation in Fintech Startup"}}
+{{"timestamp": "2025-01-09 15:16:02.304", "level": "DEBUG", "logger": "upwork_poller", "message": "Job already seen, skipping: AI Chatbot Development for Facebook Marketplace in English and Fr…"}}
+{{"timestamp": "2025-01-09 15:16:02.304", "level": "DEBUG", "logger": "upwork_poller", "message": "Getting unprocessed jobs..."}}
+{{"timestamp": "2025-01-09 15:16:02.304", "level": "DEBUG", "logger": "upwork_poller", "message": "Found 3 unprocessed jobs"}}
+{{"timestamp": "2025-01-09 15:16:02.305", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:16:02.305", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:16:02.305", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': "Looking for experienced VAPI.ai developers who have worked with clients\nalready to build ai voice agents.  \n  \nMUST know how to make tools using Make or N8N (you will need to pick ..."}}
+{{"timestamp": "2025-01-09 15:16:02.305", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877136828580039614 (score: 8.0)"}}
+{{"timestamp": "2025-01-09 15:16:02.305", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:17:07.620", "level": "DEBUG", "logger": "upwork_poller", "message": "Sending webhook to URL: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:17:08.432", "level": "DEBUG", "logger": "upwork_poller", "message": "Webhook sent for job 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:17:08.434", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:17:08.434", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:17:08.435", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877134718664772542"}}
+{{"timestamp": "2025-01-09 15:17:08.435", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877134718664772542"}}
+{{"timestamp": "2025-01-09 15:17:08.435", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'We are a fintech startup seeking an expert in AI agents to help automate receipt processing and integrate with QuickBooks. The ideal candidate will have a strong background in AI tech..."}}
+{{"timestamp": "2025-01-09 15:17:08.435", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877134718664772542 (score: 9.0)"}}
+{{"timestamp": "2025-01-09 15:17:08.435", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877134718664772542"}}
+{{"timestamp": "2025-01-09 15:18:11.857", "level": "DEBUG", "logger": "upwork_poller", "message": "Sending webhook to URL: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:18:12.561", "level": "DEBUG", "logger": "upwork_poller", "message": "Webhook sent for job 021877134718664772542"}}
+{{"timestamp": "2025-01-09 15:18:12.564", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877134718664772542"}}
+{{"timestamp": "2025-01-09 15:18:12.564", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877134718664772542"}}
+{{"timestamp": "2025-01-09 15:18:12.565", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877122927637165699"}}
+{{"timestamp": "2025-01-09 15:18:12.565", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877122927637165699"}}
+{{"timestamp": "2025-01-09 15:18:12.565", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'We are seeking an experienced developer to create a bilingual chatbot for Facebook Marketplace that utilizes AI for automatic responses…', 'duration': '1 to 3 months', 'experience_lev..."}}
+{{"timestamp": "2025-01-09 15:18:12.565", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877122927637165699 (score: 7.0)"}}
+{{"timestamp": "2025-01-09 15:18:12.565", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877122927637165699"}}
+{{"timestamp": "2025-01-09 15:19:05.385", "level": "INFO", "logger": "upwork_poller", "message": "Stopping poller..."}}
+{{"timestamp": "2025-01-09 15:21:19.343", "level": "DEBUG", "logger": "upwork_poller", "message": "Loading environment from: /Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/.env"}}
+{{"timestamp": "2025-01-09 15:21:19.344", "level": "DEBUG", "logger": "upwork_poller", "message": "Environment variables:"}}
+{{"timestamp": "2025-01-09 15:21:19.344", "level": "DEBUG", "logger": "upwork_poller", "message": "WEBHOOK_URL=https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:21:19.344", "level": "DEBUG", "logger": "upwork_poller", "message": "POLLING_INTERVAL=60"}}
+{{"timestamp": "2025-01-09 15:21:19.344", "level": "DEBUG", "logger": "upwork_poller", "message": "HIGH_VALUE_THRESHOLD=7"}}
+{{"timestamp": "2025-01-09 15:21:19.348", "level": "DEBUG", "logger": "upwork_poller", "message": "Using webhook URL from environment: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:21:19.349", "level": "INFO", "logger": "upwork_poller", "message": "Starting Upwork poller for query: AI agent Developer"}}
+{{"timestamp": "2025-01-09 15:21:19.350", "level": "DEBUG", "logger": "upwork_poller", "message": "Polling for new jobs..."}}
+{{"timestamp": "2025-01-09 15:22:56.815", "level": "DEBUG", "logger": "upwork_poller", "message": "Scored jobs DataFrame: ['description', 'duration', 'experience_level', 'job_type', 'title', 'client_infomation', 'rate', 'url', 'apply_url', 'upwork_id', 'job_id', 'score']"}}
+{{"timestamp": "2025-01-09 15:22:56.817", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process new jobs..."}}
+{{"timestamp": "2025-01-09 15:22:56.821", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: AI Agent Development with LLMs"}}
+{{"timestamp": "2025-01-09 15:22:56.823", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:22:56.824", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Founding Engineer for Gamified EdTech Platform"}}
+{{"timestamp": "2025-01-09 15:22:56.825", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:22:56.825", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Convert PDF printouts to searchable text and add to OneNote"}}
+{{"timestamp": "2025-01-09 15:22:56.826", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:22:56.826", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Instantly.ai sales campaign set-up and management"}}
+{{"timestamp": "2025-01-09 15:22:56.828", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:22:56.828", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Real Estate Cash in Cash determination AI"}}
+{{"timestamp": "2025-01-09 15:22:56.829", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:22:56.830", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: AI Chat Bot Development in Python"}}
+{{"timestamp": "2025-01-09 15:22:56.831", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877146718346218430"}}
+{{"timestamp": "2025-01-09 15:22:56.832", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Need help to identify WooComerce subscription users on my Replit MERN web app"}}
+{{"timestamp": "2025-01-09 15:22:56.833", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877139327902878654"}}
+{{"timestamp": "2025-01-09 15:22:56.834", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: VAPI + N8N (or make)"}}
+{{"timestamp": "2025-01-09 15:22:56.834", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:22:56.835", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Expert AI Agent Developer for Receipt Automation in Fintech Startup"}}
+{{"timestamp": "2025-01-09 15:22:56.836", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877134718664772542"}}
+{{"timestamp": "2025-01-09 15:22:56.837", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: AI Chatbot Development for Facebook Marketplace in English and Fr…"}}
+{{"timestamp": "2025-01-09 15:22:56.837", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877122927637165699"}}
+{{"timestamp": "2025-01-09 15:22:56.837", "level": "DEBUG", "logger": "upwork_poller", "message": "Getting unprocessed jobs..."}}
+{{"timestamp": "2025-01-09 15:22:56.838", "level": "DEBUG", "logger": "upwork_poller", "message": "Found 10 unprocessed jobs"}}
+{{"timestamp": "2025-01-09 15:22:56.838", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:22:56.838", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:22:56.838", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'We are seeking skilled engineers to join our team in developing a cutting-edge\nservice utilizing AI Agents powered by Large Language Models (LLMs). This\nproject involves designing, ..."}}
+{{"timestamp": "2025-01-09 15:22:56.838", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877168792842341310 (score: 9.0)"}}
+{{"timestamp": "2025-01-09 15:22:56.838", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:23:27.832", "level": "DEBUG", "logger": "upwork_poller", "message": "Sending webhook to URL: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:23:28.582", "level": "DEBUG", "logger": "upwork_poller", "message": "Webhook sent for job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:23:28.585", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:23:28.586", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:23:28.586", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:23:28.586", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:23:28.586", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'StudyTaco is a venture-backed EdTech startup revolutionising learning by blending behavioural science, neuroscience, and gamification. Our mission is to transform how students approac..."}}
+{{"timestamp": "2025-01-09 15:23:28.586", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877164623373019988 (score: 7.0)"}}
+{{"timestamp": "2025-01-09 15:23:28.587", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:23:31.102", "level": "INFO", "logger": "upwork_poller", "message": "Stopping poller..."}}
+{{"timestamp": "2025-01-09 15:25:24.161", "level": "DEBUG", "logger": "upwork_poller", "message": "Loading environment from: /Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/.env"}}
+{{"timestamp": "2025-01-09 15:25:24.162", "level": "DEBUG", "logger": "upwork_poller", "message": "Environment variables:"}}
+{{"timestamp": "2025-01-09 15:25:24.162", "level": "DEBUG", "logger": "upwork_poller", "message": "WEBHOOK_URL=https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:25:24.162", "level": "DEBUG", "logger": "upwork_poller", "message": "POLLING_INTERVAL=60"}}
+{{"timestamp": "2025-01-09 15:25:24.162", "level": "DEBUG", "logger": "upwork_poller", "message": "HIGH_VALUE_THRESHOLD=7"}}
+{{"timestamp": "2025-01-09 15:25:24.165", "level": "DEBUG", "logger": "upwork_poller", "message": "Using webhook URL from environment: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:25:24.166", "level": "INFO", "logger": "upwork_poller", "message": "Starting Upwork poller for query: AI agent Developer"}}
+{{"timestamp": "2025-01-09 15:25:24.166", "level": "DEBUG", "logger": "upwork_poller", "message": "Polling for new jobs..."}}
+{{"timestamp": "2025-01-09 15:27:01.166", "level": "DEBUG", "logger": "upwork_poller", "message": "Scored jobs DataFrame: ['description', 'duration', 'experience_level', 'job_type', 'title', 'client_infomation', 'rate', 'url', 'apply_url', 'upwork_id', 'job_id', 'score']"}}
+{{"timestamp": "2025-01-09 15:27:01.167", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process new jobs..."}}
+{{"timestamp": "2025-01-09 15:27:01.168", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: AI Agent Development with LLMs"}}
+{{"timestamp": "2025-01-09 15:27:01.169", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:27:01.170", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Founding Engineer for Gamified EdTech Platform"}}
+{{"timestamp": "2025-01-09 15:27:01.171", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:27:01.171", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Convert PDF printouts to searchable text and add to OneNote"}}
+{{"timestamp": "2025-01-09 15:27:01.172", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:27:01.172", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Instantly.ai sales campaign set-up and management"}}
+{{"timestamp": "2025-01-09 15:27:01.173", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:27:01.174", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Real Estate Cash in Cash determination AI"}}
+{{"timestamp": "2025-01-09 15:27:01.174", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:27:01.174", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: AI Chat Bot Development in Python"}}
+{{"timestamp": "2025-01-09 15:27:01.175", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877146718346218430"}}
+{{"timestamp": "2025-01-09 15:27:01.175", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Need help to identify WooComerce subscription users on my Replit MERN web app"}}
+{{"timestamp": "2025-01-09 15:27:01.176", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877139327902878654"}}
+{{"timestamp": "2025-01-09 15:27:01.176", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: VAPI + N8N (or make)"}}
+{{"timestamp": "2025-01-09 15:27:01.177", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:27:01.177", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Expert AI Agent Developer for Receipt Automation in Fintech Startup"}}
+{{"timestamp": "2025-01-09 15:27:01.178", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877134718664772542"}}
+{{"timestamp": "2025-01-09 15:27:01.178", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: AI Chatbot Development for Facebook Marketplace in English and Fr…"}}
+{{"timestamp": "2025-01-09 15:27:01.179", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877122927637165699"}}
+{{"timestamp": "2025-01-09 15:27:01.179", "level": "DEBUG", "logger": "upwork_poller", "message": "Getting unprocessed jobs..."}}
+{{"timestamp": "2025-01-09 15:27:01.179", "level": "DEBUG", "logger": "upwork_poller", "message": "Found 10 unprocessed jobs"}}
+{{"timestamp": "2025-01-09 15:27:01.179", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:27:01.179", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:27:01.180", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'We are seeking skilled engineers to join our team in developing a cutting-edge\nservice utilizing AI Agents powered by Large Language Models (LLMs). This\nproject involves designing, ..."}}
+{{"timestamp": "2025-01-09 15:27:01.180", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877168792842341310 (score: 9.0)"}}
+{{"timestamp": "2025-01-09 15:27:01.180", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:27:37.670", "level": "DEBUG", "logger": "upwork_poller", "message": "Sending webhook to URL: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:27:38.428", "level": "DEBUG", "logger": "upwork_poller", "message": "Webhook sent for job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:27:38.431", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:27:38.431", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:27:38.432", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:27:38.432", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:27:38.432", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'StudyTaco is a venture-backed EdTech startup revolutionising learning by\nblending behavioural science, neuroscience, and gamification. Our mission is\nto transform how students appro..."}}
+{{"timestamp": "2025-01-09 15:27:38.432", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877164623373019988 (score: 7.0)"}}
+{{"timestamp": "2025-01-09 15:27:38.432", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:28:14.226", "level": "DEBUG", "logger": "upwork_poller", "message": "Sending webhook to URL: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:28:15.072", "level": "DEBUG", "logger": "upwork_poller", "message": "Webhook sent for job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:28:15.074", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:28:15.074", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:28:15.075", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:28:15.075", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:28:15.076", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'I have set up a OneNote document for my project. I’ve started collecting background information from the web or documents people send m…', 'duration': 'null', 'experience_level': 'Int..."}}
+{{"timestamp": "2025-01-09 15:28:15.076", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:28:15.076", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:28:15.077", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:28:15.078", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:28:15.078", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'Hi - I am looking to hire someone to help me troubleshoot a sales campaign that I set up in instantly.ai. I set up a gmail account to…', 'duration': 'Less than 1 month', 'experience_l..."}}
+{{"timestamp": "2025-01-09 15:28:15.078", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:28:15.078", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:28:15.079", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:28:15.079", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:28:15.080", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': '1. Overview I am seeking a developer or automation specialist to build a system that: 1. Parses incoming property leads (via email and/or SMS) to extract relevant information (address..."}}
+{{"timestamp": "2025-01-09 15:28:15.080", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877148463587724222 (score: 8.0)"}}
+{{"timestamp": "2025-01-09 15:28:15.080", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:28:45.233", "level": "INFO", "logger": "upwork_poller", "message": "Stopping poller..."}}
+{{"timestamp": "2025-01-09 15:30:59.559", "level": "DEBUG", "logger": "upwork_poller", "message": "Loading environment from: /Users/wlvar/Documents/Code/upwork-auto-jobs-applier-using-AI/.env"}}
+{{"timestamp": "2025-01-09 15:30:59.560", "level": "DEBUG", "logger": "upwork_poller", "message": "Environment variables:"}}
+{{"timestamp": "2025-01-09 15:30:59.560", "level": "DEBUG", "logger": "upwork_poller", "message": "WEBHOOK_URL=https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:30:59.560", "level": "DEBUG", "logger": "upwork_poller", "message": "POLLING_INTERVAL=60"}}
+{{"timestamp": "2025-01-09 15:30:59.560", "level": "DEBUG", "logger": "upwork_poller", "message": "HIGH_VALUE_THRESHOLD=7"}}
+{{"timestamp": "2025-01-09 15:30:59.564", "level": "DEBUG", "logger": "upwork_poller", "message": "Using webhook URL from environment: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:30:59.565", "level": "INFO", "logger": "upwork_poller", "message": "Starting Upwork poller for query: AI agent Developer"}}
+{{"timestamp": "2025-01-09 15:30:59.566", "level": "DEBUG", "logger": "upwork_poller", "message": "Polling for new jobs..."}}
+{{"timestamp": "2025-01-09 15:32:37.216", "level": "DEBUG", "logger": "upwork_poller", "message": "Scored jobs DataFrame: ['description', 'duration', 'experience_level', 'job_type', 'title', 'client_infomation', 'rate', 'url', 'apply_url', 'upwork_id', 'job_id', 'score']"}}
+{{"timestamp": "2025-01-09 15:32:37.217", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process new jobs..."}}
+{{"timestamp": "2025-01-09 15:32:37.219", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: AI Agent Development with LLMs"}}
+{{"timestamp": "2025-01-09 15:32:37.221", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:32:37.222", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Founding Engineer for Gamified EdTech Platform"}}
+{{"timestamp": "2025-01-09 15:32:37.223", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:32:37.224", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Convert PDF printouts to searchable text and add to OneNote"}}
+{{"timestamp": "2025-01-09 15:32:37.225", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:32:37.226", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Instantly.ai sales campaign set-up and management"}}
+{{"timestamp": "2025-01-09 15:32:37.227", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:32:37.228", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Real Estate Cash in Cash determination AI"}}
+{{"timestamp": "2025-01-09 15:32:37.228", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:32:37.228", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: AI Chat Bot Development in Python"}}
+{{"timestamp": "2025-01-09 15:32:37.229", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877146718346218430"}}
+{{"timestamp": "2025-01-09 15:32:37.229", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Need help to identify WooComerce subscription users on my Replit MERN web app"}}
+{{"timestamp": "2025-01-09 15:32:37.229", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877139327902878654"}}
+{{"timestamp": "2025-01-09 15:32:37.229", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: VAPI + N8N (or make)"}}
+{{"timestamp": "2025-01-09 15:32:37.231", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877136828580039614"}}
+{{"timestamp": "2025-01-09 15:32:37.232", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: Expert AI Agent Developer for Receipt Automation in Fintech Startup"}}
+{{"timestamp": "2025-01-09 15:32:37.236", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877134718664772542"}}
+{{"timestamp": "2025-01-09 15:32:37.236", "level": "DEBUG", "logger": "upwork_poller", "message": "Marking job as seen: AI Chatbot Development for Facebook Marketplace in English and Fr…"}}
+{{"timestamp": "2025-01-09 15:32:37.237", "level": "DEBUG", "logger": "upwork_poller", "message": "Assigned job ID: 021877122927637165699"}}
+{{"timestamp": "2025-01-09 15:32:37.237", "level": "DEBUG", "logger": "upwork_poller", "message": "Getting unprocessed jobs..."}}
+{{"timestamp": "2025-01-09 15:32:37.237", "level": "DEBUG", "logger": "upwork_poller", "message": "Found 10 unprocessed jobs"}}
+{{"timestamp": "2025-01-09 15:32:37.237", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:32:37.237", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:32:37.237", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'We are seeking skilled engineers to join our team in developing a cutting-edge\nservice utilizing AI Agents powered by Large Language Models (LLMs). This\nproject involves designing, ..."}}
+{{"timestamp": "2025-01-09 15:32:37.237", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877168792842341310 (score: 9.0)"}}
+{{"timestamp": "2025-01-09 15:32:37.237", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:33:14.581", "level": "DEBUG", "logger": "upwork_poller", "message": "Sending webhook to URL: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:33:15.362", "level": "DEBUG", "logger": "upwork_poller", "message": "Webhook sent for job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:33:15.367", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:33:15.367", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877168792842341310"}}
+{{"timestamp": "2025-01-09 15:33:15.368", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:33:15.368", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:33:15.368", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'StudyTaco is a venture-backed EdTech startup revolutionising learning by\nblending behavioural science, neuroscience, and gamification. Our mission is\nto transform how students appro..."}}
+{{"timestamp": "2025-01-09 15:33:15.368", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877164623373019988 (score: 7.0)"}}
+{{"timestamp": "2025-01-09 15:33:15.368", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:33:48.625", "level": "DEBUG", "logger": "upwork_poller", "message": "Sending webhook to URL: https://n8n.fy.studio/webhook/a9a844f3-d651-4413-8bf3-820c6877b153"}}
+{{"timestamp": "2025-01-09 15:33:49.336", "level": "DEBUG", "logger": "upwork_poller", "message": "Webhook sent for job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:33:49.339", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:33:49.339", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877164623373019988"}}
+{{"timestamp": "2025-01-09 15:33:49.340", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:33:49.340", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:33:49.340", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'I have set up a OneNote document for my project. I’ve started collecting background information from the web or documents people send m…', 'duration': 'string', 'experience_level': 'I..."}}
+{{"timestamp": "2025-01-09 15:33:49.341", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:33:49.341", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877155818941314691"}}
+{{"timestamp": "2025-01-09 15:33:49.342", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:33:49.342", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:33:49.342", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'Hi - I am looking to hire someone to help me troubleshoot a sales campaign\nthat I set up in instantly.ai. I set up a gmail account to…', 'duration': 'Less than 1 month', 'experience_..."}}
+{{"timestamp": "2025-01-09 15:33:49.343", "level": "DEBUG", "logger": "upwork_poller", "message": "Processed job 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:33:49.343", "level": "DEBUG", "logger": "upwork_poller", "message": "Successfully processed job 021877150818072655491"}}
+{{"timestamp": "2025-01-09 15:33:49.344", "level": "DEBUG", "logger": "upwork_poller", "message": "Processing unprocessed job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:33:49.344", "level": "DEBUG", "logger": "upwork_poller", "message": "Starting to process job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:33:49.344", "level": "DEBUG", "logger": "upwork_poller", "message": "Job data structure: {'description': 'I am seeking a developer or automation specialist to build a system that:  1. Parses incoming property leads (via email and/or SMS) to extract relevant information (address, price, un..."}}
+{{"timestamp": "2025-01-09 15:33:49.344", "level": "INFO", "logger": "upwork_poller", "message": "High-value job found: 021877148463587724222 (score: 8.0)"}}
+{{"timestamp": "2025-01-09 15:33:49.344", "level": "DEBUG", "logger": "upwork_poller", "message": "Generating cover letter for job 021877148463587724222"}}
+{{"timestamp": "2025-01-09 15:34:00.238", "level": "INFO", "logger": "upwork_poller", "message": "Stopping poller..."}}

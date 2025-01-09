@@ -7,6 +7,158 @@ from playwright.sync_api import sync_playwright
 import google.generativeai as genai
 import logging
 from typing import List, Optional
+from dataclasses import dataclass
+
+@dataclass
+class TurnstileResult:
+    turnstile_value: Optional[str]
+    elapsed_time_seconds: float
+    status: str
+    reason: Optional[str] = None
+
+class TurnstileSolver:
+    HTML_TEMPLATE = """
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Turnstile Solver</title>
+        <script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+          async=""
+          defer=""
+        ></script>
+      </head>
+      <body>
+        <!-- cf turnstile -->
+      </body>
+    </html>
+    """
+
+    def __init__(self, debug: bool = False):
+        self.debug = debug
+        self.log = logger  # Use existing logger
+        self.browser_args = [
+            "--disable-blink-features=AutomationControlled",
+            "--no-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-background-networking",
+            "--disable-background-timer-throttling",
+            "--disable-backgrounding-occluded-windows",
+            "--disable-renderer-backgrounding",
+            "--window-position=2000,2000",
+        ]
+
+    def _setup_page(self, context, url: str, sitekey: str):
+        """Set up the page with Turnstile widget."""
+        page = context.new_page()
+        url_with_slash = url + "/" if not url.endswith("/") else url
+        
+        if self.debug:
+            self.log.debug(f"Navigating to URL: {url_with_slash}")
+
+        turnstile_div = f'<div class="cf-turnstile" data-sitekey="{sitekey}"></div>'
+        page_data = self.HTML_TEMPLATE.replace("<!-- cf turnstile -->", turnstile_div)
+        
+        page.route(url_with_slash, lambda route: route.fulfill(body=page_data, status=200))
+        page.goto(url_with_slash)
+        
+        if self.debug:
+            self.log.debug("Getting window dimensions.")
+        page.window_width = page.evaluate("window.innerWidth")
+        page.window_height = page.evaluate("window.innerHeight")
+        
+        return page
+
+    def _get_turnstile_response(self, page, max_attempts: int = 10) -> Optional[str]:
+        """Attempt to retrieve Turnstile response."""
+        attempts = 0
+        
+        if self.debug:
+            self.log.debug("Starting Turnstile response retrieval loop.")
+        
+        while attempts < max_attempts:
+            turnstile_check = page.eval_on_selector(
+                "[name=cf-turnstile-response]", 
+                "el => el.value"
+            )
+
+            if turnstile_check == "":
+                if self.debug:
+                    self.log.debug(f"Attempt {attempts + 1}: No Turnstile response yet.")
+                
+                # Calculate click position based on window dimensions
+                x = page.window_width // 2
+                y = page.window_height // 2
+                
+                page.evaluate("document.querySelector('.cf-turnstile').style.width = '70px'")
+                page.mouse.click(x, y)
+                time.sleep(0.5)
+                attempts += 1
+            else:
+                turnstile_element = page.query_selector("[name=cf-turnstile-response]")
+                if turnstile_element:
+                    value = turnstile_element.get_attribute("value")
+                    if self.debug:
+                        self.log.debug(f"Turnstile response received: {value}")
+                    return value
+                break
+        
+        return None
+
+    def solve(self, url: str, sitekey: str, headless: bool = False) -> TurnstileResult:
+        """
+        Solve the Turnstile challenge and return the result.
+        
+        Args:
+            url: The URL where the Turnstile challenge is hosted
+            sitekey: The Turnstile sitekey
+            headless: Whether to run the browser in headless mode
+            
+        Returns:
+            TurnstileResult object containing the solution details
+        """
+        start_time = time.time()
+
+        with sync_playwright() as playwright:
+            browser = playwright.chromium.launch(headless=headless, args=self.browser_args)
+            context = browser.new_context()
+
+            try:
+                page = self._setup_page(context, url, sitekey)
+                turnstile_value = self._get_turnstile_response(page)
+                
+                elapsed_time = round(time.time() - start_time, 3)
+                
+                if not turnstile_value:
+                    result = TurnstileResult(
+                        turnstile_value=None,
+                        elapsed_time_seconds=elapsed_time,
+                        status="failure",
+                        reason="Max attempts reached without token retrieval"
+                    )
+                    self.log.error("Failed to retrieve Turnstile value.")
+                else:
+                    result = TurnstileResult(
+                        turnstile_value=turnstile_value,
+                        elapsed_time_seconds=elapsed_time,
+                        status="success"
+                    )
+                    self.log.info(
+                        f"Successfully solved captcha: {turnstile_value[:45]}..."
+                    )
+
+            finally:
+                context.close()
+                browser.close()
+
+                if self.debug:
+                    self.log.debug(f"Elapsed time: {result.elapsed_time_seconds} seconds")
+                    self.log.debug("Browser closed. Returning result.")
+
+        return result
+
 from .structured_outputs import (
     UpworkJobs,
     JobInformation,
@@ -555,29 +707,200 @@ def generate_cover_letter(job_desc, profile):
         return {"letter": f"Error generating cover letter: {str(e)}"}
 
 
+def check_for_challenge(page, timeout=10):
+    """Check if we're on a Cloudflare challenge page"""
+    logger.info("Checking for Cloudflare challenge...")
+    start_time = time.time()
+    while time.time() - start_time < timeout:
+        try:
+            # Check for challenge title
+            title = page.title()
+            if "Just a moment..." in title:
+                logger.info("Found Cloudflare challenge page")
+                return True
+                
+            # Check for challenge iframe
+            if page.locator('iframe[src*="challenges.cloudflare.com"]').count() > 0:
+                logger.info("Found Cloudflare challenge iframe")
+                return True
+                
+        except Exception as e:
+            logger.error(f"Error checking for challenge: {str(e)}")
+            return False
+            
+        time.sleep(0.5)
+    logger.info("No Cloudflare challenge detected")
+    return False
+
+def solve_challenge(page):
+    """Solve Cloudflare challenge using TurnstileSolver"""
+    try:
+        # Extract sitekey from URL
+        sitekey = None
+        url_params = page.evaluate("""() => {
+            const iframe = document.querySelector('iframe[src*="challenges.cloudflare.com"]');
+            return iframe ? new URL(iframe.src).searchParams.get('sitekey') : null;
+        }""")
+        
+        if not url_params:
+            logger.error("Could not find sitekey")
+            return False
+            
+        sitekey = url_params
+        logger.info(f"Found sitekey: {sitekey}")
+        
+        # Solve challenge
+        solver = TurnstileSolver(debug=True)
+        result = solver.solve(url=page.url, sitekey=sitekey, headless=False)
+        
+        if result.status != "success":
+            logger.error("Failed to solve challenge")
+            return False
+            
+        # Apply solution to original page
+        success = page.evaluate("""
+            token => {
+                const input = document.querySelector('[name="cf-turnstile-response"]');
+                if (input) {
+                    input.value = token;
+                    const form = input.closest('form');
+                    if (form) {
+                        form.submit();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        """, result.turnstile_value)
+        
+        if not success:
+            logger.error("Failed to apply solution")
+            return False
+            
+        # Wait for navigation
+        logger.info("Waiting for page to load after solution...")
+        time.sleep(3)  # Give time for form submission
+        
+        # Check if we're past the challenge
+        if "Just a moment..." not in page.title():
+            logger.info("Successfully bypassed Cloudflare challenge")
+            return True
+            
+        logger.warning("Still on challenge page after solution")
+        return False
+        
+    except Exception as e:
+        logger.error(f"Error solving challenge: {str(e)}")
+        return False
+
 def scrape_job_questions(apply_url: str) -> dict:
     """Scrape additional questions from the job application page"""
     logger.info(f"Scraping questions from: {apply_url}")
     try:
         # Use special handling for apply pages
         with sync_playwright() as playwright:
-            browser = playwright.firefox.launch(headless=True)
+            # Launch browser with anti-detection arguments
+            browser = playwright.chromium.launch(
+                headless=False,  # Show browser for better challenge handling
+                args=[
+                    "--disable-blink-features=AutomationControlled",
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-background-networking",
+                    "--disable-background-timer-throttling",
+                    "--disable-backgrounding-occluded-windows",
+                    "--disable-renderer-backgrounding",
+                    "--window-position=2000,2000",
+                ]
+            )
+            
+            # Set up context with realistic user agent
             context = browser.new_context(
                 user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
             )
 
-            # Load and add authentication cookies
+            # Load and verify authentication cookies
             cookies = load_cookies()
-            if cookies:
-                context.add_cookies(cookies)
-            else:
-                logger.warning("No authentication cookies found")
-
+            if not cookies:
+                logger.error("No authentication cookies found")
+                return {"questions": []}
+                
+            # Verify required cookies are present
+            required_cookies = [
+                'master_access_token',
+                'oauth2_global_js_token',
+                'XSRF-TOKEN',
+                'console_user',
+                'user_uid',
+                'recognized'
+            ]
+            cookie_names = {cookie['name'] for cookie in cookies}
+            missing_cookies = set(required_cookies) - cookie_names
+            if missing_cookies:
+                logger.error(f"Missing required cookies: {missing_cookies}")
+                return {"questions": []}
+                
+            context.add_cookies(cookies)
             page = context.new_page()
-            page.goto(apply_url, wait_until="networkidle")
             
-            # Wait for application form to load
-            page.wait_for_selector("form", timeout=10000)
+            # Navigate to apply page with proper error handling
+            try:
+                response = page.goto(apply_url, wait_until="networkidle", timeout=30000)
+                if response.status == 401 or response.status == 403:
+                    logger.error(f"Authentication failed for URL: {apply_url}")
+                    return {"questions": []}
+            except Exception as e:
+                logger.error(f"Error navigating to {apply_url}: {str(e)}")
+                return {"questions": []}
+                
+            # Check for and handle Cloudflare challenge
+            if check_for_challenge(page):
+                logger.info("Detected Cloudflare challenge...")
+                if not solve_challenge(page):
+                    logger.error("Failed to bypass Cloudflare challenge")
+                    return {"questions": []}
+            
+            # Wait for page to fully load and stabilize
+            page.wait_for_load_state("networkidle", timeout=30000)
+            page.wait_for_load_state("domcontentloaded", timeout=30000)
+            
+            # Wait for either questions area or cover letter section
+            try:
+                # First wait for the cover letter section which is always present
+                page.wait_for_selector(".air3-card-outline", timeout=15000)
+                
+                # Then check for questions area
+                questions_area = page.locator(".fe-proposal-job-questions")
+                if questions_area.count() > 0:
+                    # Wait for all question elements to be loaded
+                    questions_area.wait_for(timeout=10000)
+                    
+                    # Extract questions directly using Playwright
+                    questions = []
+                    question_elements = questions_area.locator(".form-group")
+                    count = question_elements.count()
+                    
+                    for i in range(count):
+                        element = question_elements.nth(i)
+                        label = element.locator(".label").text_content()
+                        if label:
+                            label = label.strip()
+                            questions.append({
+                                "text": label,
+                                "type": "text"  # Default to text type
+                            })
+                    
+                    logger.info(f"Found {len(questions)} questions using direct extraction")
+                    return {"questions": questions}
+                else:
+                    logger.info("No questions found in apply page (cover letter only)")
+                    return {"questions": []}
+                    
+            except Exception as e:
+                logger.error(f"Error waiting for page elements: {str(e)}")
+                return {"questions": []}
+            
+            # Get full page content as backup
             html_content = page.content()
             logger.debug(f"Retrieved content from {apply_url}")
 
@@ -625,7 +948,7 @@ def scrape_job_questions(apply_url: str) -> dict:
         logger.error(f"Error scraping questions: {truncate_content(str(e))}")
         return {"questions": []}
 
-def generate_question_answers(job_data: dict, questions: List[dict]) -> dict:
+def generate_question_answers(job_description: str, questions: List[dict]) -> dict:
     """Generate answers for job application questions"""
     logger.info("Generating answers for application questions")
     try:
@@ -635,20 +958,56 @@ def generate_question_answers(job_data: dict, questions: List[dict]) -> dict:
         with open("files/background/work_approach.md", "r") as f:
             work_approach = f.read()
             
+        # Format questions for prompt
+        formatted_questions = []
+        for q in questions:
+            question_type = q.get("type", "text")
+            question_data = {
+                "text": q["text"],
+                "type": question_type
+            }
+            if question_type == "multiple_choice" and "options" in q:
+                question_data["options"] = q["options"]
+            formatted_questions.append(question_data)
+            
         prompt = ANSWER_QUESTIONS_PROMPT_TEMPLATE.format(
-            job_description=job_data["description"],
+            job_description=job_description,
             technical_background=technical_background,
             work_approach=work_approach,
-            questions=json.dumps(questions, indent=2)
+            questions=json.dumps(formatted_questions, indent=2)
         )
         
-        completion, _ = call_gemini_api(prompt, Answers)
+        completion, _ = call_gemini_api(prompt, None)  # Don't use schema validation for flexibility
+        
+        # Handle potential markdown code block wrapping
+        if isinstance(completion, str) and "```json" in completion:
+            # Extract JSON from markdown code block
+            json_str = completion.split("```json")[1].split("```")[0].strip()
+            try:
+                completion = json.loads(json_str)
+            except json.JSONDecodeError:
+                logger.error("Failed to parse JSON from markdown response")
+                return {"answers": []}
+                
         if isinstance(completion, dict) and "answers" in completion:
-            logger.debug(f"Generated {len(completion['answers'])} answers")
-            return completion
-        else:
-            logger.error(f"Invalid answer response format: {completion}")
-            return {"answers": []}
+            answers = completion["answers"]
+            # Validate and format each answer
+            formatted_answers = []
+            for answer, question in zip(answers, questions):
+                if isinstance(answer, dict) and "answer" in answer:
+                    formatted_answer = {
+                        "question": question["text"],  # Use original question text
+                        "answer": answer["answer"],
+                        "type": question.get("type", "text")  # Use original question type
+                    }
+                    formatted_answers.append(formatted_answer)
+            
+            if formatted_answers:
+                logger.debug(f"Generated {len(formatted_answers)} answers")
+                return {"answers": formatted_answers}
+            
+        logger.error(f"Invalid answer response format: {completion}")
+        return {"answers": []}
             
     except Exception as e:
         logger.error(f"Error generating answers: {truncate_content(str(e))}")
