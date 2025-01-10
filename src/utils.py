@@ -400,11 +400,15 @@ def scrape_website_to_markdown(url: str) -> str:
     url_hash = hashlib.md5(url.encode()).hexdigest()
     filename = os.path.join(cache_dir, f"{url_hash}.md")
     
-    # Check if the file exists
+    # Check if the file exists and is less than 1 minute old
     if os.path.exists(filename):
-        with open(filename, "r", encoding="utf-8") as file:
-            logger.debug(f"Using cached content: {filename}")
-            return file.read()
+        file_age = time.time() - os.path.getmtime(filename)
+        if file_age < 60:  # 60 seconds = 1 minute
+            with open(filename, "r", encoding="utf-8") as file:
+                logger.debug(f"Using cached content ({int(file_age)}s old): {filename}")
+                return file.read()
+        else:
+            logger.debug(f"Cache expired ({int(file_age)}s old): {filename}")
     
     # If not, scrape the page
     with sync_playwright() as playwright:
