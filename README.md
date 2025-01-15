@@ -74,6 +74,9 @@ Note: Keep your cookies file secure as it contains sensitive authentication info
 python src/continuous_poller.py
 ```
 
+4. Import the UPWORK_JOBS_n8n_IMPORTME.json into a new n8n workflow,
+-  Generate a new webhook
+-  Update the .env with the new webhook address
 
 ### Running with Docker (Untested)
 
