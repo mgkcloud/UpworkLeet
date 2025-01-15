@@ -8,3 +8,5 @@ files/job_tracking/seen_jobs.json
 Turnstile-Solver
 files/job_tracking/seen_jobs.json
 files/job_tracking/processed_jobs.json
+auth/cookies.json
+files/auth/cookies.json

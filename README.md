@@ -25,22 +25,6 @@ An automated system for continuously monitoring Upwork job listings, generating 
 - Webhook endpoint for receiving notifications (optional)
 - Upwork account credentials
 
-### Authentication
-
-The system requires authentication to access Upwork job listings and apply pages. Authentication is handled through browser cookies that are saved from your logged-in Upwork session.
-
-1. Run the cookie saver script:
-```bash
-./scripts/save_upwork_cookies.py
-```
-
-2. A browser window will open. Log in to your Upwork account if not already logged in.
-
-3. Once logged in, press Enter in the terminal. The script will save your authentication cookies to `files/auth/cookies.json`.
-
-4. The system will automatically use these cookies for all Upwork requests. If you get authentication errors, simply run the script again to update the cookies with a fresh session.
-
-Note: Keep your cookies file secure as it contains sensitive authentication information.
 
 ### Configuration
 
@@ -49,8 +33,6 @@ The system can be configured using environment variables:
 ```env
 # Required Settings
 GOOGLE_API_KEY="your-api-key"  # Google API key for content generation
-UPWORK_SEARCH_QUERY="AI agent Developer"  # Your search query
-FREELANCER_PROFILE_PATH="/app/files/profile.md"  # Path to your profile
 
 # Optional Settings
 POLLING_INTERVAL=480  # Polling interval (8 minutes)
@@ -60,7 +42,40 @@ HIGH_VALUE_THRESHOLD=7.0  # Minimum score for high-value jobs
 WEBHOOK_URL="https://your-webhook-url"  # Webhook for high-value job notifications
 ```
 
-### Running with Docker (Recommended)
+### Running Locally
+
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+playwright install firefox
+playwright install-deps
+```
+
+2. Authentication
+
+The system requires authentication to access Upwork job listings and apply pages. Authentication is handled through browser cookies that are saved from your logged-in Upwork session.
+
+  1. Run the cookie saver script:
+  ```bash
+  ./scripts/save_upwork_cookies.py
+  ```
+
+  2. A browser window will open. Log in to your Upwork account if not already logged in.
+
+  3. Once logged in, press Enter in the terminal. The script will save your authentication cookies to `files/auth/cookies.json`.
+
+  4. The system will automatically use these cookies for all Upwork requests. If you get authentication errors, simply run the script again to update the cookies with a fresh session.
+
+Note: Keep your cookies file secure as it contains sensitive authentication information.
+
+
+3. Run the continuous poller:
+```bash
+python src/continuous_poller.py
+```
+
+
+### Running with Docker (Untested)
 
 1. Place your freelancer profile in `files/profile.md`
 
@@ -76,19 +91,8 @@ docker-compose up -d
 docker-compose logs -f
 ```
 
-### Running Locally
 
-1. Install dependencies:
-```bash
-pip install -r requirements.txt
-playwright install firefox
-playwright install-deps
-```
 
-2. Run the continuous poller:
-```bash
-python src/continuous_poller.py
-```
 
 ## System Architecture
 

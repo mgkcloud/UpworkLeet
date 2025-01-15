@@ -1,0 +1,232 @@
+{
+  "name": "UPWORK JOBS",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "a9a844f3-d651-4413-8bf3-820c6877b153",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5fdc963f-6a5e-47b5-a113-52a59b2a3154",
+      "name": "Webhook",
+      "webhookId": "a9a844f3-d651-4413-8bf3-820c6877b153"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "93ef68f6-db37-4f07-ae6a-8beb92de18cc",
+              "name": "payment",
+              "value": "={{$json[\"body\"][\"payment\"]}}\n",
+              "type": "string"
+            },
+            {
+              "id": "1e9a5abf-a09d-455d-ad95-24ccbdacbc16",
+              "name": "score",
+              "value": "={{$json[\"body\"][\"job_details\"][\"score\"]}}\n",
+              "type": "number"
+            },
+            {
+              "id": "cb29d7b5-8ec0-47e8-a9c9-f57ba4409919",
+              "name": "client_information",
+              "value": "={{$json[\"body\"][\"job_details\"][\"client_information\"]}}\n",
+              "type": "string"
+            },
+            {
+              "id": "d4c0bcdb-6f71-46c9-be34-b1666b83330d",
+              "name": "duration",
+              "value": "={{$json[\"body\"][\"job_details\"][\"duration\"]}}\n",
+              "type": "string"
+            },
+            {
+              "id": "256971e5-69ef-48aa-a341-943ef6f22f82",
+              "name": "job_type",
+              "value": "={{$json[\"body\"][\"job_details\"][\"job_type\"]}}\n",
+              "type": "string"
+            },
+            {
+              "id": "7079f346-b9ec-4894-b924-338e0a461bd7",
+              "name": "experience_level",
+              "value": "={{$json[\"body\"][\"job_details\"][\"experience_level\"]}}\n",
+              "type": "string"
+            },
+            {
+              "id": "8db24311-e016-4cb4-9f0a-69e2d3cec509",
+              "name": "job_url",
+              "value": "={{$json[\"body\"][\"job_url\"]}}\n",
+              "type": "string"
+            },
+            {
+              "id": "a3560629-2ce1-462d-9aee-54812ed9c52e",
+              "name": "cover_letter",
+              "value": "={{$json[\"body\"][\"cover_letter\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "30ec40bb-c6be-44b4-ac64-df1282fc6d5a",
+              "name": "full_description",
+              "value": "={{$json[\"body\"][\"job_details\"][\"description\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "136ef222-2f83-495f-b910-34ad5d4dd6cb",
+              "name": "job_id",
+              "value": "={{$json[\"body\"][\"job_details\"][\"id\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "441414c2-2294-4e97-980d-b7fef3123b2e",
+              "name": "questions",
+              "value": "={{$json[\"body\"][\"application_details\"][\"questions\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "2ac51fcc-6d59-4cde-8bae-180890693aba",
+              "name": "answers",
+              "value": "={{$json[\"body\"][\"application_details\"][\"answers\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "34490420-01b5-4f49-a0e8-104b9523aa7a",
+              "name": "apply",
+              "value": "={{$json[\"body\"][\"apply_url\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ],
+      "id": "533795a5-963a-49c8-8d8c-42e3d060a110",
+      "name": "SET VARS"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ntfy.sh/upwork_jobs?format=markdown",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "={\n  \"Title\": \"Job[{{ $json.items[0].json.score }}] {{ $json.items[0].json.payment.trim() }} {{ $json.items[0].json.job_type.trim() }}\",\n  \"Click\": \"{{ $json.items[0].json.apply }}\",\n  \"Priority\": \"5\"\n}",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "text/markdown",
+        "body": "={{ $json.items[0].json.client_information }}{{ $json.items[0].json.payment }}{{ $json.items[0].json.job_type }}{{ $json.items[0].json.job_id }}\n\n{{ $json.items[0].json.full_description }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        -140
+      ],
+      "id": "fcb8cb7b-0b5c-44a3-86cc-2ef6dd83a7ac",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "fromEmail": "will@feistyagency.com",
+        "toEmail": "will@feistyagency.com",
+        "subject": "=Upwork {{ $('Code').item.json.items[0].json.job_id }}",
+        "emailFormat": "html",
+        "html": "=<a href=\"{{ $('Code').item.json.items[0].json.apply }}\"><h1>Apply</h1></a> <b>[{{ $('Code').item.json.items[0].json.score }}]</b><br><br>\n\n{{ $('Code').item.json.items[0].json.payment.trim() }}\n{{ $('Code').item.json.items[0].json.job_type.trim() }}\n\n<h3>Client Info</h3>\n{{ $('Code').item.json.items[0].json.client_information }}\n\n<h3>Job Desc</h3>\n{{ $('SET VARS').item.json.full_description }}\n\n<h3>Cover Letter</h3>\n<p>{{ $('Code').item.json.items[0].json.cover_letter }}</p>\n\n{{ $('Code').item.json.qaHtml }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        900,
+        -260
+      ],
+      "id": "82162347-9ff1-4821-a6cd-da0637944f6f",
+      "name": "Send Email",
+      "credentials": {
+        "smtp": {
+          "id": "Iw7fU7zQRb3mqZOc",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Retrieve the JSON strings from the previous node\nconst questionsJson = $('SET VARS').first().json.questions;\nconst answersJson = $('SET VARS').first().json.answers;\n\n// Parse the JSON strings into JavaScript arrays\nconst questions = JSON.parse(questionsJson);\nconst answers = JSON.parse(answersJson);\n\n// Initialize the HTML string\nlet qaHtml = '<h2>Question & Answer Pairs</h2><ol>';\n\n// Iterate over the questions and answers arrays\nfor(let i = 0; i < questions.length; i++) {\n  qaHtml += `<li><strong>Q: ${questions[i].text}</strong><br/>A: ${answers[i].answer}</li>`;\n}\n\nqaHtml += '</ol>';\n\n// Return the formatted HTML along with other items\nreturn { json: { items, qaHtml } };\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "2d705cb2-bcc7-49ce-94c2-e406e932a9cb",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "SET VARS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SET VARS": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "fdb1314f-2de9-4b7a-9d0a-43baef5534a1",
+  "meta": {
+    "instanceId": "f315310e319b8554fd17bf915b4c556d539f3483e3a05b69dfc9cb4a6cde9390"
+  },
+  "id": "FcISt4EHn3xVXHWO",
+  "tags": []
+}
