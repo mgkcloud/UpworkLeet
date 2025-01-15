@@ -68,15 +68,16 @@ The system requires authentication to access Upwork job listings and apply pages
 
 Note: Keep your cookies file secure as it contains sensitive authentication information.
 
+3. Import the UPWORK_JOBS_n8n_IMPORTME.json into a new n8n workflow,
+-  Generate a new webhook
+-  Update the .env with the new webhook address
 
-3. Run the continuous poller:
+
+4. Run the continuous poller:
 ```bash
 python src/continuous_poller.py
 ```
 
-4. Import the UPWORK_JOBS_n8n_IMPORTME.json into a new n8n workflow,
--  Generate a new webhook
--  Update the .env with the new webhook address
 
 ### Running with Docker (Untested)
 
